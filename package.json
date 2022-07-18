@@ -30,7 +30,10 @@
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-authority ./translations/ui-plugin-find-authority/compiled"
   },
   "okapiInterfaces": {
-    "eholdings": "2.0"
+    "search": "0.6",
+    "browse": "0.3",
+    "source-storage-records": "3.0",
+    "records-editor.records": "3.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
