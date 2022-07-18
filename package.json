@@ -1,0 +1,72 @@
+{
+  "name": "@folio/plugin-find-authority",
+  "version": "1.0.0",
+  "description": "Stripes plugin to find authorities",
+  "repository": "folio-org/ui-plugin-find-authority",
+  "publishConfig": {
+    "registry": "https://repository.folio.org/repository/npm-folio/"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "stripes": {
+    "actsAs": [
+      "plugin"
+    ],
+    "pluginType": "find-authority",
+    "displayName": "ui-plugin-find-authority.meta.title",
+    "queryResource": "query",
+    "permissionSets": [
+      {
+        "permissionName": "module.ui-plugin-find-authority.enabled",
+        "displayName": "UI: find authorities plugin is enabled"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest",
+    "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-authority ./translations/ui-plugin-find-authority/compiled"
+  },
+  "okapiInterfaces": {
+    "eholdings": "2.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "@babel/preset-react": "^7.10.4",
+    "@folio/eslint-config-stripes": "^6.1.0",
+    "@folio/stripes": "^7.0.0",
+    "@folio/stripes-cli": "^2.6.0",
+    "@folio/stripes-core": "^8.0.0",
+    "@formatjs/cli": "^4.2.20",
+    "@testing-library/jest-dom": "^5.11.1",
+    "@testing-library/react": "^11.0.4",
+    "babel-jest": "^26.4.2",
+    "core-js": "^3.6.4",
+    "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "identity-obj-proxy": "^3.0.0",
+    "inflected": "^2.0.4",
+    "jest": "^26.4.2",
+    "jest-junit": "^12.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-intl": "^5.8.1",
+    "react-router-dom": "^5.2.0",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0"
+  },
+  "peerDependencies": {
+    "@folio/stripes": "^7.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-intl": "^5.8.0",
+    "react-router-dom": "^5.2.0"
+  }
+}
