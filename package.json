@@ -27,6 +27,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
+    "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json",
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-authority ./translations/ui-plugin-find-authority/compiled"
   },
   "okapiInterfaces": {
