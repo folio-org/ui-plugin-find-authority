@@ -10,6 +10,10 @@ const propTypes = {
   renderCustomTrigger: PropTypes.func,
 };
 
+const defaultProps = {
+  renderCustomTrigger: null,
+};
+
 const FindAuthority = ({
   renderCustomTrigger,
 }) => {
@@ -54,5 +58,6 @@ const FindAuthority = ({
 };
 
 FindAuthority.propTypes = propTypes;
+FindAuthority.defaultProps = defaultProps;
 
 export default FindAuthority;
