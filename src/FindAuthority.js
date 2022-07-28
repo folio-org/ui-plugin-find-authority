@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
+import { IconButton } from '@folio/stripes-components';
 import {
   AuthoritiesSearchContextProvider,
   SelectedAuthorityRecordContextProvider,
@@ -9,18 +11,43 @@ import {
 import { SearchModal } from './components';
 
 const propTypes = {
-  renderCustomTrigger: PropTypes.func.isRequired,
+  renderCustomTrigger: PropTypes.func,
+};
+
+const defaultProps = {
+  renderCustomTrigger: null,
 };
 
 const FindAuthority = ({
   renderCustomTrigger,
 }) => {
+  const intl = useIntl();
   const [isOpen, setIsOpen] = useState(false);
 
-  const openPluginModal = () => { setIsOpen(true); };
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const renderDefaultTrigger = () => {
+    return (
+      <IconButton
+        icon="link"
+        aria-haspopup="true"
+        title={intl.formatMessage({ id: 'ui-plugin-find-authority.linkToMarcAuthorityRecord' })}
+        ariaLabel={intl.formatMessage({ id: 'ui-plugin-find-authority.linkToMarcAuthorityRecord' })}
+        onClick={openModal}
+      />
+    );
+  };
 
   const renderTrigger = () => {
-    return renderCustomTrigger({ onClick: openPluginModal });
+    return renderCustomTrigger
+      ? renderCustomTrigger({ onClick: openModal })
+      : renderDefaultTrigger();
   };
 
   return (
@@ -29,8 +56,8 @@ const FindAuthority = ({
       <AuthoritiesSearchContextProvider readParamsFromUrl={false}>
         <SelectedAuthorityRecordContextProvider>
           <SearchModal
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
+            open={isOpen}
+            onClose={closeModal}
           />
         </SelectedAuthorityRecordContextProvider>
       </AuthoritiesSearchContextProvider>
@@ -39,5 +66,6 @@ const FindAuthority = ({
 };
 
 FindAuthority.propTypes = propTypes;
+FindAuthority.defaultProps = defaultProps;
 
 export default FindAuthority;

@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { Modal } from '@folio/stripes/components';
@@ -16,26 +17,26 @@ import {
 import css from './SearchModal.css';
 
 const propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  setIsOpen: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
 };
 
 const SearchModal = ({
-  isOpen,
-  setIsOpen,
+  open,
+  onClose,
 }) => {
   const { navigationSegmentValue } = useContext(AuthoritiesSearchContext);
 
   return (
     <Modal
-      open={isOpen}
+      open={open}
       dismissible
-      onClose={() => setIsOpen(false)}
+      label={<FormattedMessage id="ui-find-authority.modal.title" />}
+      onClose={onClose}
       size="large"
-      id="find-package-title-modal"
-      data-testid="find-package-title-modal"
+      id="find-authority-modal"
+      data-testid="find-authority-modal"
       contentClass={css.modalContent}
-      label="Select MARC authority" // TODO: move to translations
     >
       <PersistedPaneset
         appId="@folio/find-authority"
