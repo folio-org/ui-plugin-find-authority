@@ -30,12 +30,6 @@
     "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json",
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-authority ./translations/ui-plugin-find-authority/compiled"
   },
-  "okapiInterfaces": {
-    "search": "0.6",
-    "browse": "0.3",
-    "source-storage-records": "3.0",
-    "records-editor.records": "3.1"
-  },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
