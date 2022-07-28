@@ -1,3 +1,5 @@
 {
-  "meta.title": "Authority finder (plugin)"
+  "meta.title": "Authority finder (plugin)",
+  "linkToMarcAuthorityRecord": "Link to MARC authority record",
+  "modal.title": "Select MARC authority"
 }
