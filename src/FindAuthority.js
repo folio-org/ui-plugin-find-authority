@@ -3,6 +3,10 @@ import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { IconButton } from '@folio/stripes-components';
+import {
+  AuthoritiesSearchContextProvider,
+  SelectedAuthorityRecordContextProvider,
+} from '@folio/stripes-authority-components';
 
 import { SearchModal } from './components';
 
@@ -49,10 +53,14 @@ const FindAuthority = ({
   return (
     <>
       {renderTrigger()}
-      <SearchModal
-        open={isOpen}
-        onClose={closeModal}
-      />
+      <AuthoritiesSearchContextProvider readParamsFromUrl={false}>
+        <SelectedAuthorityRecordContextProvider>
+          <SearchModal
+            open={isOpen}
+            onClose={closeModal}
+          />
+        </SelectedAuthorityRecordContextProvider>
+      </AuthoritiesSearchContextProvider>
     </>
   );
 };
