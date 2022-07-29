@@ -22,11 +22,12 @@ describe('Given FindAuthority', () => {
   beforeEach(() => {
     cleanup();
     jest.clearAllMocks();
-    renderFindAuthority();
   });
 
   describe('when component does not get renderCustomTrigger action', () => {
     it('should render default trigger', () => {
+      renderFindAuthority();
+
       expect(screen.getByRole('button', { name: 'ui-plugin-find-authority.linkToMarcAuthorityRecord' })).toBeVisible();
     });
   });
@@ -42,6 +43,8 @@ describe('Given FindAuthority', () => {
 
   describe('when a user clicks on the default modal trigger', () => {
     it('should open the modal window', () => {
+      renderFindAuthority();
+
       fireEvent.click(screen.getByRole('button', { name: 'ui-plugin-find-authority.linkToMarcAuthorityRecord' }));
       expect(SearchModal.mock.calls[1][0].open).toBeTruthy();
     });

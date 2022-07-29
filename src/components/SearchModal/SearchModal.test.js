@@ -5,6 +5,7 @@ import {
 } from '@testing-library/react';
 
 import SearchModal from './SearchModal';
+import Harness from '../../../test/jest/helpers/harness';
 
 const requiredProps = {
   open: true,
@@ -12,10 +13,12 @@ const requiredProps = {
 };
 
 const renderSearchModal = (props = {}) => render(
-  <SearchModal
-    {...requiredProps}
-    {...props}
-  />,
+  <Harness>
+    <SearchModal
+      {...requiredProps}
+      {...props}
+    />
+  </Harness>,
 );
 
 describe('Given SearchModal', () => {
