@@ -31,7 +31,7 @@ const SearchModal = ({
     <Modal
       open={open}
       dismissible
-      label={<FormattedMessage id="ui-find-authority.modal.title" />}
+      label={<FormattedMessage id="ui-plugin-find-authority.modal.title" />}
       onClose={onClose}
       size="large"
       id="find-authority-modal"
