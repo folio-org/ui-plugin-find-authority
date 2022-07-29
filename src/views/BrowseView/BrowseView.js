@@ -19,6 +19,11 @@ import {
   useAuthoritiesBrowse,
 } from '@folio/stripes-authority-components';
 
+import {
+  PAGE_SIZE,
+  PRECEDING_RECORDS_COUNT,
+} from '../../constants';
+
 const BrowseView = () => {
   const intl = useIntl();
   const [isFilterPaneVisible, setIsFilterPaneVisible] = useState(true);
@@ -33,7 +38,6 @@ const BrowseView = () => {
     setSearchIndex,
     searchInputValue,
     searchDropdownValue,
-    setIsGoingToBaseURL,
   } = useContext(AuthoritiesSearchContext);
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
 
@@ -50,8 +54,8 @@ const BrowseView = () => {
     filters,
     searchQuery,
     searchIndex,
-    pageSize: 100, // TODO: add constant
-    precedingRecordsCount: 5, // TODO add constant PRECEDING_RECORDS_COUNT,
+    pageSize: PAGE_SIZE,
+    precedingRecordsCount: PRECEDING_RECORDS_COUNT,
   });
 
   const onSubmitSearch = e => {
@@ -62,7 +66,6 @@ const BrowseView = () => {
 
     setSearchQuery(searchInputValue);
     setSearchIndex(searchDropdownValue);
-    setIsGoingToBaseURL(true);
     setSelectedAuthorityRecordContext(null);
   };
 
@@ -128,11 +131,11 @@ const BrowseView = () => {
         <SearchResultsList
           authorities={formattedAuthoritiesForView}
           totalResults={totalRecords}
-          pageSize={100} // TODO: add constant
+          pageSize={PAGE_SIZE}
           onNeedMoreData={handleLoadMore}
           loading={isLoading}
           loaded={isLoaded}
-          visibleColumns={['authRefType', 'headingRef', 'headingType']} // TODO: define somewhhere
+          visibleColumns={['authRefType', 'headingRef', 'headingType']}
           isFilterPaneVisible={isFilterPaneVisible}
           toggleFilterPane={toggleFilterPane}
           hasFilters={!!filters.length}
