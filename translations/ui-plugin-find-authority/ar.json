@@ -1,3 +1,5 @@
 {
-    "meta.title": "Authority finder (plugin)"
+    "meta.title": "Authority finder (plugin)",
+    "linkToMarcAuthorityRecord": "ربط بتسجيلة استناد مارك",
+    "modal.title": "حدد استناد مارك"
 }

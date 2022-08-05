@@ -1,3 +1,5 @@
 {
-    "meta.title": "Normdaten-Finder (Plugin)"
+    "meta.title": "Normdaten-Finder (Plugin)",
+    "linkToMarcAuthorityRecord": "Link to MARC authority record",
+    "modal.title": "Select MARC authority"
 }

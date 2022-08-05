@@ -1,3 +1,5 @@
 {
-    "meta.title": "Vyhledávač autorit (plugin)"
+    "meta.title": "Vyhledávač autorit (plugin)",
+    "linkToMarcAuthorityRecord": "Odkaz na záznam autority MARC",
+    "modal.title": "Zvolte autoritu MARC"
 }
