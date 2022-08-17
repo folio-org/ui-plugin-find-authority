@@ -20,8 +20,10 @@ import {
 } from '@folio/stripes-authority-components';
 
 import {
+  MAIN_PANE_HEIGHT,
   PAGE_SIZE,
   PRECEDING_RECORDS_COUNT,
+  columnWidths,
 } from '../../constants';
 
 const BrowseView = () => {
@@ -117,6 +119,7 @@ const BrowseView = () => {
         isLoading={isLoading}
         onSubmitSearch={onSubmitSearch}
         query={query}
+        height={MAIN_PANE_HEIGHT}
       />
       <Pane
         id="authority-search-results-pane"
@@ -127,9 +130,11 @@ const BrowseView = () => {
         firstMenu={renderResultsFirstMenu()}
         padContent={false}
         noOverflow
+        height={MAIN_PANE_HEIGHT}
       >
         <SearchResultsList
           authorities={formattedAuthoritiesForView}
+          columnWidths={columnWidths}
           totalResults={totalRecords}
           pageSize={PAGE_SIZE}
           onNeedMoreData={handleLoadMore}
