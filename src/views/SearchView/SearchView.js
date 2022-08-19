@@ -16,9 +16,14 @@ import {
   AuthoritiesSearchContext,
   SelectedAuthorityRecordContext,
   useAuthorities,
+  searchableIndexesValues,
 } from '@folio/stripes-authority-components';
 
-import { PAGE_SIZE } from '../../constants';
+import {
+  PAGE_SIZE,
+  MAIN_PANE_HEIGHT,
+  columnWidths,
+} from '../../constants';
 
 const SearchView = () => {
   const intl = useIntl();
@@ -30,12 +35,14 @@ const SearchView = () => {
     searchQuery,
     searchIndex,
     filters,
-    advancedSearchRows,
+    advancedSearchRows: advancedSearch,
     setSearchQuery,
     setSearchIndex,
     searchInputValue,
     searchDropdownValue,
+    setAdvancedSearchRows: setAdvancedSearch,
   } = useContext(AuthoritiesSearchContext);
+  const isAdvancedSearch = searchIndex === searchableIndexesValues.ADVANCED_SEARCH;
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
   const {
     authorities,
@@ -47,18 +54,19 @@ const SearchView = () => {
   } = useAuthorities({
     searchQuery,
     searchIndex,
-    advancedSearch: advancedSearchRows,
-    isAdvancedSearch: false,
+    advancedSearch,
+    isAdvancedSearch,
     filters,
     pageSize: PAGE_SIZE,
   });
 
-  const onSubmitSearch = e => {
+  const onSubmitSearch = (e, advancedSearchState) => {
     if (e && e.preventDefault) {
       e.preventDefault();
       e.stopPropagation();
     }
 
+    setAdvancedSearch(advancedSearchState);
     setSearchQuery(searchInputValue);
     setSearchIndex(searchDropdownValue);
     setSelectedAuthorityRecordContext(null);
@@ -102,6 +110,7 @@ const SearchView = () => {
         isLoading={isLoading}
         onSubmitSearch={onSubmitSearch}
         query={query}
+        height={MAIN_PANE_HEIGHT}
       />
       <Pane
         id="authority-search-results-pane"
@@ -112,9 +121,11 @@ const SearchView = () => {
         firstMenu={renderResultsFirstMenu()}
         padContent={false}
         noOverflow
+        height={MAIN_PANE_HEIGHT}
       >
         <SearchResultsList
           authorities={authorities}
+          columnWidths={columnWidths}
           totalResults={totalRecords}
           pageSize={PAGE_SIZE}
           onNeedMoreData={handleLoadMore}
