@@ -75,7 +75,7 @@ const BrowseView = () => {
     return (
       <span>
         {intl.formatMessage({
-          id: 'stripes-authority-components.search-results-list.paneSub',
+          id: 'ui-plugin-find-authority.search-results-list.paneSub',
         }, {
           totalRecords,
         })}
