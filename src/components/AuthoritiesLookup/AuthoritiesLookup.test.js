@@ -1,29 +1,26 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import { runAxeTest } from '@folio/stripes-testing';
+import authorities from '@folio/stripes-authority-components/mocks/authorities.json';
 
-import { useAutoOpenDetailView } from '@folio/stripes-authority-components';
 import AuthoritiesLookup from './AuthoritiesLookup';
+import MarcAuthorityView from '../MarcAuthorityView';
 
 import Harness from '../../../test/jest/helpers/harness';
 
 jest.mock('@folio/stripes-authority-components', () => ({
   ...jest.requireActual('@folio/stripes-authority-components'),
   useAuthorities: () => ({ authorities: [] }),
-  useAutoOpenDetailView: jest.fn(),
 }));
 
-jest.mock('../../components/AuthoritiesLookup', () => jest.fn(() => <div>AuthoritiesLookup</div>));
 
-const mockAuthorities = [{
-  'id': '5a404f5d-2c46-4426-9f28-db8d26881b30',
-  'headingType': 'Personal name',
-  'authRefType': 'Auth/Ref',
-  'headingRef': 'Twain, Mark',
-}];
+jest.mock('../MarcAuthorityView', () => jest.fn(() => <div>MarcAuthorityView</div>));
 
-const renderAuthoritiesSearchPane = (props = {}) => render(
-  <Harness>
+const mockSetSelectedAuthorityRecordContext = jest.fn();
+const mockAuthorities = authorities.slice(0, 2);
+
+const getAuthoritiesSearchPane = (props = {}, selectedRecord) => (
+  <Harness selectedRecordCtxValue={[selectedRecord, mockSetSelectedAuthorityRecordContext]}>
     <AuthoritiesLookup
       authorities={mockAuthorities}
       hasFilters={false}
@@ -36,8 +33,10 @@ const renderAuthoritiesSearchPane = (props = {}) => render(
       onSubmitSearch={jest.fn()}
       {...props}
     />
-  </Harness>,
+  </Harness>
 );
+
+const renderAuthoritiesSearchPane = (...params) => render(getAuthoritiesSearchPane(...params));
 
 describe('Given AuthoritiesLookup', () => {
   afterEach(() => {
@@ -58,23 +57,25 @@ describe('Given AuthoritiesLookup', () => {
     expect(getByTestId('pane-authorities-filters')).toBeDefined();
   });
 
-  it('should check if detail view needs to be opened', () => {
-    const authorities = [{
-      'id': '5a404f5d-2c46-4426-9f28-db8d26881b30',
-      'headingType': 'Personal name',
-      'authRefType': 'Auth/Ref',
-      'headingRef': 'Twain, Mark',
-    }];
-    const totalRecords = 1;
+  it('should display the results pane', () => {
+    renderAuthoritiesSearchPane();
+    expect(screen.getByTestId('authority-search-results-pane')).toBeDefined();
+  })
 
-    renderAuthoritiesSearchPane({
-      authorities,
-      totalRecords,
+  describe('when there is only one record', () => {
+    beforeEach(() => {
+      renderAuthoritiesSearchPane({
+        authorities: [authorities[0]],
+        totalRecords: 1,
+      });
     });
-    expect(useAutoOpenDetailView).toHaveBeenCalledWith({
-      authorities: mockAuthorities,
-      setShowDetailView: expect.any(Function),
-      totalRecords: mockAuthorities.length,
+
+    it('should add authority record to the context', () => {
+      expect(mockSetSelectedAuthorityRecordContext).toHaveBeenCalledWith(mockAuthorities[0]);
     });
+
+    it('should display the detail view', () => {
+      expect(screen.getByText('MarcAuthorityView')).toBeVisible();
+    })
   });
 });

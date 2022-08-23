@@ -1,5 +1,6 @@
 import {
   useContext,
+  useEffect,
   useState,
 } from 'react';
 import { useIntl } from 'react-intl';
@@ -9,11 +10,12 @@ import PropTypes from 'prop-types';
 import { Pane } from '@folio/stripes/components';
 import { AppIcon } from '@folio/stripes-core';
 import {
+  AuthoritiesSearchContext,
   AuthoritiesSearchPane,
   AuthorityShape,
+  autoOpenDetailView,
   SearchResultsList,
   SelectedAuthorityRecordContext,
-  useAutoOpenDetailView,
 } from '@folio/stripes-authority-components';
 
 import MarcAuthorityView from '../MarcAuthorityView';
@@ -57,9 +59,8 @@ const AuthoritiesLookup = ({
   const [isFilterPaneVisible, setIsFilterPaneVisible] = useState(true);
   const [showDetailView, setShowDetailView] = useState(false);
 
+  const { navigationSegmentValue } = useContext(AuthoritiesSearchContext);
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
-
-  useAutoOpenDetailView({ authorities, totalRecords, setShowDetailView });
 
   const toggleFilterPane = () => setIsFilterPaneVisible(!isFilterPaneVisible);
 
@@ -67,6 +68,15 @@ const AuthoritiesLookup = ({
     setShowDetailView(false);
     setSelectedAuthorityRecordContext(null);
   };
+
+  useEffect(() => {
+    const isDetailViewNeedsToBeOpened = autoOpenDetailView(totalRecords, authorities[0], navigationSegmentValue);
+
+    if (isDetailViewNeedsToBeOpened) {
+      setSelectedAuthorityRecordContext(authorities[0]);
+      setShowDetailView(true);
+    }
+  }, [totalRecords, authorities, navigationSegmentValue])
 
   const handleSubmitSearch = (e, ...rest) => {
     if (e?.preventDefault) {
@@ -101,6 +111,7 @@ const AuthoritiesLookup = ({
   const renderResultList = () => (
     <Pane
       id="authority-search-results-pane"
+      data-testid="authority-search-results-pane"
       appIcon={<AppIcon app="marc-authorities" />}
       defaultWidth="fill"
       paneTitle={intl.formatMessage({ id: 'stripes-authority-components.meta.title' })}
