@@ -1,10 +1,9 @@
 import { render, screen } from '@testing-library/react';
 
 import { runAxeTest } from '@folio/stripes-testing';
-import authorities from '@folio/stripes-authority-components/mocks/authorities.json';
+import authorities from '@folio/stripes-authority-components/mocks/authorities.json'; // eslint-disable-line import/extensions
 
 import AuthoritiesLookup from './AuthoritiesLookup';
-import MarcAuthorityView from '../MarcAuthorityView';
 
 import Harness from '../../../test/jest/helpers/harness';
 
@@ -60,7 +59,7 @@ describe('Given AuthoritiesLookup', () => {
   it('should display the results pane', () => {
     renderAuthoritiesSearchPane();
     expect(screen.getByTestId('authority-search-results-pane')).toBeDefined();
-  })
+  });
 
   describe('when there is only one record', () => {
     beforeEach(() => {
@@ -76,6 +75,6 @@ describe('Given AuthoritiesLookup', () => {
 
     it('should display the detail view', () => {
       expect(screen.getByText('MarcAuthorityView')).toBeVisible();
-    })
+    });
   });
 });

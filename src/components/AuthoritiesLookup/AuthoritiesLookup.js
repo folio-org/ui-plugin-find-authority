@@ -76,7 +76,8 @@ const AuthoritiesLookup = ({
       setSelectedAuthorityRecordContext(authorities[0]);
       setShowDetailView(true);
     }
-  }, [totalRecords, authorities, navigationSegmentValue])
+    // eslint-disable-next-line
+  }, [totalRecords, authorities, navigationSegmentValue]);
 
   const handleSubmitSearch = (e, ...rest) => {
     if (e?.preventDefault) {
