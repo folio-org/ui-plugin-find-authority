@@ -17,12 +17,7 @@
         "react/no-multi-comp": "off",
         "react/destructuring-assignment": "off",
         "react/jsx-key": "off",
-        "arrow-parens": "off"
-      }
-    }, {
-      "files": ["test/jest/**/*"],
-      "rules": {
-        "react/prop-types": "off",
+        "arrow-parens": "off",
         "react/no-array-index-key": "off",
         "react/function-component-definition": "off",
         "multiline-ternary": "off"
