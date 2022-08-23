@@ -5,3 +5,4 @@
 * Create an empty modal window for find Authorities plugin. Refs UIPFAUTH-7
 * Select a MARC authority record modal > Results list - Search. Refs UIPFAUTH-3
 * Select a MARC authority record modal > Results list - Browse. Refs UIPFAUTH-4
+* Select a MARC authority record modal > View a MARC authority detail record. Refs UIPFAUTH-5
