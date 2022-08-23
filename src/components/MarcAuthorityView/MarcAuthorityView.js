@@ -77,8 +77,8 @@ const MarcAuthorityView = ({
     const errorResponse = await err.response;
 
     const calloutMessageId = errorResponse.status === 404
-      ? 'ui-marc-authorities.authority.view.error.notFound'
-      : 'ui-marc-authorities.authority.view.error.unknown';
+      ? 'stripes-authority-components.authority.view.error.notFound'
+      : 'stripes-authority-components.authority.view.error.unknown';
 
     callout.sendCallout({ type: 'error', message:  intl.formatMessage({ id: calloutMessageId }) });
     queryClient.invalidateQueries(authoritySourceNamespace);
