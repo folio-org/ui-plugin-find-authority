@@ -1,42 +1,27 @@
-import {
-  useState,
-  useContext,
-} from 'react';
-import { useIntl } from 'react-intl';
+import { useContext } from 'react';
 
-import { AppIcon } from '@folio/stripes/core';
 import {
-  Pane,
-  PaneMenu,
-} from '@folio/stripes/components';
-import { ExpandFilterPaneButton } from '@folio/stripes/smart-components';
-import {
-  AuthoritiesSearchPane,
-  SearchResultsList,
   AuthoritiesSearchContext,
-  SelectedAuthorityRecordContext,
   useAuthorities,
+  searchableIndexesValues,
 } from '@folio/stripes-authority-components';
 
+import { AuthoritiesLookup } from '../../components';
 import { PAGE_SIZE } from '../../constants';
 
 const SearchView = () => {
-  const intl = useIntl();
-  const [isFilterPaneVisible, setIsFilterPaneVisible] = useState(true);
-
-  const toggleFilterPane = () => setIsFilterPaneVisible(!isFilterPaneVisible);
-
   const {
     searchQuery,
     searchIndex,
     filters,
-    advancedSearchRows,
+    advancedSearchRows: advancedSearch,
     setSearchQuery,
     setSearchIndex,
     searchInputValue,
     searchDropdownValue,
+    setAdvancedSearchRows: setAdvancedSearch,
   } = useContext(AuthoritiesSearchContext);
-  const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
+  const isAdvancedSearch = searchIndex === searchableIndexesValues.ADVANCED_SEARCH;
   const {
     authorities,
     isLoading,
@@ -47,87 +32,34 @@ const SearchView = () => {
   } = useAuthorities({
     searchQuery,
     searchIndex,
-    advancedSearch: advancedSearchRows,
-    isAdvancedSearch: false,
+    advancedSearch,
+    isAdvancedSearch,
     filters,
     pageSize: PAGE_SIZE,
   });
 
-  const onSubmitSearch = e => {
-    if (e && e.preventDefault) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
+  const onSubmitSearch = (e, advancedSearchState) => {
+    setAdvancedSearch(advancedSearchState);
     setSearchQuery(searchInputValue);
     setSearchIndex(searchDropdownValue);
-    setSelectedAuthorityRecordContext(null);
   };
 
   const handleLoadMore = (_pageAmount, offset) => {
     setOffset(offset);
   };
 
-  const renderPaneSub = () => {
-    return (
-      <span>
-        {intl.formatMessage({
-          id: 'ui-plugin-find-authority.search-results-list.paneSub',
-        }, {
-          totalRecords,
-        })}
-      </span>
-    );
-  };
-
-  const renderResultsFirstMenu = () => {
-    if (isFilterPaneVisible) {
-      return null;
-    }
-
-    return (
-      <PaneMenu>
-        <ExpandFilterPaneButton
-          onClick={toggleFilterPane}
-        />
-      </PaneMenu>
-    );
-  };
-
   return (
-    <>
-      <AuthoritiesSearchPane
-        isFilterPaneVisible={isFilterPaneVisible}
-        toggleFilterPane={toggleFilterPane}
-        isLoading={isLoading}
-        onSubmitSearch={onSubmitSearch}
-        query={query}
-      />
-      <Pane
-        id="authority-search-results-pane"
-        appIcon={<AppIcon app="marc-authorities" />}
-        defaultWidth="fill"
-        paneTitle={intl.formatMessage({ id: 'stripes-authority-components.meta.title' })}
-        paneSub={renderPaneSub()}
-        firstMenu={renderResultsFirstMenu()}
-        padContent={false}
-        noOverflow
-      >
-        <SearchResultsList
-          authorities={authorities}
-          totalResults={totalRecords}
-          pageSize={PAGE_SIZE}
-          onNeedMoreData={handleLoadMore}
-          loading={isLoading}
-          loaded={isLoaded}
-          visibleColumns={['authRefType', 'headingRef', 'headingType']}
-          isFilterPaneVisible={isFilterPaneVisible}
-          toggleFilterPane={toggleFilterPane}
-          hasFilters={!!filters.length}
-          query={searchQuery}
-        />
-      </Pane>
-    </>
+    <AuthoritiesLookup
+      authorities={authorities}
+      totalRecords={totalRecords}
+      searchQuery={searchQuery}
+      query={query}
+      isLoaded={isLoaded}
+      isLoading={isLoading}
+      hasFilters={!!filters.length}
+      onNeedMoreData={handleLoadMore}
+      onSubmitSearch={onSubmitSearch}
+    />
   );
 };
 
