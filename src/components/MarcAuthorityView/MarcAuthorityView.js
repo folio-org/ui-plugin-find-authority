@@ -13,7 +13,7 @@ import {
 import {
   useCallout,
   useNamespace,
-} from '@folio/stripes-core';
+} from '@folio/stripes/core';
 import MarcView from '@folio/quick-marc/src/QuickMarcView/QuickMarcView';
 
 import cloneDeep from 'lodash/cloneDeep';
