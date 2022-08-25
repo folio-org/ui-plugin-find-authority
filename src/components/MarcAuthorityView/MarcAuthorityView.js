@@ -9,6 +9,7 @@ import {
   useAuthority,
   QUERY_KEY_AUTHORITY_SOURCE,
   SelectedAuthorityRecordContext,
+  markHighlightedFields,
 } from '@folio/stripes-authority-components';
 import {
   useCallout,
@@ -16,8 +17,6 @@ import {
 } from '@folio/stripes/core';
 import MarcView from '@folio/quick-marc/src/QuickMarcView/QuickMarcView';
 
-import cloneDeep from 'lodash/cloneDeep';
-import set from 'lodash/set';
 import { MAIN_PANE_HEIGHT } from '../../constants';
 
 const propTypes = {
@@ -33,45 +32,6 @@ const MarcAuthorityView = ({
   const intl = useIntl();
   const [selectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
   const { id, authRefType, headingRef } = selectedAuthorityRecordContext;
-
-  const markHighlightedFields = (marcSource, authority) => {
-    const highlightAuthRefFields = {
-      'Authorized': /1\d\d/,
-      'Reference': /4\d\d/,
-      'Auth/Ref': /5\d\d/,
-    };
-
-    const marcFields = marcSource.data.parsedRecord.content.fields.map(field => {
-      const tag = Object.keys(field)[0];
-
-      const isHighlightedTag = highlightAuthRefFields[authority.data.authRefType].test(tag);
-
-      if (!isHighlightedTag) {
-        return field;
-      }
-
-      const fieldContent = field[tag].subfields.reduce((contentArr, subfield) => {
-        const subfieldValue = Object.values(subfield)[0];
-
-        return [...contentArr, subfieldValue];
-      }, []).join(' ');
-
-      const isHeadingRefMatching = fieldContent === authority.data.headingRef;
-
-      return {
-        ...field,
-        [tag]: {
-          ...field[tag],
-          isHighlighted: isHeadingRefMatching && isHighlightedTag,
-        },
-      };
-    });
-    const marcSourceClone = cloneDeep(marcSource);
-
-    set(marcSourceClone, 'data.parsedRecord.content.fields', marcFields);
-
-    return marcSourceClone;
-  };
 
   const handleAuthorityLoadError = async err => {
     const errorResponse = await err.response;

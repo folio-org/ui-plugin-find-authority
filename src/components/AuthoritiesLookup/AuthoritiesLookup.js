@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import { Pane } from '@folio/stripes/components';
-import { AppIcon } from '@folio/stripes-core';
+import { AppIcon } from '@folio/stripes/core';
 import {
   AuthoritiesSearchContext,
   AuthoritiesSearchPane,

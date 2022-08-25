@@ -55,13 +55,6 @@ describe('Given AuthoritiesLookup', () => {
   });
 
   describe('when there is only one record', () => {
-    // beforeEach(() => {
-    //   renderAuthoritiesSearchPane({
-    //     authorities: [authorities[0]],
-    //     totalRecords: 1,
-    //   });
-    // });
-
     it('should add authority record to the context', () => {
       renderAuthoritiesSearchPane({
         authorities: [authorities[0]],
