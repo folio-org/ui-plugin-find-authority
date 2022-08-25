@@ -5,3 +5,4 @@
 * Create an empty modal window for find Authorities plugin. Refs UIPFAUTH-7
 * Select a MARC authority record modal > Results list - Search. Refs UIPFAUTH-3
 * Select a MARC authority record modal > Results list - Browse. Refs UIPFAUTH-4
+* move stripes-authority-components to peerDependencies. Refs UIPFAUTH-9
