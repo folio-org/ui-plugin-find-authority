@@ -40,6 +40,7 @@
     "@babel/preset-react": "^7.10.4",
     "@folio/eslint-config-stripes": "^6.1.0",
     "@folio/stripes": "^7.0.0",
+    "@folio/stripes-authority-components": "^1.0.0",
     "@folio/stripes-cli": "^2.6.0",
     "@folio/stripes-core": "^8.0.0",
     "@folio/stripes-testing": "^4.2.0",
