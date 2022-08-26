@@ -13,7 +13,7 @@ import {
   AuthoritiesSearchContext,
   AuthoritiesSearchPane,
   AuthorityShape,
-  navigationSegments,
+  getIsDetailViewNeedsToBeOpened,
   SearchResultsList,
   SelectedAuthorityRecordContext,
 } from '@folio/stripes-authority-components';
@@ -70,14 +70,7 @@ const AuthoritiesLookup = ({
   };
 
   useEffect(() => {
-    if (totalRecords !== 1) {
-      return;
-    }
-
-    const firstAuthority = authorities[0];
-    const isDetailViewNeedsToBeOpened = navigationSegmentValue === navigationSegments.browse
-      ? firstAuthority?.isAnchor && firstAuthority?.isExactMatch
-      : true;
+    const isDetailViewNeedsToBeOpened = getIsDetailViewNeedsToBeOpened(totalRecords, authorities[0], navigationSegmentValue);
 
     if (isDetailViewNeedsToBeOpened) {
       setSelectedAuthorityRecordContext(authorities[0]);
@@ -144,7 +137,7 @@ const AuthoritiesLookup = ({
         hasNextPage={hasNextPage}
         hasPrevPage={hasPrevPage}
         hidePageIndices={hidePageIndices}
-        onRenderHeadingRef={renderHeadingRef}
+        renderHeadingRef={renderHeadingRef}
       />
     </Pane>
   );
