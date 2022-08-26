@@ -1,0 +1,3 @@
+.link {
+    composes: root from '~@folio/stripes-components/lib/TextLink/TextLink.css';
+}

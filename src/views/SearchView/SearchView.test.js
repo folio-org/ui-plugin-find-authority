@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { runAxeTest } from '@folio/stripes-testing';
-
+import AuthoritiesLookup from '../../components/AuthoritiesLookup';
 import SearchView from './SearchView';
 
 import Harness from '../../../test/jest/helpers/harness';
@@ -10,6 +9,8 @@ jest.mock('@folio/stripes-authority-components', () => ({
   ...jest.requireActual('@folio/stripes-authority-components'),
   useAuthorities: () => ({ authorities: [] }),
 }));
+
+jest.mock('../../components/AuthoritiesLookup', () => jest.fn(() => <div>AuthoritiesLookup</div>));
 
 const renderSearchView = (props = {}) => render(
   <Harness>
@@ -22,17 +23,20 @@ describe('Given SearchView', () => {
     jest.clearAllMocks();
   });
 
-  it('should render with no axe errors', async () => {
-    const { container } = renderSearchView();
+  it('should have correct props for AuthoritiesLookup', () => {
+    const expectedProps = {
+      authorities: [],
+      hasFilters: false,
+      isLoaded: undefined,
+      isLoading: undefined,
+      onNeedMoreData: expect.any(Function),
+      onSubmitSearch: expect.any(Function),
+      query: undefined,
+      searchQuery: '',
+      totalRecords: undefined,
+    };
 
-    await runAxeTest({
-      rootNode: container,
-    });
-  });
-
-  it('should display AuthoritiesSearchPane', () => {
-    const { getByTestId } = renderSearchView();
-
-    expect(getByTestId('pane-authorities-filters')).toBeDefined();
+    renderSearchView();
+    expect(AuthoritiesLookup).toHaveBeenNthCalledWith(1, expectedProps, {});
   });
 });
