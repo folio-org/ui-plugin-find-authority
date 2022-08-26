@@ -59,7 +59,7 @@ const AuthoritiesLookup = ({
   const [isFilterPaneVisible, setIsFilterPaneVisible] = useState(true);
   const [showDetailView, setShowDetailView] = useState(false);
 
-  const { navigationSegmentValue } = useContext(AuthoritiesSearchContext);
+  const { navigationSegmentValue, filters } = useContext(AuthoritiesSearchContext);
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
 
   const toggleFilterPane = () => setIsFilterPaneVisible(!isFilterPaneVisible);
@@ -68,6 +68,11 @@ const AuthoritiesLookup = ({
     setShowDetailView(false);
     setSelectedAuthorityRecordContext(null);
   };
+
+  useEffect(() => {
+    closeDetailView();
+    // eslint-disable-next-line
+  }, [filters]);
 
   useEffect(() => {
     const isDetailViewNeedsToBeOpened = getIsDetailViewNeedsToBeOpened(totalRecords, authorities[0], navigationSegmentValue);
@@ -152,7 +157,6 @@ const AuthoritiesLookup = ({
         query={query}
         height={MAIN_PANE_HEIGHT}
         onShowDetailView={setShowDetailView}
-        onCloseDetailView={closeDetailView}
       />
       {showDetailView
         ? (
