@@ -54,6 +54,14 @@ describe('Given AuthoritiesLookup', () => {
     });
   });
 
+  describe('when detail view is visible', () => {
+    it('should hide the list of results', () => {
+      renderAuthoritiesSearchPane();
+      act(() => { AuthoritiesSearchPane.mock.calls[0][0].onShowDetailView(true); });
+      expect(screen.getByTestId('authority-search-results-pane')).toHaveAttribute('class', 'pane focusIndicator hidden');
+    });
+  });
+
   describe('when there is only one record', () => {
     it('should add authority record to the context', () => {
       renderAuthoritiesSearchPane({
@@ -100,12 +108,12 @@ describe('Given AuthoritiesLookup', () => {
       act(() => { AuthoritiesSearchPane.mock.calls[1][0].onSubmitSearch(event, advancedSearchState, anyParam); });
     });
 
-    it('should close the detail view and open the list of results', () => {
-      expect(screen.getByText('SearchResultsList')).toBeVisible();
+    it('should close the detail view and show the list of results', () => {
+      expect(screen.getByTestId('authority-search-results-pane')).toHaveAttribute('class', 'pane focusIndicator');
     });
 
-    it('should reset the selected authority record in the context', () => {
-      expect(mockSetSelectedAuthorityRecordContext).toHaveBeenCalledWith(null);
+    it('should not reset the selected authority record in the context', () => {
+      expect(mockSetSelectedAuthorityRecordContext).not.toHaveBeenCalledWith(null);
     });
 
     it('should handle event object', () => {

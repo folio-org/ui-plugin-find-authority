@@ -66,7 +66,6 @@ const AuthoritiesLookup = ({
 
   const closeDetailView = () => {
     setShowDetailView(false);
-    setSelectedAuthorityRecordContext(null);
   };
 
   useEffect(() => {
@@ -117,6 +116,7 @@ const AuthoritiesLookup = ({
   const renderResultList = () => (
     <Pane
       id="authority-search-results-pane"
+      className={classNames(css.pane, css.focusIndicator, showDetailView ? css.hidden : undefined)}
       data-testid="authority-search-results-pane"
       appIcon={<AppIcon app="marc-authorities" />}
       defaultWidth="fill"
@@ -158,14 +158,12 @@ const AuthoritiesLookup = ({
         height={MAIN_PANE_HEIGHT}
         onShowDetailView={setShowDetailView}
       />
-      {showDetailView
-        ? (
-          <MarcAuthorityView
-            onCloseDetailView={closeDetailView}
-          />
-        )
-        : renderResultList()
+      {showDetailView &&
+        <MarcAuthorityView
+          onCloseDetailView={closeDetailView}
+        />
       }
+      {renderResultList()}
     </>
   );
 };
