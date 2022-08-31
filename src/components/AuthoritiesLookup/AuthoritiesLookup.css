@@ -1,3 +1,4 @@
 .link {
-    composes: root from '~@folio/stripes-components/lib/TextLink/TextLink.css';
+  composes: root from '~@folio/stripes-components/lib/TextLink/TextLink.css';
+  text-align: left;
 }
