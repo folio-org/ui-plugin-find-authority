@@ -4,6 +4,7 @@ import {
   AuthoritiesSearchContext,
   useAuthorities,
   searchableIndexesValues,
+  SelectedAuthorityRecordContext,
 } from '@folio/stripes-authority-components';
 
 import { AuthoritiesLookup } from '../../components';
@@ -21,6 +22,7 @@ const SearchView = () => {
     searchDropdownValue,
     setAdvancedSearchRows: setAdvancedSearch,
   } = useContext(AuthoritiesSearchContext);
+  const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
   const isAdvancedSearch = searchIndex === searchableIndexesValues.ADVANCED_SEARCH;
   const {
     authorities,
@@ -42,6 +44,7 @@ const SearchView = () => {
     setAdvancedSearch(advancedSearchState);
     setSearchQuery(searchInputValue);
     setSearchIndex(searchDropdownValue);
+    setSelectedAuthorityRecordContext(null);
   };
 
   const handleLoadMore = (_pageAmount, offset) => {

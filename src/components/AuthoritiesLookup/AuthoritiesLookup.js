@@ -13,7 +13,6 @@ import {
   AuthoritiesSearchContext,
   AuthoritiesSearchPane,
   AuthorityShape,
-  getIsDetailViewNeedsToBeOpened,
   SearchResultsList,
   SelectedAuthorityRecordContext,
 } from '@folio/stripes-authority-components';
@@ -59,30 +58,24 @@ const AuthoritiesLookup = ({
   const [isFilterPaneVisible, setIsFilterPaneVisible] = useState(true);
   const [showDetailView, setShowDetailView] = useState(false);
 
-  const { navigationSegmentValue, filters } = useContext(AuthoritiesSearchContext);
+  const { filters } = useContext(AuthoritiesSearchContext);
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
 
   const toggleFilterPane = () => setIsFilterPaneVisible(!isFilterPaneVisible);
 
   const closeDetailView = () => {
     setShowDetailView(false);
-    setSelectedAuthorityRecordContext(null);
+  };
+
+  const openDetailView = authority => {
+    setSelectedAuthorityRecordContext(authority);
+    setShowDetailView(true);
   };
 
   useEffect(() => {
     closeDetailView();
     // eslint-disable-next-line
   }, [filters]);
-
-  useEffect(() => {
-    const isDetailViewNeedsToBeOpened = getIsDetailViewNeedsToBeOpened(totalRecords, authorities[0], navigationSegmentValue);
-
-    if (isDetailViewNeedsToBeOpened) {
-      setSelectedAuthorityRecordContext(authorities[0]);
-      setShowDetailView(true);
-    }
-    // eslint-disable-next-line
-  }, [totalRecords, authorities, navigationSegmentValue]);
 
   const handleSubmitSearch = (e, ...rest) => {
     if (e?.preventDefault) {
@@ -108,6 +101,7 @@ const AuthoritiesLookup = ({
     <button
       type="button"
       className={classNames(css.link, className)}
+      data-testid="heading-ref-btn"
       onClick={() => setShowDetailView(true)}
     >
       {authority.headingRef}
@@ -117,6 +111,7 @@ const AuthoritiesLookup = ({
   const renderResultList = () => (
     <Pane
       id="authority-search-results-pane"
+      className={classNames(css.pane, css.focusIndicator, { [css.hidden]: showDetailView })}
       data-testid="authority-search-results-pane"
       appIcon={<AppIcon app="marc-authorities" />}
       defaultWidth="fill"
@@ -143,6 +138,7 @@ const AuthoritiesLookup = ({
         hasPrevPage={hasPrevPage}
         hidePageIndices={hidePageIndices}
         renderHeadingRef={renderHeadingRef}
+        onOpenRecord={openDetailView}
       />
     </Pane>
   );
@@ -158,14 +154,12 @@ const AuthoritiesLookup = ({
         height={MAIN_PANE_HEIGHT}
         onShowDetailView={setShowDetailView}
       />
-      {showDetailView
-        ? (
-          <MarcAuthorityView
-            onCloseDetailView={closeDetailView}
-          />
-        )
-        : renderResultList()
+      {showDetailView &&
+        <MarcAuthorityView
+          onCloseDetailView={closeDetailView}
+        />
       }
+      {renderResultList()}
     </>
   );
 };

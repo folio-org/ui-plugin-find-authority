@@ -23,7 +23,7 @@ jest.mock('@folio/stripes/components', () => ({
           <td>
             <button
               type="button"
-              onClick={onRowClick}
+              onClick={e => onRowClick(e, item)}
             >
 
               row button
