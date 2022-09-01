@@ -5,6 +5,7 @@ import {
 
 import {
   AuthoritiesSearchContext,
+  SelectedAuthorityRecordContext,
   useAuthoritiesBrowse,
 } from '@folio/stripes-authority-components';
 
@@ -24,6 +25,7 @@ const BrowseView = () => {
     searchInputValue,
     searchDropdownValue,
   } = useContext(AuthoritiesSearchContext);
+  const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
 
   const {
     authorities,
@@ -45,6 +47,7 @@ const BrowseView = () => {
   const onSubmitSearch = () => {
     setSearchQuery(searchInputValue);
     setSearchIndex(searchDropdownValue);
+    setSelectedAuthorityRecordContext(null);
   };
 
   const formattedAuthoritiesForView = useMemo(() => {

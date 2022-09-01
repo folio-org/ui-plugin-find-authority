@@ -67,8 +67,8 @@ const AuthoritiesLookup = ({
     setShowDetailView(false);
   };
 
-  const openDetailView = () => {
-    setSelectedAuthorityRecordContext(authorities[0]);
+  const openDetailView = authority => {
+    setSelectedAuthorityRecordContext(authority);
     setShowDetailView(true);
   };
 
@@ -84,7 +84,6 @@ const AuthoritiesLookup = ({
     }
 
     closeDetailView();
-    setSelectedAuthorityRecordContext(null);
     onSubmitSearch(e, ...rest);
   };
 
@@ -112,7 +111,7 @@ const AuthoritiesLookup = ({
   const renderResultList = () => (
     <Pane
       id="authority-search-results-pane"
-      className={classNames(css.pane, css.focusIndicator, showDetailView ? css.hidden : undefined)}
+      className={classNames(css.pane, css.focusIndicator, { [css.hidden]: showDetailView })}
       data-testid="authority-search-results-pane"
       appIcon={<AppIcon app="marc-authorities" />}
       defaultWidth="fill"
