@@ -13,7 +13,6 @@ import {
   AuthoritiesSearchContext,
   AuthoritiesSearchPane,
   AuthorityShape,
-  getIsDetailViewNeedsToBeOpened,
   SearchResultsList,
   SelectedAuthorityRecordContext,
 } from '@folio/stripes-authority-components';
@@ -59,7 +58,7 @@ const AuthoritiesLookup = ({
   const [isFilterPaneVisible, setIsFilterPaneVisible] = useState(true);
   const [showDetailView, setShowDetailView] = useState(false);
 
-  const { navigationSegmentValue, filters } = useContext(AuthoritiesSearchContext);
+  const { filters } = useContext(AuthoritiesSearchContext);
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
 
   const toggleFilterPane = () => setIsFilterPaneVisible(!isFilterPaneVisible);
@@ -68,20 +67,15 @@ const AuthoritiesLookup = ({
     setShowDetailView(false);
   };
 
+  const openDetailView = () => {
+    setSelectedAuthorityRecordContext(authorities[0]);
+    setShowDetailView(true);
+  };
+
   useEffect(() => {
     closeDetailView();
     // eslint-disable-next-line
   }, [filters]);
-
-  useEffect(() => {
-    const isDetailViewNeedsToBeOpened = getIsDetailViewNeedsToBeOpened(totalRecords, authorities[0], navigationSegmentValue);
-
-    if (isDetailViewNeedsToBeOpened) {
-      setSelectedAuthorityRecordContext(authorities[0]);
-      setShowDetailView(true);
-    }
-    // eslint-disable-next-line
-  }, [totalRecords, authorities, navigationSegmentValue]);
 
   const handleSubmitSearch = (e, ...rest) => {
     if (e?.preventDefault) {
@@ -90,6 +84,7 @@ const AuthoritiesLookup = ({
     }
 
     closeDetailView();
+    setSelectedAuthorityRecordContext(null);
     onSubmitSearch(e, ...rest);
   };
 
@@ -107,6 +102,7 @@ const AuthoritiesLookup = ({
     <button
       type="button"
       className={classNames(css.link, className)}
+      data-testid="heading-ref-btn"
       onClick={() => setShowDetailView(true)}
     >
       {authority.headingRef}
@@ -143,6 +139,7 @@ const AuthoritiesLookup = ({
         hasPrevPage={hasPrevPage}
         hidePageIndices={hidePageIndices}
         renderHeadingRef={renderHeadingRef}
+        onOpenRecord={openDetailView}
       />
     </Pane>
   );

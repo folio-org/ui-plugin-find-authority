@@ -1,7 +1,7 @@
 jest.mock('react-intl', () => {
   const intl = {
     formatMessage: ({ id }) => id,
-    formatDate: ({ id }) => id,
+    formatDate: date => date,
   };
 
   return {
