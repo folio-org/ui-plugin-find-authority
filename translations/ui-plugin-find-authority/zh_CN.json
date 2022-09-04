@@ -2,5 +2,5 @@
     "meta.title": "规范查找器（插件）",
     "linkToMarcAuthorityRecord": "链接到MARC规范记录",
     "modal.title": "选择MARC规范",
-    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}"
+    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {找到的结果} other {找到的结果}}"
 }
