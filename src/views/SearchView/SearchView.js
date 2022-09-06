@@ -9,6 +9,7 @@ import {
 
 import { AuthoritiesLookup } from '../../components';
 import { PAGE_SIZE } from '../../constants';
+import { addDefaultFilters } from '../utils';
 
 const SearchView = () => {
   const {
@@ -36,7 +37,7 @@ const SearchView = () => {
     searchIndex,
     advancedSearch,
     isAdvancedSearch,
-    filters,
+    filters: addDefaultFilters(searchQuery, filters),
     pageSize: PAGE_SIZE,
   });
 
