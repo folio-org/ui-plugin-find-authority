@@ -15,6 +15,7 @@ import {
   AuthorityShape,
   SearchResultsList,
   SelectedAuthorityRecordContext,
+  navigationSegments,
 } from '@folio/stripes-authority-components';
 
 import MarcAuthorityView from '../MarcAuthorityView';
@@ -58,7 +59,10 @@ const AuthoritiesLookup = ({
   const [isFilterPaneVisible, setIsFilterPaneVisible] = useState(true);
   const [showDetailView, setShowDetailView] = useState(false);
 
-  const { filters } = useContext(AuthoritiesSearchContext);
+  const {
+    filters,
+    navigationSegmentValue,
+  } = useContext(AuthoritiesSearchContext);
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
 
   const toggleFilterPane = () => setIsFilterPaneVisible(!isFilterPaneVisible);
@@ -88,6 +92,10 @@ const AuthoritiesLookup = ({
   };
 
   const renderPaneSub = () => {
+    if (navigationSegmentValue === navigationSegments.browse) {
+      return null;
+    }
+
     return (
       <span>
         {intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.paneSub' }, {
