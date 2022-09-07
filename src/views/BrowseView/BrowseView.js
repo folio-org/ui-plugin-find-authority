@@ -14,6 +14,7 @@ import {
   PAGE_SIZE,
   PRECEDING_RECORDS_COUNT,
 } from '../../constants';
+import { addDefaultFilters } from '../utils';
 
 const BrowseView = () => {
   const {
@@ -37,7 +38,7 @@ const BrowseView = () => {
     query,
     totalRecords,
   } = useAuthoritiesBrowse({
-    filters,
+    filters: addDefaultFilters(searchQuery, filters),
     searchQuery,
     searchIndex,
     pageSize: PAGE_SIZE,
