@@ -13,6 +13,8 @@ import {
   AuthoritiesSearchContext,
   AuthoritiesSearchPane,
   AuthorityShape,
+  FILTERS,
+  searchResultListColumns,
   SearchResultsList,
   SelectedAuthorityRecordContext,
   navigationSegments,
@@ -36,10 +38,14 @@ const propTypes = {
   isLoading: PropTypes.bool.isRequired,
   onNeedMoreData: PropTypes.func.isRequired,
   onSubmitSearch: PropTypes.func.isRequired,
-  query: PropTypes.string.isRequired,
+  query: PropTypes.string,
   searchQuery: PropTypes.string.isRequired,
   totalRecords: PropTypes.number.isRequired,
 };
+
+const excludedFilters = new Set([
+  FILTERS.REFERENCES,
+]);
 
 const AuthoritiesLookup = ({
   authorities,
@@ -64,6 +70,12 @@ const AuthoritiesLookup = ({
     navigationSegmentValue,
   } = useContext(AuthoritiesSearchContext);
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
+
+  const columnMapping = {
+    [searchResultListColumns.AUTH_REF_TYPE]: intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.authRefType' }),
+    [searchResultListColumns.HEADING_REF]: intl.formatMessage({ id: 'stripes-authority-components.search-results-list.headingRef' }),
+    [searchResultListColumns.HEADING_TYPE]: intl.formatMessage({ id: 'stripes-authority-components.search-results-list.headingType' }),
+  };
 
   const toggleFilterPane = () => setIsFilterPaneVisible(!isFilterPaneVisible);
 
@@ -132,6 +144,7 @@ const AuthoritiesLookup = ({
       <SearchResultsList
         authorities={authorities}
         columnWidths={columnWidths}
+        columnMapping={columnMapping}
         totalResults={totalRecords}
         pageSize={PAGE_SIZE}
         onNeedMoreData={onNeedMoreData}
@@ -160,6 +173,8 @@ const AuthoritiesLookup = ({
         onSubmitSearch={handleSubmitSearch}
         query={query}
         height={MAIN_PANE_HEIGHT}
+        excludedSearchFilters={excludedFilters}
+        excludedBrowseFilters={excludedFilters}
         onShowDetailView={setShowDetailView}
       />
       {showDetailView &&
@@ -175,6 +190,7 @@ const AuthoritiesLookup = ({
 AuthoritiesLookup.propTypes = propTypes;
 
 AuthoritiesLookup.defaultProps = {
+  query: '',
   hasNextPage: null,
   hasPrevPage: null,
   hidePageIndices: false,
