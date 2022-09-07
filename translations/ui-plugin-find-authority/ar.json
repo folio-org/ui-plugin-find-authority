@@ -2,5 +2,6 @@
     "meta.title": "باحث الاستناد (برنامج مساعد)",
     "linkToMarcAuthorityRecord": "ربط بتسجيلة استناد مارك",
     "modal.title": "حدد استناد مارك",
-    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}"
+    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
+    "search-results-list.authRefType": "Authorized"
 }

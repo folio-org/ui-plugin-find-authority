@@ -2,5 +2,6 @@
     "meta.title": "Localizador de Autoridade (plugin)",
     "linkToMarcAuthorityRecord": "Link para registro de Autoridade MARC",
     "modal.title": "Selecione a autoridade MARC",
-    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one { resultado encontrado } other { resultados encontrados }}"
+    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one { resultado encontrado } other { resultados encontrados }}",
+    "search-results-list.authRefType": "Authorized"
 }
