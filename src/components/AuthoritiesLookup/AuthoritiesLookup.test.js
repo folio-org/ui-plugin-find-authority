@@ -89,7 +89,7 @@ describe('Given AuthoritiesLookup', () => {
       expect(MultiColumnList).toHaveBeenLastCalledWith(expect.objectContaining({
         itemToView: {
           selector: 'any',
-          localClientTop: 123,
+          localClientTop: 123, // can be found in stripesComponents.mock.js file
         },
       }), {});
     });

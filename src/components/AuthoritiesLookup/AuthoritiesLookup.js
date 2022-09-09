@@ -189,7 +189,7 @@ const AuthoritiesLookup = ({
         hidePageIndices={hidePageIndices}
         renderHeadingRef={renderHeadingRef}
         itemToView={itemToView}
-        onHandleRowFocus={handleRowFocus}
+        onRowFocus={handleRowFocus}
       />
     </Pane>
   );
