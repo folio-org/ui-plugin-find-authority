@@ -2,6 +2,7 @@ import {
   useContext,
   useMemo,
 } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   AuthoritiesSearchContext,
@@ -16,7 +17,11 @@ import {
 } from '../../constants';
 import { addDefaultFilters } from '../utils';
 
-const BrowseView = () => {
+const propTypes = {
+  onLinkRecord: PropTypes.func.isRequired,
+};
+
+const BrowseView = ({ onLinkRecord }) => {
   const {
     filters,
     searchQuery,
@@ -79,8 +84,11 @@ const BrowseView = () => {
       hidePageIndices
       onNeedMoreData={handleLoadMore}
       onSubmitSearch={onSubmitSearch}
+      onLinkRecord={onLinkRecord}
     />
   );
 };
+
+BrowseView.propTypes = propTypes;
 
 export default BrowseView;

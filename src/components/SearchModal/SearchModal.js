@@ -18,12 +18,14 @@ import css from './SearchModal.css';
 
 const propTypes = {
   onClose: PropTypes.func.isRequired,
+  onLinkRecord: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
 };
 
 const SearchModal = ({
   open,
   onClose,
+  onLinkRecord,
 }) => {
   const { navigationSegmentValue } = useContext(AuthoritiesSearchContext);
 
@@ -45,8 +47,8 @@ const SearchModal = ({
       >
         {
           navigationSegmentValue === navigationSegments.search
-            ? <SearchView />
-            : <BrowseView />
+            ? <SearchView onLinkRecord={onLinkRecord} />
+            : <BrowseView onLinkRecord={onLinkRecord} />
         }
       </PersistedPaneset>
     </Modal>

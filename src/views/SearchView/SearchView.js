@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   AuthoritiesSearchContext,
@@ -11,7 +12,11 @@ import { AuthoritiesLookup } from '../../components';
 import { PAGE_SIZE } from '../../constants';
 import { addDefaultFilters } from '../utils';
 
-const SearchView = () => {
+const propTypes = {
+  onLinkRecord: PropTypes.func.isRequired,
+};
+
+const SearchView = ({ onLinkRecord }) => {
   const {
     searchQuery,
     searchIndex,
@@ -63,8 +68,11 @@ const SearchView = () => {
       hasFilters={!!filters.length}
       onNeedMoreData={handleLoadMore}
       onSubmitSearch={onSubmitSearch}
+      onLinkRecord={onLinkRecord}
     />
   );
 };
+
+SearchView.propTypes = propTypes;
 
 export default SearchView;

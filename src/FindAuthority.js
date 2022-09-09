@@ -11,6 +11,7 @@ import {
 import { SearchModal } from './components';
 
 const propTypes = {
+  onLinkRecord: PropTypes.func.isRequired,
   renderCustomTrigger: PropTypes.func,
 };
 
@@ -20,6 +21,7 @@ const defaultProps = {
 
 const FindAuthority = ({
   renderCustomTrigger,
+  onLinkRecord,
 }) => {
   const intl = useIntl();
   const [isOpen, setIsOpen] = useState(false);
@@ -44,6 +46,11 @@ const FindAuthority = ({
     );
   };
 
+  const handleLinkAuthority = record => {
+    onLinkRecord(record);
+    closeModal();
+  };
+
   const renderTrigger = () => {
     return renderCustomTrigger
       ? renderCustomTrigger({ onClick: openModal })
@@ -58,6 +65,7 @@ const FindAuthority = ({
           <SearchModal
             open={isOpen}
             onClose={closeModal}
+            onLinkRecord={handleLinkAuthority}
           />
         </SelectedAuthorityRecordContextProvider>
       </AuthoritiesSearchContextProvider>

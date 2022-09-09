@@ -13,19 +13,18 @@ jest.mock('../../views', () => ({
   BrowseView: () => <div>BrowseView</div>,
 }));
 
-const requiredProps = {
-  open: true,
-  onClose: jest.fn(),
-};
-
 const defaultCtxValue = {
   navigationSegmentValue: navigationSegments.search,
 };
 
+const mockOnLinkRecord = jest.fn();
+
 const renderSearchModal = (props = {}, ctxValue = defaultCtxValue) => render(
   <Harness authoritiesCtxValue={ctxValue}>
     <SearchModal
-      {...requiredProps}
+      open
+      onClose={jest.fn()}
+      onLinkRecord={mockOnLinkRecord}
       {...props}
     />
   </Harness>,
