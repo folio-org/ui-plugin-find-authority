@@ -1,4 +1,7 @@
-import { useContext } from 'react';
+import {
+  useContext,
+  useMemo,
+} from 'react';
 
 import {
   AuthoritiesSearchContext,
@@ -25,6 +28,7 @@ const SearchView = () => {
   } = useContext(AuthoritiesSearchContext);
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
   const isAdvancedSearch = searchIndex === searchableIndexesValues.ADVANCED_SEARCH;
+  const updatedFilters = useMemo(() => addDefaultFilters(searchQuery, filters), [searchQuery, filters]);
   const {
     authorities,
     isLoading,
@@ -37,7 +41,7 @@ const SearchView = () => {
     searchIndex,
     advancedSearch,
     isAdvancedSearch,
-    filters: addDefaultFilters(searchQuery, filters),
+    filters: updatedFilters,
     pageSize: PAGE_SIZE,
   });
 
