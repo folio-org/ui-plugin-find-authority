@@ -1,15 +1,3 @@
-.hidden {
-  display: none;
-}
-
-.pane {
-  composes: pane from "~@folio/stripes-components/lib/Pane/Pane.css";
-}
-
-.focusIndicator {
-  composes: focusWithinIndicator from "~@folio/stripes-components/lib/sharedStyles/focusWithinIndicator.css";
-}
-
 .link {
   composes: root from '~@folio/stripes-components/lib/TextLink/TextLink.css';
   text-align: left;

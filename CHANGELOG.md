@@ -10,3 +10,4 @@
 * [UIPFAUTH-15](https://issues.folio.org/browse/UIPFAUTH-15) Browse: Long heading ref values in results list are not aligned to the left
 * [UIPFAUTH-11](https://issues.folio.org/browse/UIPFAUTH-11) Default search query change to return - authRefType=Authorized
 * [UIPFAUTH-19](https://issues.folio.org/browse/UIPFAUTH-19) The counters at Browse authority pane and "Type of heading" facet options don't match
+* [UIPFAUTH-16](https://issues.folio.org/browse/UIPFAUTH-16) Add the Expand the Search & filter pane option

@@ -1,7 +1,8 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { runAxeTest } from '@folio/stripes-testing';
 import authorities from '@folio/stripes-authority-components/mocks/authorities.json'; // eslint-disable-line import/extensions
+import { MultiColumnList } from '@folio/stripes/components';
 
 import AuthoritiesLookup from './AuthoritiesLookup';
 
@@ -76,35 +77,38 @@ describe('Given AuthoritiesLookup', () => {
       fireEvent.click(linkStyleBtnOfRow);
     });
 
-    it('should hide the list of items (not unmount)', () => {
-      expect(screen.getByTestId('authority-search-results-pane')).toHaveAttribute('class', 'pane focusIndicator hidden');
+    it('should hide the list of items', () => {
+      expect(screen.queryByTestId('authority-search-results-pane')).not.toBeInTheDocument();
     });
 
     it('should open the detail view', () => {
       expect(screen.getByTestId('marc-view-pane')).toBeVisible();
     });
+
+    it('should pass correct data about the position of the selected list item', () => {
+      expect(MultiColumnList).toHaveBeenLastCalledWith(expect.objectContaining({
+        itemToView: {
+          selector: 'any',
+          localClientTop: 123, // can be found in stripesComponents.mock.js file
+        },
+      }), {});
+    });
   });
 
   describe('when there is only one record', () => {
     beforeEach(() => {
-      const { getByTestId } = renderAuthoritiesSearchPane({
+      renderAuthoritiesSearchPane({
         authorities: [authorities[0]],
         totalRecords: 1,
       });
-      const searchField = getByTestId('search-textarea');
-
-      fireEvent.change(searchField, { target: { value: 'foo' } });
-      fireEvent.click(getByTestId('submit-authorities-search'));
     });
 
-    it('should hide the list of results', () => {
-      waitFor(() => {
-        expect(screen.getByTestId('authority-search-results-pane')).toHaveAttribute('class', 'pane focusIndicator hidden');
-      });
+    it('should hide the list of items', () => {
+      expect(screen.queryByTestId('authority-search-results-pane')).not.toBeInTheDocument();
     });
 
     it('should open the detail view', () => {
-      waitFor(() => { expect(screen.getByTestId('marc-view-pane')).toBeVisible(); });
+      expect(screen.getByTestId('marc-view-pane')).toBeVisible();
     });
   });
 
@@ -122,7 +126,7 @@ describe('Given AuthoritiesLookup', () => {
     });
 
     it('should show the list of results', () => {
-      expect(screen.getByTestId('authority-search-results-pane')).toHaveAttribute('class', 'pane focusIndicator');
+      expect(screen.getByTestId('authority-search-results-pane')).toBeVisible();
     });
 
     it('should invoke onSubmitSearch cb', () => {
