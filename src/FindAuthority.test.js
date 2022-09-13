@@ -12,8 +12,11 @@ jest.mock('./components', () => ({
   SearchModal: jest.fn(() => <div>SearchModal</div>),
 }));
 
+const mockOnLinkRecord = jest.fn();
+
 const renderFindAuthority = (props = {}) => render(
   <FindAuthority
+    onLinkRecord={mockOnLinkRecord}
     {...props}
   />,
 );

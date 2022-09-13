@@ -12,9 +12,14 @@ jest.mock('@folio/stripes-authority-components', () => ({
 
 jest.mock('../../components/AuthoritiesLookup', () => jest.fn(() => <div>AuthoritiesLookup</div>));
 
+const mockOnLinkRecord = jest.fn();
+
 const renderBrowseView = (props = {}) => render(
   <Harness>
-    <BrowseView {...props} />
+    <BrowseView
+      onLinkRecord={mockOnLinkRecord}
+      {...props}
+    />
   </Harness>,
 );
 
@@ -34,6 +39,7 @@ describe('Given BrowseView', () => {
       isLoading: true,
       onNeedMoreData: expect.any(Function),
       onSubmitSearch: expect.any(Function),
+      onLinkRecord: mockOnLinkRecord,
       query: undefined,
       searchQuery: '',
       totalRecords: NaN,

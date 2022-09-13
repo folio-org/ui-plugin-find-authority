@@ -30,6 +30,7 @@ jest.mock('@folio/stripes-authority-components', () => ({
 
 const mockAuthorities = authorities.slice(0, 2);
 const mockOnSubmitSearch = jest.fn();
+const mockOnLinkRecord = jest.fn();
 
 const getAuthoritiesSearchPane = (props = {}) => (
   <Harness>
@@ -43,6 +44,7 @@ const getAuthoritiesSearchPane = (props = {}) => (
       totalRecords={mockAuthorities.length}
       onNeedMoreData={jest.fn()}
       onSubmitSearch={mockOnSubmitSearch}
+      onLinkRecord={mockOnLinkRecord}
       {...props}
     />
   </Harness>

@@ -1,9 +1,12 @@
 import { useContext } from 'react';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useQueryClient } from 'react-query';
 import PropTypes from 'prop-types';
 
-import { Loading } from '@folio/stripes/components';
+import {
+  Button,
+  Loading,
+} from '@folio/stripes/components';
 import {
   useMarcSource,
   useAuthority,
@@ -21,17 +24,19 @@ import { MAIN_PANE_HEIGHT } from '../../constants';
 
 const propTypes = {
   onCloseDetailView: PropTypes.func.isRequired,
+  onLinkRecord: PropTypes.func.isRequired,
 };
 
 const MarcAuthorityView = ({
   onCloseDetailView,
+  onLinkRecord,
 }) => {
   const queryClient = useQueryClient();
   const authoritySourceNamespace = useNamespace({ key: QUERY_KEY_AUTHORITY_SOURCE });
   const callout = useCallout();
   const intl = useIntl();
-  const [selectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
-  const { id, authRefType, headingRef } = selectedAuthorityRecordContext;
+  const [selectedAuthorityRecord] = useContext(SelectedAuthorityRecordContext);
+  const { id, authRefType, headingRef } = selectedAuthorityRecord;
 
   const handleAuthorityLoadError = async err => {
     const errorResponse = await err.response;
@@ -74,6 +79,15 @@ const MarcAuthorityView = ({
       marcTitle={intl.formatMessage({ id: 'stripes-authority-components.marcHeading' })}
       marc={markHighlightedFields(marcSource, authority).data}
       onClose={onCloseDetailView}
+      lastMenu={(
+        <Button
+          buttonStyle="primary"
+          marginBottom0
+          onClick={() => onLinkRecord(selectedAuthorityRecord)}
+        >
+          <FormattedMessage id="ui-plugin-find-authority.button.link" />
+        </Button>
+      )}
     />
   );
 };

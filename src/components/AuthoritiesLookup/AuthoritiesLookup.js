@@ -41,6 +41,7 @@ const propTypes = {
   hidePageIndices: PropTypes.bool,
   isLoaded: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  onLinkRecord: PropTypes.func.isRequired,
   onNeedMoreData: PropTypes.func.isRequired,
   onSubmitSearch: PropTypes.func.isRequired,
   query: PropTypes.string,
@@ -65,6 +66,7 @@ const AuthoritiesLookup = ({
   hidePageIndices,
   onNeedMoreData,
   onSubmitSearch,
+  onLinkRecord,
 }) => {
   const intl = useIntl();
   const [isFilterPaneVisible, setIsFilterPaneVisible] = useState(true);
@@ -211,6 +213,7 @@ const AuthoritiesLookup = ({
         ? (
           <MarcAuthorityView
             onCloseDetailView={closeDetailView}
+            onLinkRecord={onLinkRecord}
           />
         )
         : renderResultList()

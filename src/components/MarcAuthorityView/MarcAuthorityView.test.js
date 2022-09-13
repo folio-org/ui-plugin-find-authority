@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { runAxeTest } from '@folio/stripes-testing';
 import authorities from '@folio/stripes-authority-components/mocks/authorities.json'; // eslint-disable-line import/extensions
@@ -12,6 +12,7 @@ import MarcAuthorityView from './MarcAuthorityView';
 import Harness from '../../../test/jest/helpers/harness';
 
 const mockSendCallout = jest.fn();
+const mockOnLinkRecord = jest.fn();
 
 jest.mock('@folio/stripes/core', () => ({
   ...jest.requireActual('@folio/stripes/core'),
@@ -96,6 +97,7 @@ const getMarcAuthorityView = (props = {}, selectedRecord = authorities[0]) => (
   <Harness selectedRecordCtxValue={[selectedRecord, mockSetSelectedAuthorityRecordContext]}>
     <MarcAuthorityView
       onCloseDetailView={jest.fn()}
+      onLinkRecord={mockOnLinkRecord}
       {...props}
     />
   </Harness>
@@ -113,6 +115,22 @@ describe('Given MarcAuthorityView', () => {
 
     await runAxeTest({
       rootNode: container,
+    });
+  });
+
+  it('should render link authority button', () => {
+    const { getByText } = renderMarcAuthorityView();
+
+    expect(getByText('ui-plugin-find-authority.button.link')).toBeDefined();
+  });
+
+  describe('when clicking on Link authority', () => {
+    it('should call onLinkRecord with autority record', () => {
+      const { getByText } = renderMarcAuthorityView();
+
+      fireEvent.click(getByText('ui-plugin-find-authority.button.link'));
+
+      expect(mockOnLinkRecord).toHaveBeenCalledWith(authorities[0]);
     });
   });
 
