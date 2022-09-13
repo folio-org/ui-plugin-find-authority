@@ -12,3 +12,4 @@
 * [UIPFAUTH-19](https://issues.folio.org/browse/UIPFAUTH-19) The counters at Browse authority pane and "Type of heading" facet options don't match
 * [UIPFAUTH-16](https://issues.folio.org/browse/UIPFAUTH-16) Add the Expand the Search & filter pane option
 * [UIPFAUTH-14](https://issues.folio.org/browse/UIPFAUTH-14) Detail Record : Click Link button to select a MARC authority record
+* [UIPFAUTH-13](https://issues.folio.org/browse/UIPFAUTH-13) Results List : Click Link icon/button to select a MARC authority record
