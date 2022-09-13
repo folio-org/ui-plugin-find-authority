@@ -8,10 +8,21 @@ jest.mock('@folio/stripes/components', () => ({
     contentData,
     formatter,
     onRowClick,
+    onMarkPosition,
   }) => {
     if (isEmptyMessage && !totalCount) {
       return isEmptyMessage;
     }
+
+    const handleRowClick = (e, item) => {
+      if (onMarkPosition) {
+        onMarkPosition({
+          selector: 'any',
+          localClientTop: 123,
+        });
+      }
+      onRowClick(e, item);
+    };
 
     const tableHeader = visibleColumns.map((columnName, index) => (
       <td key={index}>{columnMapping[columnName]}</td>
@@ -23,7 +34,7 @@ jest.mock('@folio/stripes/components', () => ({
           <td>
             <button
               type="button"
-              onClick={e => onRowClick(e, item)}
+              onClick={e => handleRowClick(e, item)}
             >
 
               row button

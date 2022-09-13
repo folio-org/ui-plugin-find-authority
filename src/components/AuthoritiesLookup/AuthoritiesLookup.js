@@ -7,8 +7,12 @@ import { useIntl } from 'react-intl';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import { Pane } from '@folio/stripes/components';
+import {
+  Pane,
+  PaneMenu,
+} from '@folio/stripes/components';
 import { AppIcon } from '@folio/stripes/core';
+import { ExpandFilterPaneButton } from '@folio/stripes/smart-components';
 import {
   AuthoritiesSearchContext,
   AuthoritiesSearchPane,
@@ -18,6 +22,7 @@ import {
   SearchResultsList,
   SelectedAuthorityRecordContext,
   navigationSegments,
+  useAutoOpenDetailView,
 } from '@folio/stripes-authority-components';
 
 import MarcAuthorityView from '../MarcAuthorityView';
@@ -66,6 +71,7 @@ const AuthoritiesLookup = ({
   const intl = useIntl();
   const [isFilterPaneVisible, setIsFilterPaneVisible] = useState(true);
   const [showDetailView, setShowDetailView] = useState(false);
+  const [itemToView, setItemToView] = useState(null);
 
   const {
     filters,
@@ -90,6 +96,13 @@ const AuthoritiesLookup = ({
     setShowDetailView(true);
   };
 
+  const handleRowFocus = ({ selector, localClientTop }) => {
+    setItemToView({
+      selector,
+      localClientTop,
+    });
+  };
+
   useEffect(() => {
     closeDetailView();
     // eslint-disable-next-line
@@ -105,6 +118,8 @@ const AuthoritiesLookup = ({
     onSubmitSearch(e, ...rest);
   };
 
+  useAutoOpenDetailView(authorities, openDetailView);
+
   const renderPaneSub = () => {
     if (navigationSegmentValue === navigationSegments.browse) {
       return null;
@@ -116,6 +131,20 @@ const AuthoritiesLookup = ({
           totalRecords,
         })}
       </span>
+    );
+  };
+
+  const renderResultsFirstMenu = () => {
+    if (isFilterPaneVisible) {
+      return null;
+    }
+
+    return (
+      <PaneMenu>
+        <ExpandFilterPaneButton
+          onClick={toggleFilterPane}
+        />
+      </PaneMenu>
     );
   };
 
@@ -133,12 +162,12 @@ const AuthoritiesLookup = ({
   const renderResultList = () => (
     <Pane
       id="authority-search-results-pane"
-      className={classNames(css.pane, css.focusIndicator, { [css.hidden]: showDetailView })}
       data-testid="authority-search-results-pane"
       appIcon={<AppIcon app="marc-authorities" />}
       defaultWidth="fill"
       paneTitle={intl.formatMessage({ id: 'stripes-authority-components.meta.title' })}
       paneSub={renderPaneSub()}
+      firstMenu={renderResultsFirstMenu()}
       padContent={false}
       noOverflow
       height={MAIN_PANE_HEIGHT}
@@ -161,7 +190,8 @@ const AuthoritiesLookup = ({
         hasPrevPage={hasPrevPage}
         hidePageIndices={hidePageIndices}
         renderHeadingRef={renderHeadingRef}
-        onOpenRecord={openDetailView}
+        itemToView={itemToView}
+        onRowFocus={handleRowFocus}
       />
     </Pane>
   );
@@ -179,13 +209,15 @@ const AuthoritiesLookup = ({
         excludedBrowseFilters={excludedFilters}
         onShowDetailView={setShowDetailView}
       />
-      {showDetailView &&
-        <MarcAuthorityView
-          onCloseDetailView={closeDetailView}
-          onLinkRecord={onLinkRecord}
-        />
+      {showDetailView
+        ? (
+          <MarcAuthorityView
+            onCloseDetailView={closeDetailView}
+            onLinkRecord={onLinkRecord}
+          />
+        )
+        : renderResultList()
       }
-      {renderResultList()}
     </>
   );
 };

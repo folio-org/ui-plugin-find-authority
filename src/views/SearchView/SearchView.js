@@ -1,4 +1,7 @@
-import { useContext } from 'react';
+import {
+  useContext,
+  useMemo,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -30,6 +33,7 @@ const SearchView = ({ onLinkRecord }) => {
   } = useContext(AuthoritiesSearchContext);
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
   const isAdvancedSearch = searchIndex === searchableIndexesValues.ADVANCED_SEARCH;
+  const updatedFilters = useMemo(() => addDefaultFilters(searchQuery, filters), [searchQuery, filters]);
   const {
     authorities,
     isLoading,
@@ -42,7 +46,7 @@ const SearchView = ({ onLinkRecord }) => {
     searchIndex,
     advancedSearch,
     isAdvancedSearch,
-    filters: addDefaultFilters(searchQuery, filters),
+    filters: updatedFilters,
     pageSize: PAGE_SIZE,
   });
 
