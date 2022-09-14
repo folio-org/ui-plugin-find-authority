@@ -2,6 +2,8 @@
     "meta.title": "Vyhledávač autorit (plugin)",
     "linkToMarcAuthorityRecord": "Odkaz na záznam autority MARC",
     "modal.title": "Zvolte autoritu MARC",
-    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {nalezen výsledek} other {výsledky nalezeny}}",
-    "search-results-list.authRefType": "Autorizované"
+    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {nalezen výsledek} other {nalezeno výsledků}}",
+    "search-results-list.authRefType": "Autorizované",
+    "button.link": "Propojit",
+    "search-results-list.link": "Link"
 }
