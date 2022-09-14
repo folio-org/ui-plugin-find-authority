@@ -2,6 +2,7 @@ import { searchResultListColumns } from '@folio/stripes-authority-components';
 
 export const MAIN_PANE_HEIGHT = '609px';
 export const columnWidths = {
+  [searchResultListColumns.LINK]: { min: 45, max: 45 },
   [searchResultListColumns.SELECT]: { min: 30, max: 30 },
   [searchResultListColumns.AUTH_REF_TYPE]: { min: 155, max: 166 },
   [searchResultListColumns.HEADING_REF]: { min: 390, max: 435 },
