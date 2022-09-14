@@ -137,6 +137,7 @@ const AuthoritiesLookup = ({
     }
 
     closeDetailView();
+    setSelectedAuthorityRecordContext(null);
     onSubmitSearch(e, ...rest);
   };
 
