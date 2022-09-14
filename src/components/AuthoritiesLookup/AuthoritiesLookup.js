@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import {
   Pane,
   PaneMenu,
+  IconButton,
 } from '@folio/stripes/components';
 import { AppIcon } from '@folio/stripes/core';
 import { ExpandFilterPaneButton } from '@folio/stripes/smart-components';
@@ -80,10 +81,31 @@ const AuthoritiesLookup = ({
   const [, setSelectedAuthorityRecordContext] = useContext(SelectedAuthorityRecordContext);
 
   const columnMapping = {
+    [searchResultListColumns.LINK]: intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.link' }),
     [searchResultListColumns.AUTH_REF_TYPE]: intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.authRefType' }),
     [searchResultListColumns.HEADING_REF]: intl.formatMessage({ id: 'stripes-authority-components.search-results-list.headingRef' }),
     [searchResultListColumns.HEADING_TYPE]: intl.formatMessage({ id: 'stripes-authority-components.search-results-list.headingType' }),
   };
+
+  const formatter = {
+    [searchResultListColumns.LINK]: authority => (
+      <IconButton
+        data-testid="link-authority-button"
+        icon="link"
+        aria-haspopup="true"
+        title={intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.link' })}
+        ariaLabel={intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.link' })}
+        onClick={() => onLinkRecord(authority)}
+      />
+    ),
+  };
+
+  const visibleColumns = [
+    searchResultListColumns.LINK,
+    searchResultListColumns.AUTH_REF_TYPE,
+    searchResultListColumns.HEADING_REF,
+    searchResultListColumns.HEADING_TYPE,
+  ];
 
   const toggleFilterPane = () => setIsFilterPaneVisible(!isFilterPaneVisible);
 
@@ -177,12 +199,13 @@ const AuthoritiesLookup = ({
         authorities={authorities}
         columnWidths={columnWidths}
         columnMapping={columnMapping}
+        formatter={formatter}
         totalResults={totalRecords}
         pageSize={PAGE_SIZE}
         onNeedMoreData={onNeedMoreData}
         loading={isLoading}
         loaded={isLoaded}
-        visibleColumns={['authRefType', 'headingRef', 'headingType']}
+        visibleColumns={visibleColumns}
         isFilterPaneVisible={isFilterPaneVisible}
         toggleFilterPane={toggleFilterPane}
         hasFilters={hasFilters}
