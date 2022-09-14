@@ -31,9 +31,10 @@ jest.mock('@folio/stripes-authority-components', () => ({
 const mockAuthorities = authorities.slice(0, 2);
 const mockOnSubmitSearch = jest.fn();
 const mockOnLinkRecord = jest.fn();
+const mockSetSelectedAuthorityRecord = jest.fn();
 
-const getAuthoritiesSearchPane = (props = {}) => (
-  <Harness>
+const getAuthoritiesSearchPane = (props = {}, selectedRecordCtxValue) => (
+  <Harness selectedRecordCtxValue={selectedRecordCtxValue}>
     <AuthoritiesLookup
       authorities={mockAuthorities}
       hasFilters={false}
@@ -115,8 +116,10 @@ describe('Given AuthoritiesLookup', () => {
   });
 
   describe('when submit search', () => {
+    const selectedRecordCtxValue = [{}, mockSetSelectedAuthorityRecord];
+
     beforeEach(() => {
-      const { getByTestId } = renderAuthoritiesSearchPane();
+      const { getByTestId } = renderAuthoritiesSearchPane(null, selectedRecordCtxValue);
       const searchField = getByTestId('search-textarea');
 
       fireEvent.change(searchField, { target: { value: 'foo' } });
@@ -133,6 +136,10 @@ describe('Given AuthoritiesLookup', () => {
 
     it('should invoke onSubmitSearch cb', () => {
       expect(mockOnSubmitSearch).toHaveBeenCalled();
+    });
+
+    it('should reset selectedAuthorityRecord context', () => {
+      expect(mockSetSelectedAuthorityRecord).toHaveBeenLastCalledWith(null);
     });
   });
 });
