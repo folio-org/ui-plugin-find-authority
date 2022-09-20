@@ -14,3 +14,4 @@
 * [UIPFAUTH-14](https://issues.folio.org/browse/UIPFAUTH-14) Detail Record : Click Link button to select a MARC authority record
 * [UIPFAUTH-13](https://issues.folio.org/browse/UIPFAUTH-13) Results List : Click Link icon/button to select a MARC authority record
 * [UIPFAUTH-21](https://issues.folio.org/browse/UIPFAUTH-21) The error "Something went wrong" appears when search by same search option and updated query
+* [UIPFAUTH-26](https://issues.folio.org/browse/UIPFAUTH-26) The pane size of the "Search & filter" pane changes when user changes scale of the screen
