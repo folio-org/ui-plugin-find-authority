@@ -72,6 +72,7 @@ const MarcAuthorityView = ({
 
   return (
     <MarcView
+      isPaneset={false}
       paneWidth="fill"
       paneHeight={MAIN_PANE_HEIGHT}
       paneTitle={authority.data.headingRef}
