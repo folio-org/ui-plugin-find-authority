@@ -88,16 +88,22 @@ const AuthoritiesLookup = ({
   };
 
   const formatter = {
-    [searchResultListColumns.LINK]: authority => (
-      <IconButton
-        data-testid="link-authority-button"
-        icon="link"
-        aria-haspopup="true"
-        title={intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.link' })}
-        ariaLabel={intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.link' })}
-        onClick={() => onLinkRecord(authority)}
-      />
-    ),
+    [searchResultListColumns.LINK]: authority => {
+      const { id } = authority;
+
+      if (!id) return null;
+
+      return (
+        <IconButton
+          data-testid="link-authority-button"
+          icon="link"
+          aria-haspopup="true"
+          title={intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.link' })}
+          ariaLabel={intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.link' })}
+          onClick={() => onLinkRecord(authority)}
+        />
+      );
+    },
   };
 
   const visibleColumns = [
