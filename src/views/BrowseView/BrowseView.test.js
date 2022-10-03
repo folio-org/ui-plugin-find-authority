@@ -40,7 +40,7 @@ describe('Given BrowseView', () => {
       onNeedMoreData: expect.any(Function),
       onSubmitSearch: expect.any(Function),
       onLinkRecord: mockOnLinkRecord,
-      query: undefined,
+      query: '(headingRef>="" or headingRef<"") and isTitleHeadingRef==false',
       searchQuery: '',
       totalRecords: NaN,
     };
