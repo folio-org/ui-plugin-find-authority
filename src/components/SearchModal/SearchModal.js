@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { Modal } from '@folio/stripes/components';
@@ -27,13 +27,17 @@ const SearchModal = ({
   onClose,
   onLinkRecord,
 }) => {
+  const intl = useIntl();
   const { navigationSegmentValue } = useContext(AuthoritiesSearchContext);
+
+  const label = intl.formatMessage({ id: 'ui-plugin-find-authority.modal.title' });
 
   return (
     <Modal
       open={open}
       dismissible
-      label={<FormattedMessage id="ui-plugin-find-authority.modal.title" />}
+      label={label}
+      ariaLabel={label}
       onClose={onClose}
       size="large"
       id="find-authority-modal"
