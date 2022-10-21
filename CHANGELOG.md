@@ -17,6 +17,7 @@
 * [UIPFAUTH-26](https://issues.folio.org/browse/UIPFAUTH-26) The pane size of the "Search & filter" pane changes when user changes scale of the screen
 * [UIPFAUTH-28](https://issues.folio.org/browse/UIPFAUTH-28) Browse: Remove the link action on a placeholder row
 * [UIPFAUTH-31](https://issues.folio.org/browse/UIPFAUTH-31) Results List | Heading Type column is cutoff
+* [UIPFAUTH-29](https://issues.folio.org/browse/UIPFAUTH-29) Find Authority plugin: Add a11y tests
 
 ## [0.1.0](https://github.com/folio-org/ui-plugin-find-authority/tree/v0.1.0) (2022-10-04)
 

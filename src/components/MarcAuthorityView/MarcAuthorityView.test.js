@@ -135,7 +135,7 @@ describe('Given MarcAuthorityView', () => {
   });
 
   describe('when authority record has authRefType Authorized', () => {
-    it('should highlight 1xx marc field', () => {
+    it('should highlight 1XX marc field', () => {
       const { container } = renderMarcAuthorityView();
       const highlightedContent = [...container.querySelectorAll('mark')].map(mark => mark.textContent).join(' ');
 
@@ -144,7 +144,7 @@ describe('Given MarcAuthorityView', () => {
   });
 
   describe('when authority record has authRefType Reference', () => {
-    it('should highlight all 4xx marc fields', () => {
+    it('should highlight all 4XX marc fields', () => {
       const mockAuthority = {
         data: {
           ...authority.data,
@@ -163,7 +163,7 @@ describe('Given MarcAuthorityView', () => {
   });
 
   describe('when authority record has authRefType Auth/Ref', () => {
-    it('should highlight 5xx marc field', () => {
+    it('should highlight 5XX marc field', () => {
       const mockAuthority = {
         data: {
           ...authority.data,

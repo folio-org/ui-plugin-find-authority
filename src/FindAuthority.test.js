@@ -2,8 +2,9 @@ import {
   render,
   screen,
   fireEvent,
-  cleanup,
 } from '@testing-library/react';
+
+import { runAxeTest } from '@folio/stripes-testing';
 
 import FindAuthority from './FindAuthority';
 import { SearchModal } from './components';
@@ -23,8 +24,15 @@ const renderFindAuthority = (props = {}) => render(
 
 describe('Given FindAuthority', () => {
   beforeEach(() => {
-    cleanup();
     jest.clearAllMocks();
+  });
+
+  it('should render with no axe errors', async () => {
+    const { container } = renderFindAuthority();
+
+    await runAxeTest({
+      rootNode: container,
+    });
   });
 
   describe('when component does not get renderCustomTrigger action', () => {
