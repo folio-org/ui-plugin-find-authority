@@ -7,3 +7,4 @@ import './stripesCore.mock';
 import './stripesIcon.mock';
 import './stripesSmartComponent.mock';
 import './reactRouterDom.mock';
+import './reactVirtualizedAutoSizer.mock';
