@@ -1,11 +1,12 @@
 import { render } from '@testing-library/react';
 
+import { runAxeTest } from '@folio/stripes-testing';
 import { useAuthorities } from '@folio/stripes-authority-components';
+
 import AuthoritiesLookup from '../../components/AuthoritiesLookup';
 import SearchView from './SearchView';
 
 import Harness from '../../../test/jest/helpers/harness';
-
 
 const mockUseAuthorities = {
   authorities: [],
@@ -39,6 +40,14 @@ const renderSearchView = (props = {}, authoritiesCtxValue) => render(
 describe('Given SearchView', () => {
   afterEach(() => {
     jest.clearAllMocks();
+  });
+
+  it('should render with no axe errors', async () => {
+    const { container } = renderSearchView();
+
+    await runAxeTest({
+      rootNode: container,
+    });
   });
 
   it('should have correct props for AuthoritiesLookup', () => {

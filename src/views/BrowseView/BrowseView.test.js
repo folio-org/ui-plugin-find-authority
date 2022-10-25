@@ -1,14 +1,11 @@
 import { render } from '@testing-library/react';
 
+import { runAxeTest } from '@folio/stripes-testing';
+
 import BrowseView from './BrowseView';
 
 import Harness from '../../../test/jest/helpers/harness';
 import AuthoritiesLookup from '../../components/AuthoritiesLookup';
-
-jest.mock('@folio/stripes-authority-components', () => ({
-  ...jest.requireActual('@folio/stripes-authority-components'),
-  useAuthorities: () => ({ authorities: [] }),
-}));
 
 jest.mock('../../components/AuthoritiesLookup', () => jest.fn(() => <div>AuthoritiesLookup</div>));
 
@@ -28,6 +25,14 @@ describe('Given BrowseView', () => {
     jest.clearAllMocks();
   });
 
+  it('should render with no axe errors', async () => {
+    const { container } = renderBrowseView();
+
+    await runAxeTest({
+      rootNode: container,
+    });
+  });
+
   it('should have correct props for AuthoritiesLookup', () => {
     const expectedProps = {
       authorities: [],
@@ -35,14 +40,14 @@ describe('Given BrowseView', () => {
       hasNextPage: false,
       hasPrevPage: false,
       hidePageIndices: true,
-      isLoaded: false,
-      isLoading: true,
+      isLoaded: true,
+      isLoading: false,
       onNeedMoreData: expect.any(Function),
       onSubmitSearch: expect.any(Function),
       onLinkRecord: mockOnLinkRecord,
       query: '(headingRef>="" or headingRef<"") and isTitleHeadingRef==false',
       searchQuery: '',
-      totalRecords: NaN,
+      totalRecords: 0,
     };
 
     renderBrowseView();

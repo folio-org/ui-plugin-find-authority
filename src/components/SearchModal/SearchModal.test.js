@@ -3,6 +3,7 @@ import {
   screen,
 } from '@testing-library/react';
 
+import { runAxeTest } from '@folio/stripes-testing';
 import { navigationSegments } from '@folio/stripes-authority-components';
 
 import SearchModal from './SearchModal';
@@ -35,6 +36,14 @@ describe('Given SearchModal', () => {
     renderSearchModal();
 
     expect(screen.getByTestId('find-authority-modal')).toBeInTheDocument();
+  });
+
+  it('should render with no axe errors', async () => {
+    const { container } = renderSearchModal();
+
+    await runAxeTest({
+      rootNode: container,
+    });
   });
 
   describe('when navigation segment is search', () => {

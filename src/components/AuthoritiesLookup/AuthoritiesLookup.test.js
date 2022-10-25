@@ -1,8 +1,12 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  screen,
+} from '@testing-library/react';
 
 import { runAxeTest } from '@folio/stripes-testing';
+import { useAuthorities } from '@folio/stripes-authority-components';
 import authorities from '@folio/stripes-authority-components/mocks/authorities.json'; // eslint-disable-line import/extensions
-import { MultiColumnList } from '@folio/stripes/components';
 
 import AuthoritiesLookup from './AuthoritiesLookup';
 
@@ -24,7 +28,7 @@ const mockMarcData = {
 jest.mock('@folio/stripes-authority-components', () => ({
   ...jest.requireActual('@folio/stripes-authority-components'),
   useMarcSource: () => mockMarcData,
-  useAuthorities: () => ({ authorities: [] }),
+  useAuthorities: jest.fn(),
   useAuthority: () => ({ data: { headingRef: '', metadata: {} }, isLoading: false }),
 }));
 
@@ -33,15 +37,19 @@ const mockOnSubmitSearch = jest.fn();
 const mockOnLinkRecord = jest.fn();
 const mockSetSelectedAuthorityRecord = jest.fn();
 
+useAuthorities.mockReturnValue({
+  authorities: mockAuthorities,
+});
+
 const getAuthoritiesSearchPane = (props = {}, selectedRecordCtxValue) => (
   <Harness selectedRecordCtxValue={selectedRecordCtxValue}>
     <AuthoritiesLookup
       authorities={mockAuthorities}
       hasFilters={false}
-      isLoaded={false}
+      isLoaded
       isLoading={false}
       query=""
-      searchQuery=""
+      searchQuery="test"
       totalRecords={mockAuthorities.length}
       onNeedMoreData={jest.fn()}
       onSubmitSearch={mockOnSubmitSearch}
@@ -54,7 +62,7 @@ const getAuthoritiesSearchPane = (props = {}, selectedRecordCtxValue) => (
 const renderAuthoritiesSearchPane = (...params) => render(getAuthoritiesSearchPane(...params));
 
 describe('Given AuthoritiesLookup', () => {
-  afterEach(() => {
+  beforeEach(() => {
     jest.clearAllMocks();
   });
 
@@ -67,50 +75,37 @@ describe('Given AuthoritiesLookup', () => {
   });
 
   describe('when the list item clicked', () => {
-    beforeEach(() => {
-      const { getByTestId, getAllByText, getAllByTestId } = renderAuthoritiesSearchPane();
+    it('should open the detail view and have no axe errors', async () => {
+      const {
+        getByTestId,
+        getAllByTestId,
+        container,
+      } = renderAuthoritiesSearchPane();
       const searchField = getByTestId('search-textarea');
 
       fireEvent.change(searchField, { target: { value: 'foo' } });
       fireEvent.click(getByTestId('submit-authorities-search'));
-      const row = getAllByText('row button')[0];
       const linkStyleBtnOfRow = getAllByTestId('heading-ref-btn')[0];
 
-      fireEvent.click(row);
       fireEvent.click(linkStyleBtnOfRow);
-    });
 
-    it('should hide the list of items', () => {
+      await runAxeTest({
+        rootNode: container,
+      });
+
       expect(screen.queryByTestId('authority-search-results-pane')).not.toBeInTheDocument();
-    });
-
-    it('should open the detail view', () => {
       expect(screen.getByTestId('marc-view-pane')).toBeVisible();
-    });
-
-    it('should pass correct data about the position of the selected list item', () => {
-      expect(MultiColumnList).toHaveBeenLastCalledWith(expect.objectContaining({
-        itemToView: {
-          selector: 'any',
-          localClientTop: 123, // can be found in stripesComponents.mock.js file
-        },
-      }), {});
     });
   });
 
   describe('when there is only one record', () => {
-    beforeEach(() => {
+    it('should hide the list of items and open the detail view', () => {
       renderAuthoritiesSearchPane({
         authorities: [authorities[0]],
         totalRecords: 1,
       });
-    });
 
-    it('should hide the list of items', () => {
       expect(screen.queryByTestId('authority-search-results-pane')).not.toBeInTheDocument();
-    });
-
-    it('should open the detail view', () => {
       expect(screen.getByTestId('marc-view-pane')).toBeVisible();
     });
   });
@@ -118,27 +113,16 @@ describe('Given AuthoritiesLookup', () => {
   describe('when submit search', () => {
     const selectedRecordCtxValue = [{}, mockSetSelectedAuthorityRecord];
 
-    beforeEach(() => {
+    it('should close the detail view and perform new search', () => {
       const { getByTestId } = renderAuthoritiesSearchPane(null, selectedRecordCtxValue);
       const searchField = getByTestId('search-textarea');
 
       fireEvent.change(searchField, { target: { value: 'foo' } });
       fireEvent.click(getByTestId('submit-authorities-search'));
-    });
 
-    it('should close the detail view', () => {
       expect(screen.queryByTestId('marc-view-pane')).not.toBeInTheDocument();
-    });
-
-    it('should show the list of results', () => {
       expect(screen.getByTestId('authority-search-results-pane')).toBeVisible();
-    });
-
-    it('should invoke onSubmitSearch cb', () => {
       expect(mockOnSubmitSearch).toHaveBeenCalled();
-    });
-
-    it('should reset selectedAuthorityRecord context', () => {
       expect(mockSetSelectedAuthorityRecord).toHaveBeenLastCalledWith(null);
     });
   });

@@ -1,5 +1,8 @@
 import { useContext } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import { useQueryClient } from 'react-query';
 import PropTypes from 'prop-types';
 
