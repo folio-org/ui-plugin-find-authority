@@ -1,6 +1,6 @@
 # Change history for ui-plugin-find-authority
 
-## [1.0.0] (IN PROGRESS)
+## [1.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v1.0.0) (2022-10-25)
 
 * [UIPFAUTH-7](https://issues.folio.org/browse/UIPFAUTH-7) Create an empty modal window for find Authorities plugin
 * [UIPFAUTH-1](https://issues.folio.org/browse/UIPFAUTH-1) Select a MARC authority record modal > Search MARC authority records
