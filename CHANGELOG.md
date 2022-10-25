@@ -3,6 +3,7 @@
 ## [1.0.0] (IN PROGRESS)
 
 * [UIPFAUTH-7](https://issues.folio.org/browse/UIPFAUTH-7) Create an empty modal window for find Authorities plugin
+* [UIPFAUTH-1](https://issues.folio.org/browse/UIPFAUTH-1) Select a MARC authority record modal > Search MARC authority records
 * [UIPFAUTH-3](https://issues.folio.org/browse/UIPFAUTH-3) Select a MARC authority record modal > Results list - Search
 * [UIPFAUTH-4](https://issues.folio.org/browse/UIPFAUTH-4) Select a MARC authority record modal > Results list - Browse
 * [UIPFAUTH-9](https://issues.folio.org/browse/UIPFAUTH-9) move stripes-authority-components to peerDependencies
@@ -16,6 +17,7 @@
 * [UIPFAUTH-21](https://issues.folio.org/browse/UIPFAUTH-21) The error "Something went wrong" appears when search by same search option and updated query
 * [UIPFAUTH-26](https://issues.folio.org/browse/UIPFAUTH-26) The pane size of the "Search & filter" pane changes when user changes scale of the screen
 * [UIPFAUTH-28](https://issues.folio.org/browse/UIPFAUTH-28) Browse: Remove the link action on a placeholder row
+* [UIPFAUTH-32](https://issues.folio.org/browse/UIPFAUTH-32) Added aria-label to modal
 * [UIPFAUTH-31](https://issues.folio.org/browse/UIPFAUTH-31) Results List | Heading Type column is cutoff
 * [UIPFAUTH-29](https://issues.folio.org/browse/UIPFAUTH-29) Find Authority plugin: Add a11y tests
 
