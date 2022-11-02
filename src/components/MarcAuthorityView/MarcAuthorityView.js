@@ -23,8 +23,6 @@ import {
 } from '@folio/stripes/core';
 import MarcView from '@folio/quick-marc/src/QuickMarcView/QuickMarcView';
 
-import { MAIN_PANE_HEIGHT } from '../../constants';
-
 const propTypes = {
   onCloseDetailView: PropTypes.func.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
@@ -77,7 +75,6 @@ const MarcAuthorityView = ({
     <MarcView
       isPaneset={false}
       paneWidth="fill"
-      paneHeight={MAIN_PANE_HEIGHT}
       paneTitle={authority.data.headingRef}
       paneSub={paneSub}
       marcTitle={intl.formatMessage({ id: 'stripes-authority-components.marcHeading' })}

@@ -45,6 +45,7 @@ const SearchModal = ({
       contentClass={css.modalContent}
     >
       <PersistedPaneset
+        static
         appId="@folio/find-authority"
         id="find-authority-paneset"
         data-testid="find-authority-paneset"
