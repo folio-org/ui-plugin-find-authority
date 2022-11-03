@@ -29,7 +29,6 @@ import {
 import MarcAuthorityView from '../MarcAuthorityView';
 import {
   columnWidths,
-  MAIN_PANE_HEIGHT,
   PAGE_SIZE,
 } from '../../constants';
 import css from './AuthoritiesLookup.css';
@@ -199,7 +198,6 @@ const AuthoritiesLookup = ({
       firstMenu={renderResultsFirstMenu()}
       padContent={false}
       noOverflow
-      height={MAIN_PANE_HEIGHT}
     >
       <SearchResultsList
         authorities={authorities}
@@ -234,7 +232,6 @@ const AuthoritiesLookup = ({
         isLoading={isLoading}
         onSubmitSearch={handleSubmitSearch}
         query={query}
-        height={MAIN_PANE_HEIGHT}
         excludedSearchFilters={excludedFilters}
         excludedBrowseFilters={excludedFilters}
         onShowDetailView={setShowDetailView}
