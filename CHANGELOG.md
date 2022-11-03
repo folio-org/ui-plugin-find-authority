@@ -20,6 +20,7 @@
 * [UIPFAUTH-32](https://issues.folio.org/browse/UIPFAUTH-32) Added aria-label to modal
 * [UIPFAUTH-31](https://issues.folio.org/browse/UIPFAUTH-31) Results List | Heading Type column is cutoff
 * [UIPFAUTH-29](https://issues.folio.org/browse/UIPFAUTH-29) Find Authority plugin: Add a11y tests
+* [UIPFAUTH-34](https://issues.folio.org/browse/UIPFAUTH-34) The pagination buttons are missing when the user changes the scale of the screen
 
 ## [0.1.0](https://github.com/folio-org/ui-plugin-find-authority/tree/v0.1.0) (2022-10-04)
 
