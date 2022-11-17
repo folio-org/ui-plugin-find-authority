@@ -1,8 +1,8 @@
 {
     "meta.title": "Normdaten-Finder (Plugin)",
-    "linkToMarcAuthorityRecord": "Link to MARC authority record",
-    "modal.title": "Select MARC authority",
-    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
+    "linkToMarcAuthorityRecord": "Link zu MARC Normdatensatz",
+    "modal.title": "MARC Normdaten auswählen",
+    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one { Ergebnis gefunden } other { Ergebnisse gefunden }}",
     "search-results-list.authRefType": "Authorized",
     "button.link": "Link",
     "search-results-list.link": "Link"

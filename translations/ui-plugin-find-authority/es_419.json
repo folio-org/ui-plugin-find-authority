@@ -1,9 +1,9 @@
 {
     "meta.title": "Authority finder (plugin)",
-    "linkToMarcAuthorityRecord": "Link to MARC authority record",
-    "modal.title": "Select MARC authority",
+    "linkToMarcAuthorityRecord": "Enlace al registro de autoridad MARC",
+    "modal.title": "Seleccione la autoridad MARC",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
-    "search-results-list.authRefType": "Authorized",
-    "button.link": "Link",
-    "search-results-list.link": "Link"
+    "search-results-list.authRefType": "Autorizado",
+    "button.link": "Enlace",
+    "search-results-list.link": "Enlace"
 }
