@@ -1,5 +1,9 @@
 # Change history for ui-plugin-find-authority
 
+## [1.0.1] (IN PROGRESS)
+
+* [UIPFAUTH-37](https://issues.folio.org/browse/UIPFAUTH-37) Error appears when the user executes search in "MARC Authority" app
+
 ## [1.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v1.0.0) (2022-10-25)
 
 * [UIPFAUTH-7](https://issues.folio.org/browse/UIPFAUTH-7) Create an empty modal window for find Authorities plugin
