@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -118,10 +119,10 @@ const AuthoritiesLookup = ({
     setShowDetailView(false);
   };
 
-  const openDetailView = authority => {
+  const openDetailView = useCallback(authority => {
     setSelectedAuthorityRecordContext(authority);
     setShowDetailView(true);
-  };
+  }, [setSelectedAuthorityRecordContext]);
 
   const handleRowFocus = ({ selector, localClientTop }) => {
     setItemToView({
