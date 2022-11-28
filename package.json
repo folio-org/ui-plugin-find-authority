@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-find-authority",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stripes plugin to find authorities",
   "repository": "folio-org/ui-plugin-find-authority",
   "publishConfig": {

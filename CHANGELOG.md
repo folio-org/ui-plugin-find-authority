@@ -1,6 +1,6 @@
 # Change history for ui-plugin-find-authority
 
-## [1.0.1] (IN PROGRESS)
+## [1.0.1] (https://github.com/folio-org/ui-plugin-find-authority/tree/v1.0.1) (2022-11-28)
 
 * [UIPFAUTH-37](https://issues.folio.org/browse/UIPFAUTH-37) Error appears when the user executes search in "MARC Authority" app
 
