@@ -1,5 +1,13 @@
 # Change history for ui-plugin-find-authority
 
+## [1.1.0] (IN PROGRESS)
+
+* [UIPFAUTH-34](https://issues.folio.org/browse/UIPFAUTH-34) The pagination buttons are missing when the user changes the scale of the screen
+
+## [1.0.1] (https://github.com/folio-org/ui-plugin-find-authority/tree/v1.0.1) (2022-11-28)
+
+* [UIPFAUTH-37](https://issues.folio.org/browse/UIPFAUTH-37) Error appears when the user executes search in "MARC Authority" app
+
 ## [1.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v1.0.0) (2022-10-25)
 
 * [UIPFAUTH-7](https://issues.folio.org/browse/UIPFAUTH-7) Create an empty modal window for find Authorities plugin
@@ -20,8 +28,6 @@
 * [UIPFAUTH-32](https://issues.folio.org/browse/UIPFAUTH-32) Added aria-label to modal
 * [UIPFAUTH-31](https://issues.folio.org/browse/UIPFAUTH-31) Results List | Heading Type column is cutoff
 * [UIPFAUTH-29](https://issues.folio.org/browse/UIPFAUTH-29) Find Authority plugin: Add a11y tests
-* [UIPFAUTH-34](https://issues.folio.org/browse/UIPFAUTH-34) The pagination buttons are missing when the user changes the scale of the screen
-* [UIPFAUTH-37](https://issues.folio.org/browse/UIPFAUTH-37) Error appears when the user executes search in "MARC Authority" app
 
 ## [0.1.0](https://github.com/folio-org/ui-plugin-find-authority/tree/v0.1.0) (2022-10-04)
 
