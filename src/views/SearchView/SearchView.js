@@ -1,24 +1,33 @@
-import {
-  useContext,
-  useMemo,
-} from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 
+import { LoadingPane } from '@folio/stripes/components';
 import {
   AuthoritiesSearchContext,
   useAuthorities,
   searchableIndexesValues,
+  getCqlQueryForSearchLookup,
 } from '@folio/stripes-authority-components';
 
 import { AuthoritiesLookup } from '../../components';
-import { PAGE_SIZE } from '../../constants';
-import { addDefaultFilters } from '../utils';
+
+import { useDefaultLookup } from '../../hooks';
+
+import {
+  DEFAULT_FILTERS,
+  DEFAULT_LOOKUP_OPTIONS,
+  PAGE_SIZE,
+} from '../../constants';
 
 const propTypes = {
   onLinkRecord: PropTypes.func.isRequired,
+  tag: PropTypes.string.isRequired,
 };
 
-const SearchView = ({ onLinkRecord }) => {
+const SearchView = ({
+  tag,
+  onLinkRecord,
+}) => {
   const {
     searchQuery,
     searchIndex,
@@ -31,7 +40,22 @@ const SearchView = ({ onLinkRecord }) => {
     setAdvancedSearchRows: setAdvancedSearch,
   } = useContext(AuthoritiesSearchContext);
   const isAdvancedSearch = searchIndex === searchableIndexesValues.ADVANCED_SEARCH;
-  const updatedFilters = useMemo(() => addDefaultFilters(searchQuery, filters), [searchQuery, filters]);
+
+  const {
+    qindex,
+    filters: defaultTagFilters,
+  } = DEFAULT_LOOKUP_OPTIONS[tag];
+
+  const cqlQuery = getCqlQueryForSearchLookup({
+    isAdvancedSearch,
+    advancedSearch,
+    filters: { ...DEFAULT_FILTERS, ...defaultTagFilters },
+    searchIndex: qindex,
+    searchQuery,
+  });
+
+  const { areStatesUpdated } = useDefaultLookup(cqlQuery, tag);
+
   const {
     authorities,
     isLoading,
@@ -44,8 +68,9 @@ const SearchView = ({ onLinkRecord }) => {
     searchIndex,
     advancedSearch,
     isAdvancedSearch,
-    filters: updatedFilters,
+    filters,
     pageSize: PAGE_SIZE,
+    enabled: areStatesUpdated,
   });
 
   const onSubmitSearch = (e, advancedSearchState) => {
@@ -57,6 +82,10 @@ const SearchView = ({ onLinkRecord }) => {
   const handleLoadMore = (_pageAmount, offset) => {
     setOffset(offset);
   };
+
+  if (!areStatesUpdated) {
+    return <LoadingPane size="xlarge" />;
+  }
 
   return (
     <AuthoritiesLookup

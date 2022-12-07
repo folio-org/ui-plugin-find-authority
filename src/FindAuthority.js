@@ -13,6 +13,7 @@ import { SearchModal } from './components';
 const propTypes = {
   onLinkRecord: PropTypes.func.isRequired,
   renderCustomTrigger: PropTypes.func,
+  tag: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
@@ -20,6 +21,7 @@ const defaultProps = {
 };
 
 const FindAuthority = ({
+  tag,
   renderCustomTrigger,
   onLinkRecord,
 }) => {
@@ -64,6 +66,7 @@ const FindAuthority = ({
         <SelectedAuthorityRecordContextProvider>
           <SearchModal
             open={isOpen}
+            tag={tag}
             onClose={closeModal}
             onLinkRecord={handleLinkAuthority}
           />

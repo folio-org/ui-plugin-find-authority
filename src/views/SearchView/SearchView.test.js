@@ -5,6 +5,7 @@ import { useAuthorities } from '@folio/stripes-authority-components';
 
 import AuthoritiesLookup from '../../components/AuthoritiesLookup';
 import SearchView from './SearchView';
+import { useDefaultLookup } from '../../hooks';
 
 import Harness from '../../../test/jest/helpers/harness';
 
@@ -24,6 +25,11 @@ jest.mock('@folio/stripes-authority-components', () => ({
 
 jest.mock('../../components/AuthoritiesLookup', () => jest.fn(() => <div>AuthoritiesLookup</div>));
 
+jest.mock('../../hooks', () => ({
+  ...jest.requireActual('../../hooks'),
+  useDefaultLookup: jest.fn(() => ({ areStatesUpdated: true })),
+}));
+
 const mockOnLinkRecord = jest.fn();
 
 const renderSearchView = (props = {}, authoritiesCtxValue) => render(
@@ -31,6 +37,7 @@ const renderSearchView = (props = {}, authoritiesCtxValue) => render(
     authoritiesCtxValue={authoritiesCtxValue}
   >
     <SearchView
+      tag="100"
       onLinkRecord={mockOnLinkRecord}
       {...props}
     />
@@ -50,7 +57,15 @@ describe('Given SearchView', () => {
     });
   });
 
+  it('should display loading', () => {
+    useDefaultLookup.mockImplementation(() => ({ areStatesUpdated: false }));
+    const { getByText } = renderSearchView();
+
+    expect(getByText('LoadingPane')).toBeVisible();
+  });
+
   it('should have correct props for AuthoritiesLookup', () => {
+    useDefaultLookup.mockImplementation(() => ({ areStatesUpdated: true }));
     const expectedProps = {
       authorities: [],
       hasFilters: false,
@@ -77,42 +92,6 @@ describe('Given SearchView', () => {
 
       renderSearchView(null, authoritiesCtxValue);
       expect(useAuthorities).toHaveBeenLastCalledWith(expect.objectContaining({ filters: {} }));
-    });
-  });
-
-  describe('when there is search query', () => {
-    it('should add the complementary filter to retrieve only Authorized records', () => {
-      const authoritiesCtxValue = {
-        searchQuery: 'foo',
-        filters: {},
-      };
-      const expectedFilters = {
-        filters: {
-          references: ['excludeSeeFrom', 'excludeSeeFromAlso'],
-        },
-      };
-
-      renderSearchView(null, authoritiesCtxValue);
-      expect(useAuthorities).toHaveBeenLastCalledWith(expect.objectContaining(expectedFilters));
-    });
-  });
-
-  describe('when there is a selected filter', () => {
-    it('should add the complementary filter to retrieve only Authorized records', () => {
-      const authoritiesCtxValue = {
-        filters: {
-          headingType: ['Topical'],
-        },
-      };
-      const expectedFilters = {
-        filters: {
-          ...authoritiesCtxValue.filters,
-          references: ['excludeSeeFrom', 'excludeSeeFromAlso'],
-        },
-      };
-
-      renderSearchView(null, authoritiesCtxValue);
-      expect(useAuthorities).toHaveBeenLastCalledWith(expect.objectContaining(expectedFilters));
     });
   });
 });
