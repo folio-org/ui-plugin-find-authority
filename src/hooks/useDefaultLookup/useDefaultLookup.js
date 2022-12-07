@@ -50,7 +50,6 @@ const useDefaultLookup = (cqlQuery, tag) => {
     query: cqlQuery,
     selectedFacets: Object.keys(defaultTagFilters),
     enabled: false,
-    staleTime: 500,
   });
 
   const nonZeroDefaultFilters = useMemo(() => {
