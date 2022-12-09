@@ -17,7 +17,6 @@ const mockOnLinkRecord = jest.fn();
 
 const renderFindAuthority = (props = {}) => render(
   <FindAuthority
-    tag="100"
     onLinkRecord={mockOnLinkRecord}
     {...props}
   />,

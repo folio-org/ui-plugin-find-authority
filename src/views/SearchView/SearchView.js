@@ -1,33 +1,20 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { LoadingPane } from '@folio/stripes/components';
 import {
   AuthoritiesSearchContext,
   useAuthorities,
   searchableIndexesValues,
-  getCqlQueryForSearchLookup,
 } from '@folio/stripes-authority-components';
 
 import { AuthoritiesLookup } from '../../components';
-
-import { useDefaultLookup } from '../../hooks';
-
-import {
-  DEFAULT_FILTERS,
-  DEFAULT_LOOKUP_OPTIONS,
-  PAGE_SIZE,
-} from '../../constants';
+import { PAGE_SIZE } from '../../constants';
 
 const propTypes = {
   onLinkRecord: PropTypes.func.isRequired,
-  tag: PropTypes.string.isRequired,
 };
 
-const SearchView = ({
-  tag,
-  onLinkRecord,
-}) => {
+const SearchView = ({ onLinkRecord }) => {
   const {
     searchQuery,
     searchIndex,
@@ -40,21 +27,6 @@ const SearchView = ({
     setAdvancedSearchRows: setAdvancedSearch,
   } = useContext(AuthoritiesSearchContext);
   const isAdvancedSearch = searchIndex === searchableIndexesValues.ADVANCED_SEARCH;
-
-  const {
-    qindex,
-    filters: defaultTagFilters,
-  } = DEFAULT_LOOKUP_OPTIONS[tag];
-
-  const cqlQuery = getCqlQueryForSearchLookup({
-    isAdvancedSearch,
-    advancedSearch,
-    filters: { ...DEFAULT_FILTERS, ...defaultTagFilters },
-    searchIndex: qindex,
-    searchQuery,
-  });
-
-  const { areStatesUpdated } = useDefaultLookup(cqlQuery, tag);
 
   const {
     authorities,
@@ -70,7 +42,6 @@ const SearchView = ({
     isAdvancedSearch,
     filters,
     pageSize: PAGE_SIZE,
-    enabled: areStatesUpdated,
   });
 
   const onSubmitSearch = (e, advancedSearchState) => {
@@ -82,10 +53,6 @@ const SearchView = ({
   const handleLoadMore = (_pageAmount, offset) => {
     setOffset(offset);
   };
-
-  if (!areStatesUpdated) {
-    return <LoadingPane size="xlarge" />;
-  }
 
   return (
     <AuthoritiesLookup

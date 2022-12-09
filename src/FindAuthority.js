@@ -11,17 +11,18 @@ import {
 import { SearchModal } from './components';
 
 const propTypes = {
+  initialValues: PropTypes.object,
   onLinkRecord: PropTypes.func.isRequired,
   renderCustomTrigger: PropTypes.func,
-  tag: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
+  initialValues: {},
   renderCustomTrigger: null,
 };
 
 const FindAuthority = ({
-  tag,
+  initialValues,
   renderCustomTrigger,
   onLinkRecord,
 }) => {
@@ -62,16 +63,20 @@ const FindAuthority = ({
   return (
     <>
       {renderTrigger()}
-      <AuthoritiesSearchContextProvider readParamsFromUrl={false}>
-        <SelectedAuthorityRecordContextProvider>
-          <SearchModal
-            open={isOpen}
-            tag={tag}
-            onClose={closeModal}
-            onLinkRecord={handleLinkAuthority}
-          />
-        </SelectedAuthorityRecordContextProvider>
-      </AuthoritiesSearchContextProvider>
+      {isOpen && (
+        <AuthoritiesSearchContextProvider
+          readParamsFromUrl={false}
+          initialValues={initialValues}
+        >
+          <SelectedAuthorityRecordContextProvider>
+            <SearchModal
+              open={isOpen}
+              onClose={closeModal}
+              onLinkRecord={handleLinkAuthority}
+            />
+          </SelectedAuthorityRecordContextProvider>
+        </AuthoritiesSearchContextProvider>
+      )}
     </>
   );
 };

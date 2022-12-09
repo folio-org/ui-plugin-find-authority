@@ -20,12 +20,10 @@ const propTypes = {
   onClose: PropTypes.func.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  tag: PropTypes.string.isRequired,
 };
 
 const SearchModal = ({
   open,
-  tag,
   onClose,
   onLinkRecord,
 }) => {
@@ -54,18 +52,8 @@ const SearchModal = ({
       >
         {
           navigationSegmentValue === navigationSegments.search
-            ? (
-              <SearchView
-                tag={tag}
-                onLinkRecord={onLinkRecord}
-              />
-            )
-            : (
-              <BrowseView
-                tag={tag}
-                onLinkRecord={onLinkRecord}
-              />
-            )
+            ? <SearchView onLinkRecord={onLinkRecord} />
+            : <BrowseView onLinkRecord={onLinkRecord} />
         }
       </PersistedPaneset>
     </Modal>

@@ -24,7 +24,6 @@ const renderSearchModal = (props = {}, ctxValue = defaultCtxValue) => render(
   <Harness authoritiesCtxValue={ctxValue}>
     <SearchModal
       open
-      tag="100"
       onClose={jest.fn()}
       onLinkRecord={mockOnLinkRecord}
       {...props}
