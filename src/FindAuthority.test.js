@@ -7,7 +7,6 @@ import {
 import { runAxeTest } from '@folio/stripes-testing';
 
 import FindAuthority from './FindAuthority';
-import { SearchModal } from './components';
 
 jest.mock('./components', () => ({
   SearchModal: jest.fn(() => <div>SearchModal</div>),
