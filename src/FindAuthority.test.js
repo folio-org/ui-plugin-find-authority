@@ -57,7 +57,7 @@ describe('Given FindAuthority', () => {
       renderFindAuthority();
 
       fireEvent.click(screen.getByRole('button', { name: 'ui-plugin-find-authority.linkToMarcAuthorityRecord' }));
-      expect(SearchModal.mock.calls[1][0].open).toBeTruthy();
+      expect(screen.getByText('SearchModal')).toBeVisible();
     });
   });
 });
