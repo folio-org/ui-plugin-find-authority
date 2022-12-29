@@ -79,4 +79,40 @@ describe('Given SearchView', () => {
       expect(useAuthorities).toHaveBeenLastCalledWith(expect.objectContaining({ filters: {} }));
     });
   });
+
+  describe('when there is search query', () => {
+    it('should add the complementary filter to retrieve only Authorized records', () => {
+      const authoritiesCtxValue = {
+        searchQuery: 'foo',
+        filters: {},
+      };
+      const expectedFilters = {
+        filters: {
+          references: ['excludeSeeFrom', 'excludeSeeFromAlso'],
+        },
+      };
+
+      renderSearchView(null, authoritiesCtxValue);
+      expect(useAuthorities).toHaveBeenLastCalledWith(expect.objectContaining(expectedFilters));
+    });
+  });
+
+  describe('when there is a selected filter', () => {
+    it('should add the complementary filter to retrieve only Authorized records', () => {
+      const authoritiesCtxValue = {
+        filters: {
+          headingType: ['Topical'],
+        },
+      };
+      const expectedFilters = {
+        filters: {
+          ...authoritiesCtxValue.filters,
+          references: ['excludeSeeFrom', 'excludeSeeFromAlso'],
+        },
+      };
+
+      renderSearchView(null, authoritiesCtxValue);
+      expect(useAuthorities).toHaveBeenLastCalledWith(expect.objectContaining(expectedFilters));
+    });
+  });
 });
