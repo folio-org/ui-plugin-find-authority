@@ -4,6 +4,7 @@
 
 * [UIPFAUTH-34](https://issues.folio.org/browse/UIPFAUTH-34) The pagination buttons are missing when the user changes the scale of the screen
 * [UIPFAUTH-36](https://issues.folio.org/browse/UIPFAUTH-36) Default search/browse option and Authority source file selections based on MARC bib field to be linked
+* [UIPFAUTH-37](https://issues.folio.org/browse/UIPFAUTH-37) bump stripes to 8.0.0 for Orchid/2023-R1
 
 ## [1.0.1] (https://github.com/folio-org/ui-plugin-find-authority/tree/v1.0.1) (2022-11-28)
 
