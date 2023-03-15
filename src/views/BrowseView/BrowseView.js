@@ -14,7 +14,6 @@ import {
   PAGE_SIZE,
   PRECEDING_RECORDS_COUNT,
 } from '../../constants';
-import { addDefaultFilters } from '../utils';
 
 const propTypes = {
   onLinkRecord: PropTypes.func.isRequired,
@@ -41,7 +40,7 @@ const BrowseView = ({ onLinkRecord }) => {
     query,
     totalRecords,
   } = useAuthoritiesBrowse({
-    filters: addDefaultFilters(searchQuery, filters),
+    filters,
     searchQuery,
     searchIndex,
     pageSize: PAGE_SIZE,

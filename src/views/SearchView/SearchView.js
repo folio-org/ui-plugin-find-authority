@@ -1,7 +1,4 @@
-import {
-  useContext,
-  useMemo,
-} from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -12,7 +9,6 @@ import {
 
 import { AuthoritiesLookup } from '../../components';
 import { PAGE_SIZE } from '../../constants';
-import { addDefaultFilters } from '../utils';
 
 const propTypes = {
   onLinkRecord: PropTypes.func.isRequired,
@@ -31,7 +27,6 @@ const SearchView = ({ onLinkRecord }) => {
     setAdvancedSearchRows: setAdvancedSearch,
   } = useContext(AuthoritiesSearchContext);
   const isAdvancedSearch = searchIndex === searchableIndexesValues.ADVANCED_SEARCH;
-  const filtersWithDefault = useMemo(() => addDefaultFilters(searchQuery, filters), [searchQuery, filters]);
 
   const {
     authorities,
@@ -45,7 +40,7 @@ const SearchView = ({ onLinkRecord }) => {
     searchIndex,
     advancedSearch,
     isAdvancedSearch,
-    filters: filtersWithDefault,
+    filters,
     pageSize: PAGE_SIZE,
   });
 
