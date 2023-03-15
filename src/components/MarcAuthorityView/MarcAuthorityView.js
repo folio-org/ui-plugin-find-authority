@@ -68,7 +68,7 @@ const MarcAuthorityView = ({
   }
 
   const renderLastMenu = () => {
-    if (selectedAuthorityRecord.authRefType !== AUTH_REF_TYPES.AUTHORIZED) {
+    if (authRefType !== AUTH_REF_TYPES.AUTHORIZED) {
       return null;
     }
 
