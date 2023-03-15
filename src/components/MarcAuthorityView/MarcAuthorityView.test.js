@@ -92,7 +92,7 @@ jest.mock('@folio/stripes-authority-components', () => ({
 
 const mockSetSelectedAuthorityRecordContext = jest.fn();
 
-const getMarcAuthorityView = (props = {}, selectedRecord = authority) => (
+const getMarcAuthorityView = (props = {}, selectedRecord = authority.data) => (
   <Harness selectedRecordCtxValue={[selectedRecord, mockSetSelectedAuthorityRecordContext]}>
     <MarcAuthorityView
       onCloseDetailView={jest.fn()}
@@ -129,7 +129,7 @@ describe('Given MarcAuthorityView', () => {
 
       fireEvent.click(getByText('ui-plugin-find-authority.button.link'));
 
-      expect(mockOnLinkRecord).toHaveBeenCalledWith(authority);
+      expect(mockOnLinkRecord).toHaveBeenCalledWith(authority.data);
     });
   });
 
