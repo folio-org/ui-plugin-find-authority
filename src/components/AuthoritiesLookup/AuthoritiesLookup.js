@@ -19,12 +19,12 @@ import {
   AuthoritiesSearchContext,
   AuthoritiesSearchPane,
   AuthorityShape,
-  FILTERS,
   searchResultListColumns,
   SearchResultsList,
   SelectedAuthorityRecordContext,
   navigationSegments,
   useAutoOpenDetailView,
+  AUTH_REF_TYPES,
 } from '@folio/stripes-authority-components';
 
 import MarcAuthorityView from '../MarcAuthorityView';
@@ -50,9 +50,7 @@ const propTypes = {
   totalRecords: PropTypes.number.isRequired,
 };
 
-const excludedFilters = new Set([
-  FILTERS.REFERENCES,
-]);
+const excludedFilters = new Set([]);
 
 const AuthoritiesLookup = ({
   authorities,
@@ -89,9 +87,11 @@ const AuthoritiesLookup = ({
 
   const formatter = {
     [searchResultListColumns.LINK]: authority => {
-      const { id } = authority;
+      const { id, authRefType } = authority;
 
-      if (!id) return null;
+      if (!id || authRefType !== AUTH_REF_TYPES.AUTHORIZED) {
+        return null;
+      }
 
       return (
         <IconButton
