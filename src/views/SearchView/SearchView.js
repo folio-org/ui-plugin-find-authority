@@ -15,10 +15,14 @@ import { PAGE_SIZE } from '../../constants';
 import { addDefaultFilters } from '../utils';
 
 const propTypes = {
+  isLinkingLoading: PropTypes.bool.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
 };
 
-const SearchView = ({ onLinkRecord }) => {
+const SearchView = ({
+  isLinkingLoading,
+  onLinkRecord,
+}) => {
   const {
     searchQuery,
     searchIndex,
@@ -65,6 +69,7 @@ const SearchView = ({ onLinkRecord }) => {
       totalRecords={totalRecords}
       searchQuery={searchQuery}
       query={query}
+      isLinkingLoading={isLinkingLoading}
       isLoaded={isLoaded}
       isLoading={isLoading}
       hasFilters={!!filters.length}

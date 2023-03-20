@@ -31,6 +31,7 @@ const renderSearchView = (props = {}, authoritiesCtxValue) => render(
     authoritiesCtxValue={authoritiesCtxValue}
   >
     <SearchView
+      isLinkingLoading={false}
       onLinkRecord={mockOnLinkRecord}
       {...props}
     />
@@ -54,6 +55,7 @@ describe('Given SearchView', () => {
     const expectedProps = {
       authorities: [],
       hasFilters: false,
+      isLinkingLoading: false,
       isLoaded: true,
       isLoading: false,
       onNeedMoreData: expect.any(Function),

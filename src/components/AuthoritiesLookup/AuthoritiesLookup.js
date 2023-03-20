@@ -12,6 +12,7 @@ import {
   Pane,
   PaneMenu,
   IconButton,
+  Icon,
 } from '@folio/stripes/components';
 import { AppIcon } from '@folio/stripes/core';
 import { ExpandFilterPaneButton } from '@folio/stripes/smart-components';
@@ -40,6 +41,7 @@ const propTypes = {
   hasNextPage: PropTypes.bool,
   hasPrevPage: PropTypes.bool,
   hidePageIndices: PropTypes.bool,
+  isLinkingLoading: PropTypes.bool.isRequired,
   isLoaded: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
@@ -59,6 +61,7 @@ const AuthoritiesLookup = ({
   totalRecords,
   searchQuery,
   query,
+  isLinkingLoading,
   isLoaded,
   isLoading,
   hasFilters,
@@ -73,6 +76,7 @@ const AuthoritiesLookup = ({
   const [isFilterPaneVisible, setIsFilterPaneVisible] = useState(true);
   const [showDetailView, setShowDetailView] = useState(false);
   const [itemToView, setItemToView] = useState(null);
+  const [authorityIdToLink, setAuthorityIdToLink] = useState('');
 
   const {
     filters,
@@ -87,11 +91,26 @@ const AuthoritiesLookup = ({
     [searchResultListColumns.HEADING_TYPE]: intl.formatMessage({ id: 'stripes-authority-components.search-results-list.headingType' }),
   };
 
+  const handleLinkRecord = authority => {
+    setAuthorityIdToLink(authority.id);
+    onLinkRecord(authority);
+  };
+
   const formatter = {
     [searchResultListColumns.LINK]: authority => {
       const { id } = authority;
 
       if (!id) return null;
+
+      if (isLinkingLoading && authorityIdToLink === id) {
+        return (
+          <Icon
+            icon="spinner-ellipsis"
+            iconRootClass={css.authorityLinkSpinner}
+            data-testid="link-authority-loading"
+          />
+        );
+      }
 
       return (
         <IconButton
@@ -100,7 +119,7 @@ const AuthoritiesLookup = ({
           aria-haspopup="true"
           title={intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.link' })}
           ariaLabel={intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.link' })}
-          onClick={() => onLinkRecord(authority)}
+          onClick={() => handleLinkRecord(authority)}
         />
       );
     },
@@ -240,6 +259,7 @@ const AuthoritiesLookup = ({
       {showDetailView
         ? (
           <MarcAuthorityView
+            isLinkingLoading={isLinkingLoading}
             onCloseDetailView={closeDetailView}
             onLinkRecord={onLinkRecord}
           />

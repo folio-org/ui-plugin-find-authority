@@ -46,6 +46,7 @@ const getAuthoritiesSearchPane = (props = {}, selectedRecordCtxValue) => (
     <AuthoritiesLookup
       authorities={mockAuthorities}
       hasFilters={false}
+      isLinkingLoading={false}
       isLoaded
       isLoading={false}
       query=""
@@ -95,6 +96,29 @@ describe('Given AuthoritiesLookup', () => {
 
       expect(screen.queryByTestId('authority-search-results-pane')).not.toBeInTheDocument();
       expect(screen.getByTestId('marc-view-pane')).toBeVisible();
+    });
+  });
+
+  describe('when the link authority icon clicked', () => {
+    it('should display loading instead of link icon', () => {
+      const {
+        getByTestId,
+        getAllByTestId,
+        rerender,
+      } = renderAuthoritiesSearchPane();
+
+      const searchField = getByTestId('search-textarea');
+
+      fireEvent.change(searchField, { target: { value: 'foo' } });
+      fireEvent.click(getByTestId('submit-authorities-search'));
+
+      const linkAuthorityIcon = getAllByTestId('link-authority-button')[0];
+
+      fireEvent.click(linkAuthorityIcon);
+
+      rerender(getAuthoritiesSearchPane({ isLinkingLoading: true }));
+
+      expect(getByTestId('link-authority-loading')).toBeDefined();
     });
   });
 

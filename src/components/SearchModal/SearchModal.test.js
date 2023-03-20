@@ -23,6 +23,7 @@ const mockOnLinkRecord = jest.fn();
 const renderSearchModal = (props = {}, ctxValue = defaultCtxValue) => render(
   <Harness authoritiesCtxValue={ctxValue}>
     <SearchModal
+      isLinkingLoading={false}
       open
       onClose={jest.fn()}
       onLinkRecord={mockOnLinkRecord}

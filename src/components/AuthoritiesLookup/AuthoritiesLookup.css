@@ -2,3 +2,7 @@
   composes: root from '~@folio/stripes-components/lib/TextLink/TextLink.css';
   text-align: left;
 }
+
+.authorityLinkSpinner {
+  min-height: 23px;
+}

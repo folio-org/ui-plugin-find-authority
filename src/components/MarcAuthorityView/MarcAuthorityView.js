@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import {
   Button,
   Loading,
+  Icon,
 } from '@folio/stripes/components';
 import {
   useMarcSource,
@@ -23,12 +24,16 @@ import {
 } from '@folio/stripes/core';
 import MarcView from '@folio/quick-marc/src/QuickMarcView/QuickMarcView';
 
+import css from './MarcAuthorityView.css';
+
 const propTypes = {
+  isLinkingLoading: PropTypes.bool.isRequired,
   onCloseDetailView: PropTypes.func.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
 };
 
 const MarcAuthorityView = ({
+  isLinkingLoading,
   onCloseDetailView,
   onLinkRecord,
 }) => {
@@ -81,13 +86,26 @@ const MarcAuthorityView = ({
       marc={markHighlightedFields(marcSource, authority).data}
       onClose={onCloseDetailView}
       lastMenu={(
-        <Button
-          buttonStyle="primary"
-          marginBottom0
-          onClick={() => onLinkRecord(selectedAuthorityRecord)}
-        >
-          <FormattedMessage id="ui-plugin-find-authority.button.link" />
-        </Button>
+        <>
+          {isLinkingLoading
+            ? (
+              <Icon
+                icon="spinner-ellipsis"
+                iconRootClass={css.authorityLinkSpinner}
+                data-testid="link-authority-loading"
+              />
+            )
+            : (
+              <Button
+                buttonStyle="primary"
+                marginBottom0
+                onClick={() => onLinkRecord(selectedAuthorityRecord)}
+              >
+                <FormattedMessage id="ui-plugin-find-authority.button.link" />
+              </Button>
+            )
+          }
+        </>
       )}
     />
   );
