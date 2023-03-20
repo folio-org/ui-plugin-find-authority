@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 
 import { runAxeTest } from '@folio/stripes-testing';
-import authorities from '@folio/stripes-authority-components/mocks/authorities.json'; // eslint-disable-line import/extensions
 import {
   useMarcSource,
   useAuthority,
@@ -93,7 +92,7 @@ jest.mock('@folio/stripes-authority-components', () => ({
 
 const mockSetSelectedAuthorityRecordContext = jest.fn();
 
-const getMarcAuthorityView = (props = {}, selectedRecord = authorities[0]) => (
+const getMarcAuthorityView = (props = {}, selectedRecord = authority.data) => (
   <Harness selectedRecordCtxValue={[selectedRecord, mockSetSelectedAuthorityRecordContext]}>
     <MarcAuthorityView
       isLinkingLoading={false}
@@ -137,7 +136,7 @@ describe('Given MarcAuthorityView', () => {
 
       fireEvent.click(getByText('ui-plugin-find-authority.button.link'));
 
-      expect(mockOnLinkRecord).toHaveBeenCalledWith(authorities[0]);
+      expect(mockOnLinkRecord).toHaveBeenCalledWith(authority.data);
     });
   });
 

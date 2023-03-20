@@ -14,7 +14,6 @@ import {
   PAGE_SIZE,
   PRECEDING_RECORDS_COUNT,
 } from '../../constants';
-import { addDefaultFilters } from '../utils';
 
 const propTypes = {
   isLinkingLoading: PropTypes.bool.isRequired,
@@ -45,7 +44,7 @@ const BrowseView = ({
     query,
     totalRecords,
   } = useAuthoritiesBrowse({
-    filters: addDefaultFilters(searchQuery, filters),
+    filters,
     searchQuery,
     searchIndex,
     pageSize: PAGE_SIZE,

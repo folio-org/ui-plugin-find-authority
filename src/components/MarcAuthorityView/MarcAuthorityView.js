@@ -17,6 +17,7 @@ import {
   QUERY_KEY_AUTHORITY_SOURCE,
   SelectedAuthorityRecordContext,
   markHighlightedFields,
+  AUTH_REF_TYPES,
 } from '@folio/stripes-authority-components';
 import {
   useCallout,
@@ -71,6 +72,32 @@ const MarcAuthorityView = ({
     return null;
   }
 
+  const renderLastMenu = () => {
+    if (authRefType !== AUTH_REF_TYPES.AUTHORIZED) {
+      return null;
+    }
+
+    if (isLinkingLoading) {
+      return (
+        <Icon
+          icon="spinner-ellipsis"
+          iconRootClass={css.authorityLinkSpinner}
+          data-testid="link-authority-loading"
+        />
+      );
+    }
+
+    return (
+      <Button
+        buttonStyle="primary"
+        marginBottom0
+        onClick={() => onLinkRecord(selectedAuthorityRecord)}
+      >
+        <FormattedMessage id="ui-plugin-find-authority.button.link" />
+      </Button>
+    );
+  };
+
   const paneSub = intl.formatMessage({ id: 'stripes-authority-components.authorityRecordSubtitle' }, {
     heading: authority.data.headingType,
     lastUpdatedDate: intl.formatDate(marcSource.data.metadata.updatedDate),
@@ -85,28 +112,7 @@ const MarcAuthorityView = ({
       marcTitle={intl.formatMessage({ id: 'stripes-authority-components.marcHeading' })}
       marc={markHighlightedFields(marcSource, authority).data}
       onClose={onCloseDetailView}
-      lastMenu={(
-        <>
-          {isLinkingLoading
-            ? (
-              <Icon
-                icon="spinner-ellipsis"
-                iconRootClass={css.authorityLinkSpinner}
-                data-testid="link-authority-loading"
-              />
-            )
-            : (
-              <Button
-                buttonStyle="primary"
-                marginBottom0
-                onClick={() => onLinkRecord(selectedAuthorityRecord)}
-              >
-                <FormattedMessage id="ui-plugin-find-authority.button.link" />
-              </Button>
-            )
-          }
-        </>
-      )}
+      lastMenu={renderLastMenu()}
     />
   );
 };
