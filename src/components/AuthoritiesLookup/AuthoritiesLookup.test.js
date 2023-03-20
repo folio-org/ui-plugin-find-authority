@@ -32,7 +32,12 @@ jest.mock('@folio/stripes-authority-components', () => ({
   useAuthority: () => ({ data: { headingRef: '', metadata: {} }, isLoading: false }),
 }));
 
-const mockAuthorities = authorities.slice(0, 2);
+const mockAuthorities = authorities.slice(0, 2).concat({
+  'id': '6a424f4d-2c46-4426-9f28-db8d26581b23',
+  'headingType': 'Personal name',
+  'authRefType': 'Authorized',
+  'headingRef': 'Doe, John',
+});
 const mockOnSubmitSearch = jest.fn();
 const mockOnLinkRecord = jest.fn();
 const mockSetSelectedAuthorityRecord = jest.fn();
@@ -46,6 +51,7 @@ const getAuthoritiesSearchPane = (props = {}, selectedRecordCtxValue) => (
     <AuthoritiesLookup
       authorities={mockAuthorities}
       hasFilters={false}
+      isLinkingLoading={false}
       isLoaded
       isLoading={false}
       query=""
@@ -95,6 +101,29 @@ describe('Given AuthoritiesLookup', () => {
 
       expect(screen.queryByTestId('authority-search-results-pane')).not.toBeInTheDocument();
       expect(screen.getByTestId('marc-view-pane')).toBeVisible();
+    });
+  });
+
+  describe('when the link authority icon clicked', () => {
+    it('should display loading instead of link icon', () => {
+      const {
+        getByTestId,
+        getByRole,
+        rerender,
+      } = renderAuthoritiesSearchPane();
+
+      const searchField = getByTestId('search-textarea');
+
+      fireEvent.change(searchField, { target: { value: 'foo' } });
+      fireEvent.click(getByTestId('submit-authorities-search'));
+
+      const linkAuthorityIcon = getByRole('button', { name: 'ui-plugin-find-authority.search-results-list.link' });
+
+      fireEvent.click(linkAuthorityIcon);
+
+      rerender(getAuthoritiesSearchPane({ isLinkingLoading: true }));
+
+      expect(getByTestId('link-authority-loading')).toBeDefined();
     });
   });
 

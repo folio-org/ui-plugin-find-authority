@@ -14,6 +14,7 @@ const mockOnLinkRecord = jest.fn();
 const renderBrowseView = (props = {}) => render(
   <Harness>
     <BrowseView
+      isLinkingLoading={false}
       onLinkRecord={mockOnLinkRecord}
       {...props}
     />
@@ -40,6 +41,7 @@ describe('Given BrowseView', () => {
       hasNextPage: false,
       hasPrevPage: false,
       hidePageIndices: true,
+      isLinkingLoading: false,
       isLoaded: true,
       isLoading: false,
       onNeedMoreData: expect.any(Function),

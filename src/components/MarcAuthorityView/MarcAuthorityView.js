@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import {
   Button,
   Loading,
+  Icon,
 } from '@folio/stripes/components';
 import {
   useMarcSource,
@@ -24,12 +25,16 @@ import {
 } from '@folio/stripes/core';
 import MarcView from '@folio/quick-marc/src/QuickMarcView/QuickMarcView';
 
+import css from './MarcAuthorityView.css';
+
 const propTypes = {
+  isLinkingLoading: PropTypes.bool.isRequired,
   onCloseDetailView: PropTypes.func.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
 };
 
 const MarcAuthorityView = ({
+  isLinkingLoading,
   onCloseDetailView,
   onLinkRecord,
 }) => {
@@ -70,6 +75,16 @@ const MarcAuthorityView = ({
   const renderLastMenu = () => {
     if (authRefType !== AUTH_REF_TYPES.AUTHORIZED) {
       return null;
+    }
+
+    if (isLinkingLoading) {
+      return (
+        <Icon
+          icon="spinner-ellipsis"
+          iconRootClass={css.authorityLinkSpinner}
+          data-testid="link-authority-loading"
+        />
+      );
     }
 
     return (

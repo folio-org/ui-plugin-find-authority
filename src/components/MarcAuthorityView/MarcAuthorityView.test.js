@@ -95,6 +95,7 @@ const mockSetSelectedAuthorityRecordContext = jest.fn();
 const getMarcAuthorityView = (props = {}, selectedRecord = authority.data) => (
   <Harness selectedRecordCtxValue={[selectedRecord, mockSetSelectedAuthorityRecordContext]}>
     <MarcAuthorityView
+      isLinkingLoading={false}
       onCloseDetailView={jest.fn()}
       onLinkRecord={mockOnLinkRecord}
       {...props}
@@ -121,6 +122,12 @@ describe('Given MarcAuthorityView', () => {
     const { getByText } = renderMarcAuthorityView();
 
     expect(getByText('ui-plugin-find-authority.button.link')).toBeDefined();
+  });
+
+  it('should render spinner instead of link authority button', () => {
+    const { getByTestId } = renderMarcAuthorityView({ isLinkingLoading: true });
+
+    expect(getByTestId('link-authority-loading')).toBeDefined();
   });
 
   describe('when clicking on Link authority', () => {

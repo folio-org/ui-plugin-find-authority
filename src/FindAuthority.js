@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { IconButton } from '@folio/stripes/components';
+import {
+  IconButton,
+  Callout,
+} from '@folio/stripes/components';
 import {
   AuthoritiesSearchContextProvider,
   SelectedAuthorityRecordContextProvider,
@@ -11,17 +14,25 @@ import {
 import { SearchModal } from './components';
 
 const propTypes = {
+  calloutRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.object,
+  ]),
   initialValues: PropTypes.object,
+  isLinkingLoading: PropTypes.bool.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
   renderCustomTrigger: PropTypes.func,
 };
 
 const defaultProps = {
+  calloutRef: null,
   initialValues: {},
   renderCustomTrigger: null,
 };
 
 const FindAuthority = ({
+  calloutRef,
+  isLinkingLoading,
   initialValues,
   renderCustomTrigger,
   onLinkRecord,
@@ -51,7 +62,6 @@ const FindAuthority = ({
 
   const handleLinkAuthority = record => {
     onLinkRecord(record);
-    closeModal();
   };
 
   const renderTrigger = () => {
@@ -70,10 +80,12 @@ const FindAuthority = ({
         >
           <SelectedAuthorityRecordContextProvider>
             <SearchModal
+              isLinkingLoading={isLinkingLoading}
               open={isOpen}
               onClose={closeModal}
               onLinkRecord={handleLinkAuthority}
             />
+            <Callout ref={calloutRef} />
           </SelectedAuthorityRecordContextProvider>
         </AuthoritiesSearchContextProvider>
       )}

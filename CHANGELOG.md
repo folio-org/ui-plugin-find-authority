@@ -1,5 +1,9 @@
 # Change history for ui-plugin-find-authority
 
+## [2.1.0] IN PROGRESS
+
+* [UIPFAUTH-44](https://issues.folio.org/browse/UIPFAUTH-44) Show an error message in modal after linking.
+
 ## [2.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v2.0.0) (2023-02-24)
 
 * [UIPFAUTH-34](https://issues.folio.org/browse/UIPFAUTH-34) The pagination buttons are missing when the user changes the scale of the screen

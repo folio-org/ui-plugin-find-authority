@@ -17,12 +17,14 @@ import {
 import css from './SearchModal.css';
 
 const propTypes = {
+  isLinkingLoading: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
 };
 
 const SearchModal = ({
+  isLinkingLoading,
   open,
   onClose,
   onLinkRecord,
@@ -52,8 +54,18 @@ const SearchModal = ({
       >
         {
           navigationSegmentValue === navigationSegments.search
-            ? <SearchView onLinkRecord={onLinkRecord} />
-            : <BrowseView onLinkRecord={onLinkRecord} />
+            ? (
+              <SearchView
+                isLinkingLoading={isLinkingLoading}
+                onLinkRecord={onLinkRecord}
+              />
+            )
+            : (
+              <BrowseView
+                isLinkingLoading={isLinkingLoading}
+                onLinkRecord={onLinkRecord}
+              />
+            )
         }
       </PersistedPaneset>
     </Modal>
