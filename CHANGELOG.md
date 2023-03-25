@@ -3,6 +3,7 @@
 ## [2.1.0] IN PROGRESS
 
 * [UIPFAUTH-44](https://issues.folio.org/browse/UIPFAUTH-44) Show an error message in modal after linking.
+* [UIPFAUTH-56](https://issues.folio.org/browse/UIPFAUTH-56) Avoid private paths in stripes-core imports.
 
 ## [2.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v2.0.0) (2023-02-24)
 
@@ -39,4 +40,4 @@
 ## [0.1.0](https://github.com/folio-org/ui-plugin-find-authority/tree/v0.1.0) (2022-10-04)
 
  - New plugin created
- 
+
