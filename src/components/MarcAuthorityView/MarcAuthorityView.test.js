@@ -18,6 +18,7 @@ jest.mock('@folio/stripes/core', () => ({
   useCallout: () => ({
     sendCallout: mockSendCallout,
   }),
+  useNamespace: () => ['@folio/find-authority', jest.fn()],
 }));
 
 const marcSource = {
