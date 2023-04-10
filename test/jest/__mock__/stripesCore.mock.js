@@ -39,7 +39,7 @@ const buildStripes = (otherProperties = {}) => ({
   ...otherProperties,
 });
 
-jest.mock('@folio/stripes-core', () => {
+jest.mock('@folio/stripes/core', () => {
   const STRIPES = buildStripes();
 
   // eslint-disable-next-line react/prop-types
@@ -104,7 +104,7 @@ jest.mock('@folio/stripes-core', () => {
   STRIPES.connect = stripesConnect;
 
   return {
-    ...jest.requireActual('@folio/stripes-core'),
+    ...jest.requireActual('@folio/stripes/core'),
     stripesConnect,
     withStripes,
     IfPermission,
