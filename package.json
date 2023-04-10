@@ -14,6 +14,9 @@
     "actsAs": [
       "plugin"
     ],
+    "stripesDeps": [
+      "@folio/stripes-authority-components"
+    ],
     "pluginType": "find-authority",
     "displayName": "ui-plugin-find-authority.meta.title",
     "queryResource": "query",
