@@ -52,7 +52,7 @@ const BrowseView = ({
   });
 
   const onSubmitSearch = () => {
-    setSearchQuery(searchInputValue);
+    setSearchQuery(searchInputValue.trim());
     setSearchIndex(searchDropdownValue);
   };
 
