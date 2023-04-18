@@ -1,8 +1,8 @@
 {
-    "meta.title": "Authority finder (plugin)",
+    "meta.title": "Buscador de autoridades (plugin)",
     "linkToMarcAuthorityRecord": "Enlace al registro de autoridad MARC",
     "modal.title": "Seleccione la autoridad MARC",
-    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
+    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {resultado encontrado} other {resultados encontrados}}",
     "search-results-list.authRefType": "Autorizado",
     "button.link": "Enlace",
     "search-results-list.link": "Enlace"
