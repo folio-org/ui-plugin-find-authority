@@ -6,6 +6,7 @@
 * [UIPFAUTH-56](https://issues.folio.org/browse/UIPFAUTH-56) Avoid private paths in stripes-core imports.
 * [UIPFAUTH-57](https://issues.folio.org/browse/UIPFAUTH-57) Added stripes-authority-components to stripesDeps.
 * [UIPFAUTH-59](https://issues.folio.org/browse/UIPFAUTH-59) Browse: Fix Space at the begining and end of query string.
+* [UIPFAUTH-60](https://issues.folio.org/browse/UIPFAUTH-60) Display link button when open Authorized or Reference.
 
 ## [2.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v2.0.0) (2023-02-24)
 

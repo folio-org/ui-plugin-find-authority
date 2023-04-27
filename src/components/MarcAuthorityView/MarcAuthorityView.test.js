@@ -7,6 +7,7 @@ import {
 } from '@folio/stripes-authority-components';
 
 import MarcAuthorityView from './MarcAuthorityView';
+import { headFieldValue } from '../utils';
 
 import Harness from '../../../test/jest/helpers/harness';
 
@@ -28,7 +29,7 @@ const marcSource = {
         fields: [{
           100: {
             subfields: [{
-              a: 'heading-ref',
+              a: 'Doe, Joe',
             }],
             ind1: '',
             ind2: '',
@@ -143,10 +144,26 @@ describe('Given MarcAuthorityView', () => {
 
   describe('when authority record has authRefType Authorized', () => {
     it('should highlight 1XX marc field', () => {
+      const mockAuthority = {
+        data: {
+          ...authority.data,
+          headingRef: 'Doe, Joe',
+        },
+        isLoading: false,
+      };
+
+      useAuthority.mockImplementation(() => mockAuthority);
+
       const { container } = renderMarcAuthorityView();
       const highlightedContent = [...container.querySelectorAll('mark')].map(mark => mark.textContent).join(' ');
 
-      expect(highlightedContent).toEqual('heading-ref');
+      expect(highlightedContent).toEqual('Doe, Joe');
+    });
+
+    it('should return head field value from authority', () => {
+      const fieldValue = headFieldValue(authority, marcSource);
+
+      expect(fieldValue).toEqual('Doe, Joe');
     });
   });
 
@@ -166,6 +183,12 @@ describe('Given MarcAuthorityView', () => {
       const highlightedContent = [...container.querySelectorAll('mark')].map(mark => mark.textContent).join(' ');
 
       expect(highlightedContent).toEqual('heading-ref heading-ref');
+    });
+
+    it('should return head field value from marc 1XX field', () => {
+      const fieldValue = headFieldValue(authority, marcSource);
+
+      expect(fieldValue).toEqual('Doe, Joe');
     });
   });
 
