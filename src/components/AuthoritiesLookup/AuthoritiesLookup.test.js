@@ -16,7 +16,15 @@ const mockMarcData = {
   data: {
     parsedRecord: {
       content: {
-        fields: [],
+        fields: [{
+          100: {
+            subfields: [{
+              a: 'Doe, Joe',
+            }],
+            ind1: '',
+            ind2: '',
+          },
+        }],
         leader: '',
       },
     },
