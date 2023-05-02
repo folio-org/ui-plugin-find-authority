@@ -10,6 +10,7 @@ import {
   Button,
   Loading,
   Icon,
+  Tooltip,
 } from '@folio/stripes/components';
 import {
   useMarcSource,
@@ -24,6 +25,7 @@ import {
   useNamespace,
 } from '@folio/stripes/core';
 import MarcView from '@folio/quick-marc/src/QuickMarcView/QuickMarcView';
+import { headFieldValue } from '../utils';
 
 import css from './MarcAuthorityView.css';
 
@@ -72,8 +74,10 @@ const MarcAuthorityView = ({
     return null;
   }
 
+  const headValue = headFieldValue(authority, marcSource);
+
   const renderLastMenu = () => {
-    if (authRefType !== AUTH_REF_TYPES.AUTHORIZED) {
+    if (authRefType === AUTH_REF_TYPES.AUTH_REF) {
       return null;
     }
 
@@ -88,13 +92,24 @@ const MarcAuthorityView = ({
     }
 
     return (
-      <Button
-        buttonStyle="primary"
-        marginBottom0
-        onClick={() => onLinkRecord(selectedAuthorityRecord)}
+      <Tooltip
+        id="marc-authority-link-tooltip"
+        text={<FormattedMessage id="ui-plugin-find-authority.button.link.tooltip" values={{ fieldValue: headValue }} />}
       >
-        <FormattedMessage id="ui-plugin-find-authority.button.link" />
-      </Button>
+        {({ ref, ariaIds }) => {
+          return (
+            <Button
+              buttonStyle="primary"
+              marginBottom0
+              ref={ref}
+              aria-labelledby={ariaIds.text}
+              onClick={() => onLinkRecord(selectedAuthorityRecord)}
+            >
+              <FormattedMessage id="ui-plugin-find-authority.button.link" />
+            </Button>
+          );
+        }}
+      </Tooltip>
     );
   };
 
