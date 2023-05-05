@@ -48,6 +48,7 @@ const propTypes = {
   onNeedMoreData: PropTypes.func.isRequired,
   onSubmitSearch: PropTypes.func.isRequired,
   query: PropTypes.string,
+  resultsContainerRef: PropTypes.node,
   searchQuery: PropTypes.string.isRequired,
   totalRecords: PropTypes.number.isRequired,
 };
@@ -66,6 +67,7 @@ const AuthoritiesLookup = ({
   hasNextPage,
   hasPrevPage,
   hidePageIndices,
+  resultsContainerRef,
   onNeedMoreData,
   onSubmitSearch,
   onLinkRecord,
@@ -238,6 +240,7 @@ const AuthoritiesLookup = ({
         hasPrevPage={hasPrevPage}
         hidePageIndices={hidePageIndices}
         renderHeadingRef={renderHeadingRef}
+        resultsContainerRef={resultsContainerRef}
         itemToView={itemToView}
         onRowFocus={handleRowFocus}
       />
@@ -277,6 +280,7 @@ AuthoritiesLookup.defaultProps = {
   hasNextPage: null,
   hasPrevPage: null,
   hidePageIndices: false,
+  resultsContainerRef: null,
 };
 
 export default AuthoritiesLookup;
