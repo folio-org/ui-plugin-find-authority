@@ -7,6 +7,13 @@ import BrowseView from './BrowseView';
 import Harness from '../../../test/jest/helpers/harness';
 import AuthoritiesLookup from '../../components/AuthoritiesLookup';
 
+jest.mock('@folio/stripes-authority-components', () => ({
+  ...jest.requireActual('@folio/stripes-authority-components'),
+  useBrowseResultFocus: jest.fn().mockReturnValue({
+    resultsContainerRef: { current: null },
+  }),
+}));
+
 jest.mock('../../components/AuthoritiesLookup', () => jest.fn(() => <div>AuthoritiesLookup</div>));
 
 const mockOnLinkRecord = jest.fn();
@@ -42,17 +49,18 @@ describe('Given BrowseView', () => {
       hasPrevPage: false,
       hidePageIndices: true,
       isLinkingLoading: false,
-      isLoaded: true,
+      isLoaded: false,
       isLoading: false,
       onNeedMoreData: expect.any(Function),
       onSubmitSearch: expect.any(Function),
       onLinkRecord: mockOnLinkRecord,
       query: '(headingRef>="" or headingRef<"") and isTitleHeadingRef==false',
+      resultsContainerRef: { current: null },
       searchQuery: '',
-      totalRecords: 0,
+      totalRecords: NaN,
     };
 
     renderBrowseView();
-    expect(AuthoritiesLookup).toHaveBeenNthCalledWith(1, expectedProps, {});
+    expect(AuthoritiesLookup).toHaveBeenNthCalledWith(2, expectedProps, {});
   });
 });
