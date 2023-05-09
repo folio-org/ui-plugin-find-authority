@@ -45,6 +45,7 @@ const SearchModal = ({
       id="find-authority-modal"
       data-testid="find-authority-modal"
       contentClass={css.modalContent}
+      enforceFocus={false}
     >
       <PersistedPaneset
         static
