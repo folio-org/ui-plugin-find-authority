@@ -5,5 +5,6 @@
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {找到的结果} other {找到的结果}}",
     "search-results-list.authRefType": "规范/参考",
     "button.link": "链接",
-    "search-results-list.link": "链接"
+    "search-results-list.link": "链接",
+    "button.link.tooltip": "Link \"{fieldValue}\""
 }

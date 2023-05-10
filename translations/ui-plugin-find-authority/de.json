@@ -5,5 +5,6 @@
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one { Ergebnis gefunden } other { Ergebnisse gefunden }}",
     "search-results-list.authRefType": "Authorized/Reference",
     "button.link": "Link",
-    "search-results-list.link": "Link"
+    "search-results-list.link": "Link",
+    "button.link.tooltip": "Link \"{fieldValue}\""
 }
