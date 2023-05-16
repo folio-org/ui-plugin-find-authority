@@ -59,8 +59,8 @@ const SearchView = ({
     setSearchIndex(searchDropdownValue);
   };
 
-  const handleLoadMore = (_pageAmount, offset) => {
-    setOffset(offset);
+  const handleLoadMore = (_pageAmount, _offset) => {
+    setOffset(_offset);
   };
 
   return (
