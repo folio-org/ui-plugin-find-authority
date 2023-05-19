@@ -35,6 +35,8 @@ const BrowseView = ({
     searchDropdownValue,
     setBrowsePageQuery,
     browsePageQuery,
+    browsePage,
+    setBrowsePage,
     navigationSegmentValue,
   } = useContext(AuthoritiesSearchContext);
 
@@ -55,6 +57,8 @@ const BrowseView = ({
     precedingRecordsCount: PRECEDING_RECORDS_COUNT,
     setBrowsePageQuery,
     browsePageQuery,
+    browsePage,
+    setBrowsePage,
     navigationSegmentValue,
   });
 
