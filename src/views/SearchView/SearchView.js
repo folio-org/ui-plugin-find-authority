@@ -29,6 +29,9 @@ const SearchView = ({
     searchInputValue,
     searchDropdownValue,
     setAdvancedSearchRows: setAdvancedSearch,
+    navigationSegmentValue,
+    offset,
+    setOffset,
   } = useContext(AuthoritiesSearchContext);
   const isAdvancedSearch = searchIndex === searchableIndexesValues.ADVANCED_SEARCH;
 
@@ -37,7 +40,6 @@ const SearchView = ({
     isLoading,
     isLoaded,
     totalRecords,
-    setOffset,
     query,
   } = useAuthorities({
     searchQuery,
@@ -46,6 +48,9 @@ const SearchView = ({
     isAdvancedSearch,
     filters,
     pageSize: PAGE_SIZE,
+    offset,
+    setOffset,
+    navigationSegmentValue,
   });
 
   const onSubmitSearch = (e, advancedSearchState) => {
@@ -54,8 +59,8 @@ const SearchView = ({
     setSearchIndex(searchDropdownValue);
   };
 
-  const handleLoadMore = (_pageAmount, offset) => {
-    setOffset(offset);
+  const handleLoadMore = (_pageAmount, _offset) => {
+    setOffset(_offset);
   };
 
   return (

@@ -33,6 +33,11 @@ const BrowseView = ({
     setSearchIndex,
     searchInputValue,
     searchDropdownValue,
+    setBrowsePageQuery,
+    browsePageQuery,
+    browsePage,
+    setBrowsePage,
+    navigationSegmentValue,
   } = useContext(AuthoritiesSearchContext);
 
   const {
@@ -50,6 +55,11 @@ const BrowseView = ({
     searchIndex,
     pageSize: PAGE_SIZE,
     precedingRecordsCount: PRECEDING_RECORDS_COUNT,
+    setBrowsePageQuery,
+    browsePageQuery,
+    browsePage,
+    setBrowsePage,
+    navigationSegmentValue,
   });
 
   const { resultsContainerRef, isPaginationClicked } = useBrowseResultFocus(isLoading);
