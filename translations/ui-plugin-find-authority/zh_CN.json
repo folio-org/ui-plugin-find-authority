@@ -6,5 +6,5 @@
     "search-results-list.authRefType": "规范/参考",
     "button.link": "链接",
     "search-results-list.link": "链接",
-    "button.link.tooltip": "Link \"{fieldValue}\""
+    "button.link.tooltip": "链接“ {fieldValue} ”"
 }
