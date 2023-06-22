@@ -9,6 +9,7 @@
 * [UIPFAUTH-60](https://issues.folio.org/browse/UIPFAUTH-60) Display link button when open Authorized or Reference.
 * [UIPFAUTH-62](https://issues.folio.org/browse/UIPFAUTH-62) "Month" dropdown is Not displayed in date picker element opened in modal window
 * [UIPFAUTH-61](https://issues.folio.org/browse/UIPFAUTH-61) Retain `Search` and `Browse` search terms.
+* [UIPFAUTH-67](https://issues.folio.org/browse/UIPFAUTH-67) Update markHighlightedFields function with authority Mapping Rules
 
 ## [2.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v2.0.0) (2023-02-24)
 
