@@ -18,6 +18,7 @@ import {
   QUERY_KEY_AUTHORITY_SOURCE,
   SelectedAuthorityRecordContext,
   markHighlightedFields,
+  useAuthorityMappingRules,
   AUTH_REF_TYPES,
 } from '@folio/stripes-authority-components';
 import {
@@ -46,6 +47,8 @@ const MarcAuthorityView = ({
   const intl = useIntl();
   const [selectedAuthorityRecord] = useContext(SelectedAuthorityRecordContext);
   const { id, authRefType, headingRef } = selectedAuthorityRecord;
+
+  const { authorityMappingRules } = useAuthorityMappingRules();
 
   const handleAuthorityLoadError = async err => {
     const errorResponse = await err.response;
@@ -125,7 +128,7 @@ const MarcAuthorityView = ({
       paneTitle={authority.data.headingRef}
       paneSub={paneSub}
       marcTitle={intl.formatMessage({ id: 'stripes-authority-components.marcHeading' })}
-      marc={markHighlightedFields(marcSource, authority).data}
+      marc={markHighlightedFields(marcSource, authority, authorityMappingRules).data}
       onClose={onCloseDetailView}
       lastMenu={renderLastMenu()}
     />
