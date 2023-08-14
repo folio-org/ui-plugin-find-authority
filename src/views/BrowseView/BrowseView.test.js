@@ -1,4 +1,7 @@
-import { render } from '@testing-library/react';
+import {
+  render,
+  act,
+} from '@folio/jest-config-stripes/testing-library/react';
 
 import { runAxeTest } from '@folio/stripes-testing';
 import {
@@ -90,11 +93,11 @@ describe('Given BrowseView', () => {
   });
 
   describe('when a user clicks on the pagination button', () => {
-    it('should invoke handleLoadMore and assign isPaginationClicked to true', () => {
+    it('should invoke handleLoadMore and assign isPaginationClicked to true', async () => {
       const args = [100, 95, 0, 'next'];
 
       renderBrowseView();
-      AuthoritiesLookup.mock.calls[0][0].onNeedMoreData(...args);
+      await act(() => { AuthoritiesLookup.mock.calls[0][0].onNeedMoreData(...args); });
 
       expect(mockHandleLoadMore).toHaveBeenCalledWith(...args);
       expect(mockIsPaginationClicked.current).toBeTruthy();

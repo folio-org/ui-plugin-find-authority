@@ -2,7 +2,7 @@ import {
   fireEvent,
   render,
   screen,
-} from '@testing-library/react';
+} from '@folio/jest-config-stripes/testing-library/react';
 
 import { runAxeTest } from '@folio/stripes-testing';
 import { useAuthorities } from '@folio/stripes-authority-components';

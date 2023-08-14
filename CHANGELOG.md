@@ -1,6 +1,6 @@
 # Change history for ui-plugin-find-authority
 
-## [2.1.0] IN PROGRESS
+## [3.0.0] IN PROGRESS
 
 * [UIPFAUTH-44](https://issues.folio.org/browse/UIPFAUTH-44) Show an error message in modal after linking.
 * [UIPFAUTH-56](https://issues.folio.org/browse/UIPFAUTH-56) Avoid private paths in stripes-core imports.
@@ -10,6 +10,7 @@
 * [UIPFAUTH-62](https://issues.folio.org/browse/UIPFAUTH-62) "Month" dropdown is Not displayed in date picker element opened in modal window
 * [UIPFAUTH-61](https://issues.folio.org/browse/UIPFAUTH-61) Retain `Search` and `Browse` search terms.
 * [UIPFAUTH-67](https://issues.folio.org/browse/UIPFAUTH-67) Update markHighlightedFields function with authority Mapping Rules
+* [UIPFAUTH-121](https://issues.folio.org/browse/UIPFAUTH-121) *BREAKING* Bump `react` to `v18`.
 
 ## [2.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v2.0.0) (2023-02-24)
 
