@@ -12,6 +12,7 @@
 * [UIPFAUTH-67](https://issues.folio.org/browse/UIPFAUTH-67) Update markHighlightedFields function with authority Mapping Rules
 * [UIPFAUTH-121](https://issues.folio.org/browse/UIPFAUTH-121) *BREAKING* Bump `react` to `v18`.
 * [UIPFAUTH-70](https://issues.folio.org/browse/UIPFAUTH-70) Update Node.js to v18 in GitHub Actions.
+* [UIPFAUTH-73](https://issues.folio.org/browse/UIPFAUTH-73) Add "Local" or "Shared" to flag MARC authorities.
 
 ## [2.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v2.0.0) (2023-02-24)
 

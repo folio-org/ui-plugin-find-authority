@@ -14,3 +14,5 @@ export const headFieldValue = (authority, marcSource) => {
 
   return marcHeadFieldValue;
 };
+
+export const isConsortiaEnv = stripes => stripes.hasInterface('consortia');
