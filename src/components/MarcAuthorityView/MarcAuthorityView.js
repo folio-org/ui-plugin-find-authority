@@ -24,9 +24,14 @@ import {
 import {
   useCallout,
   useNamespace,
+  useStripes,
 } from '@folio/stripes/core';
 import MarcView from '@folio/quick-marc/src/QuickMarcView/QuickMarcView';
-import { headFieldValue } from '../utils';
+
+import {
+  headFieldValue,
+  isConsortiaEnv,
+} from '../utils';
 
 import css from './MarcAuthorityView.css';
 
@@ -41,6 +46,7 @@ const MarcAuthorityView = ({
   onCloseDetailView,
   onLinkRecord,
 }) => {
+  const stripes = useStripes();
   const queryClient = useQueryClient();
   const authoritySourceNamespace = useNamespace({ key: QUERY_KEY_AUTHORITY_SOURCE });
   const callout = useCallout();
@@ -116,6 +122,15 @@ const MarcAuthorityView = ({
     );
   };
 
+  const paneTitle = intl.formatMessage({ id: 'stripes-authority-components.authorityRecordTitle' }, {
+    shared: isConsortiaEnv(stripes) ? authority.data.shared : null,
+    title: authority.data.headingRef,
+  });
+
+  const marcTitle = intl.formatMessage({ id: 'stripes-authority-components.marcHeading' }, {
+    shared: isConsortiaEnv(stripes) ? authority.data.shared : null,
+  });
+
   const paneSub = intl.formatMessage({ id: 'stripes-authority-components.authorityRecordSubtitle' }, {
     heading: authority.data.headingType,
     lastUpdatedDate: intl.formatDate(marcSource.data.metadata.updatedDate),
@@ -125,9 +140,9 @@ const MarcAuthorityView = ({
     <MarcView
       isPaneset={false}
       paneWidth="fill"
-      paneTitle={authority.data.headingRef}
+      paneTitle={paneTitle}
       paneSub={paneSub}
-      marcTitle={intl.formatMessage({ id: 'stripes-authority-components.marcHeading' })}
+      marcTitle={marcTitle}
       marc={markHighlightedFields(marcSource, authority, authorityMappingRules).data}
       onClose={onCloseDetailView}
       lastMenu={renderLastMenu()}
