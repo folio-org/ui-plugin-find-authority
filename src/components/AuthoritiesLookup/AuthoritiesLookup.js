@@ -26,6 +26,7 @@ import {
   navigationSegments,
   useAutoOpenDetailView,
   AUTH_REF_TYPES,
+  SharedIcon,
 } from '@folio/stripes-authority-components';
 
 import MarcAuthorityView from '../MarcAuthorityView';
@@ -205,6 +206,7 @@ const AuthoritiesLookup = ({
       data-testid="heading-ref-btn"
       onClick={() => setShowDetailView(true)}
     >
+      {authority.shared && <SharedIcon authority={authority} />}
       {authority.headingRef}
     </button>
   );
