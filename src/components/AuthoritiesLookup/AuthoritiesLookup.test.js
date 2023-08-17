@@ -155,4 +155,12 @@ describe('Given AuthoritiesLookup', () => {
       expect(mockSetSelectedAuthorityRecord).toHaveBeenLastCalledWith(null);
     });
   });
+
+  describe('when Authority record is shared', () => {
+    it('should render shared icon', () => {
+      const { getByText } = renderAuthoritiesSearchPane();
+
+      expect(getByText('stripes-authority-components.search.shared')).toBeInTheDocument();
+    });
+  });
 });
