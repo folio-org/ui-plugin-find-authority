@@ -52,9 +52,10 @@ const MarcAuthorityView = ({
   const callout = useCallout();
   const intl = useIntl();
   const [selectedAuthorityRecord] = useContext(SelectedAuthorityRecordContext);
-  const { id, authRefType, headingRef } = selectedAuthorityRecord;
+  const { id, authRefType, headingRef, shared } = selectedAuthorityRecord;
+  const tenantId = shared ? stripes.user.user.consortium?.centralTenantId : selectedAuthorityRecord.tenantId;
 
-  const { authorityMappingRules } = useAuthorityMappingRules();
+  const { authorityMappingRules } = useAuthorityMappingRules({ tenantId, enabled: Boolean(selectedAuthorityRecord) });
 
   const handleAuthorityLoadError = async err => {
     const errorResponse = await err.response;
@@ -67,11 +68,11 @@ const MarcAuthorityView = ({
     queryClient.invalidateQueries(authoritySourceNamespace);
   };
 
-  const marcSource = useMarcSource(id, {
+  const marcSource = useMarcSource({ recordId: id, tenantId }, {
     onError: handleAuthorityLoadError,
   });
 
-  const authority = useAuthority(id, authRefType, headingRef, {
+  const authority = useAuthority({ recordId: id, authRefType, headingRef, tenantId }, {
     onError: handleAuthorityLoadError,
   });
 
@@ -146,6 +147,7 @@ const MarcAuthorityView = ({
       marc={markHighlightedFields(marcSource, authority, authorityMappingRules).data}
       onClose={onCloseDetailView}
       lastMenu={renderLastMenu()}
+      tenantId={tenantId}
     />
   );
 };

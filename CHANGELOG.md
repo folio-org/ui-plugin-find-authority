@@ -14,6 +14,7 @@
 * [UIPFAUTH-70](https://issues.folio.org/browse/UIPFAUTH-70) Update Node.js to v18 in GitHub Actions.
 * [UIPFAUTH-73](https://issues.folio.org/browse/UIPFAUTH-73) Add "Local" or "Shared" to flag MARC authorities.
 * [UIPFAUTH-74](https://issues.folio.org/browse/UIPFAUTH-74) Add Shared icon to MARC authority search results.
+* [UIPFAUTH-75](https://issues.folio.org/browse/UIPFAUTH-75) Change tenant id to central when opening details of Shared Authority.
 
 ## [2.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v2.0.0) (2023-02-24)
 
