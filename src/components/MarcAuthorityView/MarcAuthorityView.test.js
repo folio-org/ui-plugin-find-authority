@@ -261,4 +261,39 @@ describe('Given MarcAuthorityView', () => {
       });
     });
   });
+
+  describe('when authority is shared', () => {
+    it('should fetch data from central tenant', () => {
+      const selectedAuthority = {
+        shared: true,
+      };
+
+      renderMarcAuthorityView(null, selectedAuthority);
+
+      expect(useMarcSource.mock.calls[0][0]).toEqual({
+        tenantId: 'consortia',
+      });
+      expect(useAuthority.mock.calls[0][0]).toEqual({
+        tenantId: 'consortia',
+      });
+    });
+  });
+
+  describe('when authority is local', () => {
+    it('should fetch data with authority.tenantId', () => {
+      const selectedAuthority = {
+        shared: false,
+        tenantId: 'university',
+      };
+
+      renderMarcAuthorityView(null, selectedAuthority);
+
+      expect(useMarcSource.mock.calls[0][0]).toEqual({
+        tenantId: selectedAuthority.tenantId,
+      });
+      expect(useAuthority.mock.calls[0][0]).toEqual({
+        tenantId: selectedAuthority.tenantId,
+      });
+    });
+  });
 });
