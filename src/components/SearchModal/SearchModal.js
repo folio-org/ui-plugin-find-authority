@@ -21,10 +21,16 @@ const propTypes = {
   onClose: PropTypes.func.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  tenantId: PropTypes.string,
+};
+
+const defaultProps = {
+  tenantId: '',
 };
 
 const SearchModal = ({
   isLinkingLoading,
+  tenantId,
   open,
   onClose,
   onLinkRecord,
@@ -58,12 +64,14 @@ const SearchModal = ({
             ? (
               <SearchView
                 isLinkingLoading={isLinkingLoading}
+                tenantId={tenantId}
                 onLinkRecord={onLinkRecord}
               />
             )
             : (
               <BrowseView
                 isLinkingLoading={isLinkingLoading}
+                tenantId={tenantId}
                 onLinkRecord={onLinkRecord}
               />
             )
@@ -74,5 +82,6 @@ const SearchModal = ({
 };
 
 SearchModal.propTypes = propTypes;
+SearchModal.defaultProps = defaultProps;
 
 export default SearchModal;
