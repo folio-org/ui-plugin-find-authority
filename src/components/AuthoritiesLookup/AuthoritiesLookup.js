@@ -51,6 +51,7 @@ const propTypes = {
   query: PropTypes.string,
   resultsContainerRef: PropTypes.node,
   searchQuery: PropTypes.string.isRequired,
+  tenantId: PropTypes.string,
   totalRecords: PropTypes.number.isRequired,
 };
 
@@ -69,6 +70,7 @@ const AuthoritiesLookup = ({
   hasPrevPage,
   hidePageIndices,
   resultsContainerRef,
+  tenantId,
   onNeedMoreData,
   onSubmitSearch,
   onLinkRecord,
@@ -259,6 +261,7 @@ const AuthoritiesLookup = ({
         query={query}
         excludedSearchFilters={excludedFilters}
         excludedBrowseFilters={excludedFilters}
+        tenantId={tenantId}
         onShowDetailView={setShowDetailView}
       />
       {showDetailView
@@ -283,6 +286,7 @@ AuthoritiesLookup.defaultProps = {
   hasPrevPage: null,
   hidePageIndices: false,
   resultsContainerRef: null,
+  tenantId: '',
 };
 
 export default AuthoritiesLookup;

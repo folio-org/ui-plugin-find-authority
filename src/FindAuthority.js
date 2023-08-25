@@ -22,17 +22,20 @@ const propTypes = {
   isLinkingLoading: PropTypes.bool.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
   renderCustomTrigger: PropTypes.func,
+  tenantId: PropTypes.string,
 };
 
 const defaultProps = {
   calloutRef: null,
   initialValues: {},
   renderCustomTrigger: null,
+  tenantId: '',
 };
 
 const FindAuthority = ({
   calloutRef,
   isLinkingLoading,
+  tenantId,
   initialValues,
   renderCustomTrigger,
   onLinkRecord,
@@ -81,6 +84,7 @@ const FindAuthority = ({
           <SelectedAuthorityRecordContextProvider>
             <SearchModal
               isLinkingLoading={isLinkingLoading}
+              tenantId={tenantId}
               open={isOpen}
               onClose={closeModal}
               onLinkRecord={handleLinkAuthority}

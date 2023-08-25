@@ -19,10 +19,16 @@ import {
 const propTypes = {
   isLinkingLoading: PropTypes.bool.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
+  tenantId: PropTypes.string,
+};
+
+const defaultProps = {
+  tenantId: '',
 };
 
 const BrowseView = ({
   isLinkingLoading,
+  tenantId,
   onLinkRecord,
 }) => {
   const {
@@ -60,6 +66,7 @@ const BrowseView = ({
     browsePage,
     setBrowsePage,
     navigationSegmentValue,
+    tenantId,
   });
 
   const { resultsContainerRef, isPaginationClicked } = useBrowseResultFocus(isLoading);
@@ -102,6 +109,7 @@ const BrowseView = ({
       hasPrevPage={hasPrevPage}
       hidePageIndices
       resultsContainerRef={resultsContainerRef}
+      tenantId={tenantId}
       onNeedMoreData={handleNeedMoreData}
       onSubmitSearch={onSubmitSearch}
       onLinkRecord={onLinkRecord}
@@ -110,5 +118,6 @@ const BrowseView = ({
 };
 
 BrowseView.propTypes = propTypes;
+BrowseView.defaultProps = defaultProps;
 
 export default BrowseView;

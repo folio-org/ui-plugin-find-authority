@@ -85,6 +85,7 @@ describe('Given BrowseView', () => {
       query: '(headingRef>="" or headingRef<"") and isTitleHeadingRef==false',
       resultsContainerRef: { current: null },
       searchQuery: '',
+      tenantId: '',
       totalRecords: 0,
     };
 

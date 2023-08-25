@@ -13,10 +13,16 @@ import { PAGE_SIZE } from '../../constants';
 const propTypes = {
   isLinkingLoading: PropTypes.bool.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
+  tenantId: PropTypes.string,
+};
+
+const defaultProps = {
+  tenantId: '',
 };
 
 const SearchView = ({
   isLinkingLoading,
+  tenantId,
   onLinkRecord,
 }) => {
   const {
@@ -51,6 +57,7 @@ const SearchView = ({
     offset,
     setOffset,
     navigationSegmentValue,
+    tenantId,
   });
 
   const onSubmitSearch = (e, advancedSearchState) => {
@@ -73,6 +80,7 @@ const SearchView = ({
       isLoaded={isLoaded}
       isLoading={isLoading}
       hasFilters={!!filters.length}
+      tenantId={tenantId}
       onNeedMoreData={handleLoadMore}
       onSubmitSearch={onSubmitSearch}
       onLinkRecord={onLinkRecord}
@@ -81,5 +89,6 @@ const SearchView = ({
 };
 
 SearchView.propTypes = propTypes;
+SearchView.defaultProps = defaultProps;
 
 export default SearchView;
