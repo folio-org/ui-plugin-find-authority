@@ -54,6 +54,7 @@ describe('Given SearchView', () => {
   it('should have correct props for AuthoritiesLookup', () => {
     const expectedProps = {
       authorities: [],
+      excludedFilters: {},
       hasFilters: false,
       isLinkingLoading: false,
       isLoaded: true,

@@ -17,6 +17,7 @@ import {
 import css from './SearchModal.css';
 
 const propTypes = {
+  excludedFilters: PropTypes.object,
   isLinkingLoading: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
@@ -25,10 +26,12 @@ const propTypes = {
 };
 
 const defaultProps = {
+  excludedFilters: {},
   tenantId: '',
 };
 
 const SearchModal = ({
+  excludedFilters,
   isLinkingLoading,
   tenantId,
   open,
@@ -63,6 +66,7 @@ const SearchModal = ({
           navigationSegmentValue === navigationSegments.search
             ? (
               <SearchView
+                excludedFilters={excludedFilters}
                 isLinkingLoading={isLinkingLoading}
                 tenantId={tenantId}
                 onLinkRecord={onLinkRecord}
@@ -70,6 +74,7 @@ const SearchModal = ({
             )
             : (
               <BrowseView
+                excludedFilters={excludedFilters}
                 isLinkingLoading={isLinkingLoading}
                 tenantId={tenantId}
                 onLinkRecord={onLinkRecord}

@@ -72,6 +72,7 @@ describe('Given BrowseView', () => {
   it('should have correct props for AuthoritiesLookup', () => {
     const expectedProps = {
       authorities: [],
+      excludedFilters: {},
       hasFilters: false,
       hasNextPage: false,
       hasPrevPage: false,
