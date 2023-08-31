@@ -38,6 +38,7 @@ import css from './AuthoritiesLookup.css';
 
 const propTypes = {
   authorities: PropTypes.arrayOf(AuthorityShape).isRequired,
+  excludedFilters: PropTypes.object,
   hasFilters: PropTypes.bool.isRequired,
   hasNextPage: PropTypes.bool,
   hasPrevPage: PropTypes.bool,
@@ -55,10 +56,9 @@ const propTypes = {
   totalRecords: PropTypes.number.isRequired,
 };
 
-const excludedFilters = new Set([]);
-
 const AuthoritiesLookup = ({
   authorities,
+  excludedFilters,
   totalRecords,
   searchQuery,
   query,
@@ -254,13 +254,12 @@ const AuthoritiesLookup = ({
   return (
     <>
       <AuthoritiesSearchPane
+        excludedFilters={excludedFilters}
         isFilterPaneVisible={isFilterPaneVisible}
         toggleFilterPane={toggleFilterPane}
         isLoading={isLoading}
         onSubmitSearch={handleSubmitSearch}
         query={query}
-        excludedSearchFilters={excludedFilters}
-        excludedBrowseFilters={excludedFilters}
         tenantId={tenantId}
         onShowDetailView={setShowDetailView}
       />
@@ -281,6 +280,7 @@ const AuthoritiesLookup = ({
 AuthoritiesLookup.propTypes = propTypes;
 
 AuthoritiesLookup.defaultProps = {
+  excludedFilters: {},
   query: '',
   hasNextPage: null,
   hasPrevPage: null,

@@ -18,6 +18,7 @@ const propTypes = {
     PropTypes.func,
     PropTypes.object,
   ]),
+  excludedFilters: PropTypes.object,
   initialValues: PropTypes.object,
   isLinkingLoading: PropTypes.bool.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
@@ -27,6 +28,7 @@ const propTypes = {
 
 const defaultProps = {
   calloutRef: null,
+  excludedFilters: {},
   initialValues: {},
   renderCustomTrigger: null,
   tenantId: '',
@@ -34,6 +36,7 @@ const defaultProps = {
 
 const FindAuthority = ({
   calloutRef,
+  excludedFilters,
   isLinkingLoading,
   tenantId,
   initialValues,
@@ -83,6 +86,7 @@ const FindAuthority = ({
         >
           <SelectedAuthorityRecordContextProvider>
             <SearchModal
+              excludedFilters={excludedFilters}
               isLinkingLoading={isLinkingLoading}
               tenantId={tenantId}
               open={isOpen}

@@ -11,16 +11,19 @@ import { AuthoritiesLookup } from '../../components';
 import { PAGE_SIZE } from '../../constants';
 
 const propTypes = {
+  excludedFilters: PropTypes.object,
   isLinkingLoading: PropTypes.bool.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
   tenantId: PropTypes.string,
 };
 
 const defaultProps = {
+  excludedFilters: {},
   tenantId: '',
 };
 
 const SearchView = ({
+  excludedFilters,
   isLinkingLoading,
   tenantId,
   onLinkRecord,
@@ -73,6 +76,7 @@ const SearchView = ({
   return (
     <AuthoritiesLookup
       authorities={authorities}
+      excludedFilters={excludedFilters}
       totalRecords={totalRecords}
       searchQuery={searchQuery}
       query={query}

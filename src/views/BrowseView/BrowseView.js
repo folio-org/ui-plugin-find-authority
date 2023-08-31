@@ -17,16 +17,19 @@ import {
 } from '../../constants';
 
 const propTypes = {
+  excludedFilters: PropTypes.object,
   isLinkingLoading: PropTypes.bool.isRequired,
   onLinkRecord: PropTypes.func.isRequired,
   tenantId: PropTypes.string,
 };
 
 const defaultProps = {
+  excludedFilters: {},
   tenantId: '',
 };
 
 const BrowseView = ({
+  excludedFilters,
   isLinkingLoading,
   tenantId,
   onLinkRecord,
@@ -98,6 +101,7 @@ const BrowseView = ({
   return (
     <AuthoritiesLookup
       authorities={formattedAuthoritiesForView}
+      excludedFilters={excludedFilters}
       totalRecords={totalRecords}
       searchQuery={searchQuery}
       query={query}
