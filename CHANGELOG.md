@@ -17,6 +17,7 @@
 * [UIPFAUTH-75](https://issues.folio.org/browse/UIPFAUTH-75) Change tenant id to central when opening details of Shared Authority.
 * [UIPFAUTH-76](https://issues.folio.org/browse/UIPFAUTH-76) Link Shared/Local MARC bib record to Shared/Local Authority record.
 * [UIPFAUTH-77](https://issues.folio.org/browse/UIPFAUTH-77) Hide the Shared facet in the plugin for the shared bib record.
+* [UIPFAUTH-80](https://issues.folio.org/browse/UIPFAUTH-80) Don't clear previous Search/Browse results to highlight the edited record.
 
 ## [2.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v2.0.0) (2023-02-24)
 
