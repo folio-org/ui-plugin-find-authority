@@ -285,7 +285,7 @@ AuthoritiesLookup.defaultProps = {
   hasNextPage: null,
   hasPrevPage: null,
   hidePageIndices: false,
-  pagingOffset: null,
+  pagingOffset: undefined, // undefined is required
   tenantId: '',
 };
 
