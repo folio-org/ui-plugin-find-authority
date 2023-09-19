@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import {
   AuthoritiesSearchContext,
   useAuthoritiesBrowse,
-  useBrowseResultFocus,
 } from '@folio/stripes-authority-components';
 
 import { AuthoritiesLookup } from '../../components';
@@ -72,13 +71,6 @@ const BrowseView = ({
     tenantId,
   });
 
-  const { resultsContainerRef, isPaginationClicked } = useBrowseResultFocus(isLoading);
-
-  const handleNeedMoreData = (...params) => {
-    isPaginationClicked.current = true;
-    handleLoadMore(...params);
-  };
-
   const onSubmitSearch = () => {
     setSearchQuery(searchInputValue.trim());
     setSearchIndex(searchDropdownValue);
@@ -112,9 +104,9 @@ const BrowseView = ({
       hasNextPage={hasNextPage}
       hasPrevPage={hasPrevPage}
       hidePageIndices
-      resultsContainerRef={resultsContainerRef}
+      pagingOffset={0} // any number allows us to always focus on the first row after the pagination change.
       tenantId={tenantId}
-      onNeedMoreData={handleNeedMoreData}
+      onNeedMoreData={handleLoadMore}
       onSubmitSearch={onSubmitSearch}
       onLinkRecord={onLinkRecord}
     />
