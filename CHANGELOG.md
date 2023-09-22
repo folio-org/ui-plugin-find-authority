@@ -19,6 +19,7 @@
 * [UIPFAUTH-77](https://issues.folio.org/browse/UIPFAUTH-77) Hide the Shared facet in the plugin for the shared bib record.
 * [UIPFAUTH-79](https://issues.folio.org/browse/UIPFAUTH-79) *BREAKING* bump `react-intl` to `v6.4.4`.
 * [UIPFAUTH-80](https://issues.folio.org/browse/UIPFAUTH-80) Don't clear previous Search/Browse results to highlight the edited record.
+* [UIPFAUTH-81](https://issues.folio.org/browse/UIPFAUTH-81) Remove unnecessary pagingOffset prop.
 
 ## [2.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v2.0.0) (2023-02-24)
 

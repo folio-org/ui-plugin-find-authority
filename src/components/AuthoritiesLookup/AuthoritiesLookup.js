@@ -49,7 +49,6 @@ const propTypes = {
   onLinkRecord: PropTypes.func.isRequired,
   onNeedMoreData: PropTypes.func.isRequired,
   onSubmitSearch: PropTypes.func.isRequired,
-  pagingOffset: PropTypes.number,
   query: PropTypes.string,
   searchQuery: PropTypes.string.isRequired,
   tenantId: PropTypes.string,
@@ -70,7 +69,6 @@ const AuthoritiesLookup = ({
   hasPrevPage,
   hidePageIndices,
   tenantId,
-  pagingOffset,
   onNeedMoreData,
   onSubmitSearch,
   onLinkRecord,
@@ -232,7 +230,6 @@ const AuthoritiesLookup = ({
         formatter={formatter}
         totalResults={totalRecords}
         pageSize={PAGE_SIZE}
-        pagingOffset={pagingOffset}
         onNeedMoreData={onNeedMoreData}
         loading={isLoading}
         loaded={isLoaded}
@@ -285,7 +282,6 @@ AuthoritiesLookup.defaultProps = {
   hasNextPage: null,
   hasPrevPage: null,
   hidePageIndices: false,
-  pagingOffset: undefined, // undefined is required
   tenantId: '',
 };
 
