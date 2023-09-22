@@ -104,7 +104,6 @@ const BrowseView = ({
       hasNextPage={hasNextPage}
       hasPrevPage={hasPrevPage}
       hidePageIndices
-      pagingOffset={0} // any number allows us to always focus on the first row after the pagination change.
       tenantId={tenantId}
       onNeedMoreData={handleLoadMore}
       onSubmitSearch={onSubmitSearch}

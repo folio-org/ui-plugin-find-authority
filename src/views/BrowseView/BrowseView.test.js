@@ -72,7 +72,6 @@ describe('Given BrowseView', () => {
       onNeedMoreData: expect.any(Function),
       onSubmitSearch: expect.any(Function),
       onLinkRecord: mockOnLinkRecord,
-      pagingOffset: 0,
       query: '(headingRef>="" or headingRef<"") and isTitleHeadingRef==false',
       searchQuery: '',
       tenantId: '',
