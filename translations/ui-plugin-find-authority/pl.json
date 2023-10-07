@@ -1,7 +1,7 @@
 {
     "meta.title": "Authority finder (plugin)",
-    "linkToMarcAuthorityRecord": "Link to MARC authority record",
-    "modal.title": "Select MARC authority",
+    "linkToMarcAuthorityRecord": "Połącz z rekordem kartoteki haseł wzorcowych",
+    "modal.title": "Wybierz hasło",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
     "search-results-list.authRefType": "Authorized/Reference",
     "button.link": "Link",
