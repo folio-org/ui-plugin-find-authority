@@ -1,6 +1,6 @@
 # Change history for ui-plugin-find-authority
 
-## [3.0.0] IN PROGRESS
+## [3.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v3.0.0) (2023-10-13)
 
 * [UIPFAUTH-44](https://issues.folio.org/browse/UIPFAUTH-44) Show an error message in modal after linking.
 * [UIPFAUTH-56](https://issues.folio.org/browse/UIPFAUTH-56) Avoid private paths in stripes-core imports.
