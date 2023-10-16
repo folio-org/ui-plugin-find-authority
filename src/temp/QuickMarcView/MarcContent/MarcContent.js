@@ -8,9 +8,14 @@ import styles from './MarcContent.css';
 
 const propTypes = {
   isPrint: PropTypes.bool,
-  marcTitle: PropTypes.node.isRequired,
   marc: PropTypes.object.isRequired,
+  marcTitle: PropTypes.node.isRequired,
   tenantId: PropTypes.string,
+};
+
+const defaultProps = {
+  isPrint: false,
+  tenantId: '',
 };
 
 const MarcContent = ({
@@ -45,11 +50,11 @@ const MarcContent = ({
               {`LEADER ${parsedMarc.leader}`}
             </td>
           </tr>
-          {parsedMarc.fields.map((field, idx) => (
+          {parsedMarc.fields.map(field => (
             <MarcField
               isPrint={isPrint}
               field={field}
-              key={idx}
+              key={field.id}
               showLinkIcon={showLinkIcon}
               tenantId={tenantId}
             />
@@ -61,9 +66,6 @@ const MarcContent = ({
 };
 
 MarcContent.propTypes = propTypes;
-
-MarcContent.defaultProps = {
-  isPrint: false,
-};
+MarcContent.defaultProps = defaultProps;
 
 export default MarcContent;
