@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-find-authority",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Stripes plugin to find authorities",
   "repository": "folio-org/ui-plugin-find-authority",
   "publishConfig": {
@@ -33,7 +33,6 @@
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-authority ./translations/ui-plugin-find-authority/compiled"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.17.0",
     "@folio/eslint-config-stripes": "^7.0.0",
     "@folio/jest-config-stripes": "^2.0.0",
     "@folio/stripes": "^9.0.0",
