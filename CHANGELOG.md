@@ -3,6 +3,7 @@
 ## [3.1.0] (IN PROGRESS)
 
 * [UIPFAUTH-83](https://issues.folio.org/browse/UIPFAUTH-83) Resolve circular dependency with ui-quick-marc. Clone QuickMarcView component from `ui-quick-marc`.
+* [UIPFAUTH-72](https://issues.folio.org/browse/UIPFAUTH-72) Remove eslint deps that are already listed in eslint-config-stripes.
 
 ## [3.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v3.0.0) (2023-10-13)
 
