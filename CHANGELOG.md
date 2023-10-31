@@ -1,5 +1,9 @@
 # Change history for ui-plugin-find-authority
 
+## [4.0.0] (IN PROGRESS)
+
+* [UIPFAUTH-85](https://issues.folio.org/browse/UIPFAUTH-85) *BREAKING* Import MarcView from stripes-marc-components.
+
 ## [3.1.0] (IN PROGRESS)
 
 * [UIPFAUTH-83](https://issues.folio.org/browse/UIPFAUTH-83) Resolve circular dependency with ui-quick-marc. Clone QuickMarcView component from `ui-quick-marc`.

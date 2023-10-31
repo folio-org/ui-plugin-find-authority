@@ -26,8 +26,8 @@ import {
   useNamespace,
   useStripes,
 } from '@folio/stripes/core';
+import { MarcView } from '@folio/stripes-marc-components';
 
-import MarcView from '../../temp/QuickMarcView/QuickMarcView';
 import {
   headFieldValue,
   isConsortiaEnv,
