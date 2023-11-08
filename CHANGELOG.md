@@ -3,6 +3,7 @@
 ## [4.0.0] (IN PROGRESS)
 
 * [UIPFAUTH-85](https://issues.folio.org/browse/UIPFAUTH-85) *BREAKING* Import MarcView from stripes-marc-components.
+* [UIPFAUTH-86](https://issues.folio.org/browse/UIPFAUTH-86) Add new column called Authority source for the browse and search results.
 
 ## [3.1.0] (IN PROGRESS)
 

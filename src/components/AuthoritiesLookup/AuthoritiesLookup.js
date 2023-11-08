@@ -87,9 +87,10 @@ const AuthoritiesLookup = ({
 
   const columnMapping = {
     [searchResultListColumns.LINK]: intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.link' }),
-    [searchResultListColumns.AUTH_REF_TYPE]: intl.formatMessage({ id: 'ui-plugin-find-authority.search-results-list.authRefType' }),
+    [searchResultListColumns.AUTH_REF_TYPE]: intl.formatMessage({ id: 'stripes-authority-components.search-results-list.authRefType' }),
     [searchResultListColumns.HEADING_REF]: intl.formatMessage({ id: 'stripes-authority-components.search-results-list.headingRef' }),
     [searchResultListColumns.HEADING_TYPE]: intl.formatMessage({ id: 'stripes-authority-components.search-results-list.headingType' }),
+    [searchResultListColumns.AUTHORITY_SOURCE]: intl.formatMessage({ id: 'stripes-authority-components.search-results-list.authoritySource' }),
   };
 
   const handleLinkRecord = authority => {
@@ -133,6 +134,7 @@ const AuthoritiesLookup = ({
     searchResultListColumns.AUTH_REF_TYPE,
     searchResultListColumns.HEADING_REF,
     searchResultListColumns.HEADING_TYPE,
+    searchResultListColumns.AUTHORITY_SOURCE,
   ];
 
   const toggleFilterPane = () => setIsFilterPaneVisible(!isFilterPaneVisible);

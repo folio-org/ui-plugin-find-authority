@@ -163,4 +163,14 @@ describe('Given AuthoritiesLookup', () => {
       expect(getByText('stripes-authority-components.search.shared')).toBeInTheDocument();
     });
   });
+
+  it('should display columns', () => {
+    const { getByRole } = renderAuthoritiesSearchPane();
+
+    expect(getByRole('columnheader', { name: 'ui-plugin-find-authority.search-results-list.link' })).toBeVisible();
+    expect(getByRole('columnheader', { name: 'stripes-authority-components.search-results-list.authRefType' })).toBeVisible();
+    expect(getByRole('columnheader', { name: 'stripes-authority-components.search-results-list.headingRef' })).toBeVisible();
+    expect(getByRole('columnheader', { name: 'stripes-authority-components.search-results-list.headingType' })).toBeVisible();
+    expect(getByRole('columnheader', { name: 'stripes-authority-components.search-results-list.authoritySource' })).toBeVisible();
+  });
 });
