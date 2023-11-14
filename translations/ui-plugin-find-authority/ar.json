@@ -3,7 +3,6 @@
     "linkToMarcAuthorityRecord": "ربط بتسجيلة استناد مارك",
     "modal.title": "حدد استناد مارك",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
-    "search-results-list.authRefType": "مصرح به",
     "button.link": "رابط",
     "search-results-list.link": "رابط",
     "button.link.tooltip": "Link \"{fieldValue}\""

@@ -3,7 +3,6 @@
     "linkToMarcAuthorityRecord": "Odkaz na záznam MARC autority",
     "modal.title": "Zvolte MARC autoritu",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {nalezen výsledek} other {nalezeno výsledků}}",
-    "search-results-list.authRefType": "Autorizováno/Odkaz",
     "button.link": "Propojit",
     "search-results-list.link": "Propojit",
     "button.link.tooltip": "Odkaz \"{fieldValue}\""

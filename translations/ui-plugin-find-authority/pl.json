@@ -3,7 +3,6 @@
     "linkToMarcAuthorityRecord": "Połącz z rekordem kartoteki haseł wzorcowych",
     "modal.title": "Wybierz hasło",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
-    "search-results-list.authRefType": "Authorized/Reference",
     "button.link": "Link",
     "search-results-list.link": "Link",
     "button.link.tooltip": "Link \"{fieldValue}\""
