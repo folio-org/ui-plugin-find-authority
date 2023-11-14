@@ -3,7 +3,6 @@
     "linkToMarcAuthorityRecord": "Enlace al registro de autoridad MARC",
     "modal.title": "Seleccione la autoridad MARC",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {resultado encontrado} other {resultados encontrados}}",
-    "search-results-list.authRefType": "Autorizado",
     "button.link": "Enlace",
     "search-results-list.link": "Enlace",
     "button.link.tooltip": "Enlace \" {fieldValue} \""

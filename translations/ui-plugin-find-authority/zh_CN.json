@@ -3,7 +3,6 @@
     "linkToMarcAuthorityRecord": "链接到MARC规范记录",
     "modal.title": "选择MARC规范",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {找到的结果} other {找到的结果}}",
-    "search-results-list.authRefType": "规范/参考",
     "button.link": "链接",
     "search-results-list.link": "链接",
     "button.link.tooltip": "链接“ {fieldValue} ”"
