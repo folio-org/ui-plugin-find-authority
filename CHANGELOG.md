@@ -1,6 +1,6 @@
 # Change history for ui-plugin-find-authority
 
-## [3.1.0] (IN PROGRESS)
+## [3.0.1] (https://github.com/folio-org/ui-plugin-find-authority/tree/v3.0.1) (2023-11-20)
 
 * [UIPFAUTH-83](https://issues.folio.org/browse/UIPFAUTH-83) Resolve circular dependency with ui-quick-marc. Clone QuickMarcView component from `ui-quick-marc`.
 
