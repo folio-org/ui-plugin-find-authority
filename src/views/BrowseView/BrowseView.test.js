@@ -42,6 +42,7 @@ describe('Given BrowseView', () => {
       isLoaded: false,
       handleLoadMore: mockHandleLoadMore,
       query: '(headingRef>="" or headingRef<"") and isTitleHeadingRef==false',
+      firstPageQuery: '(headingRef>="" or headingRef<"") and isTitleHeadingRef==false',
       totalRecords: 0,
     });
   });
