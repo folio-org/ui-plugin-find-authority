@@ -55,7 +55,7 @@ const BrowseView = ({
     isLoading,
     isLoaded,
     handleLoadMore,
-    query,
+    firstPageQuery,
     totalRecords,
   } = useAuthoritiesBrowse({
     filters,
@@ -96,7 +96,7 @@ const BrowseView = ({
       excludedFilters={excludedFilters}
       totalRecords={totalRecords}
       searchQuery={searchQuery}
-      query={query}
+      query={firstPageQuery}
       isLinkingLoading={isLinkingLoading}
       isLoaded={isLoaded}
       isLoading={isLoading}
