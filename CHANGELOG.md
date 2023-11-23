@@ -4,12 +4,12 @@
 
 * [UIPFAUTH-85](https://issues.folio.org/browse/UIPFAUTH-85) *BREAKING* Import MarcView from stripes-marc-components.
 * [UIPFAUTH-86](https://issues.folio.org/browse/UIPFAUTH-86) Add new column called Authority source for the browse and search results.
+* [UIPFAUTH-72](https://issues.folio.org/browse/UIPFAUTH-72) Remove eslint deps that are already listed in eslint-config-stripes.
 * [UIPFAUTH-87](https://issues.folio.org/browse/UIPFAUTH-87) Use first page Browse query for facet requests.
 
-## [3.1.0] (IN PROGRESS)
+## [3.0.1] (https://github.com/folio-org/ui-plugin-find-authority/tree/v3.0.1) (2023-11-20)
 
 * [UIPFAUTH-83](https://issues.folio.org/browse/UIPFAUTH-83) Resolve circular dependency with ui-quick-marc. Clone QuickMarcView component from `ui-quick-marc`.
-* [UIPFAUTH-72](https://issues.folio.org/browse/UIPFAUTH-72) Remove eslint deps that are already listed in eslint-config-stripes.
 
 ## [3.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v3.0.0) (2023-10-13)
 
