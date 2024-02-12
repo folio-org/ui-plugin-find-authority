@@ -284,7 +284,7 @@ AuthoritiesLookup.defaultProps = {
   hasNextPage: null,
   hasPrevPage: null,
   hidePageIndices: false,
-  tenantId: '',
+  tenantId: null,
 };
 
 export default AuthoritiesLookup;

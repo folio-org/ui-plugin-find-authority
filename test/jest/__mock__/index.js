@@ -8,3 +8,4 @@ import './stripesIcon.mock';
 import './stripesSmartComponent.mock';
 import './reactRouterDom.mock';
 import './reactVirtualizedAutoSizer.mock';
+import './resizeObserver.mock';
