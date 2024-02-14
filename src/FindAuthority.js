@@ -31,7 +31,7 @@ const defaultProps = {
   excludedFilters: {},
   initialValues: {},
   renderCustomTrigger: null,
-  tenantId: '',
+  tenantId: null,
 };
 
 const FindAuthority = ({

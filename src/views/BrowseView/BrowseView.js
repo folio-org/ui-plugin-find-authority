@@ -24,7 +24,7 @@ const propTypes = {
 
 const defaultProps = {
   excludedFilters: {},
-  tenantId: '',
+  tenantId: null,
 };
 
 const BrowseView = ({

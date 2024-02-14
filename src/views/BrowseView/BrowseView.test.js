@@ -75,7 +75,7 @@ describe('Given BrowseView', () => {
       onLinkRecord: mockOnLinkRecord,
       query: '(headingRef>="" or headingRef<"") and isTitleHeadingRef==false',
       searchQuery: '',
-      tenantId: '',
+      tenantId: null,
       totalRecords: 0,
     };
 

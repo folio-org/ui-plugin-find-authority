@@ -64,7 +64,7 @@ describe('Given SearchView', () => {
       onLinkRecord: mockOnLinkRecord,
       query: '',
       searchQuery: '',
-      tenantId: '',
+      tenantId: null,
       totalRecords: 0,
     };
 
