@@ -1,9 +1,9 @@
 {
-    "meta.title": "Authority finder (plugin)",
-    "linkToMarcAuthorityRecord": "Link to MARC authority record",
-    "modal.title": "Select MARC authority",
-    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
-    "button.link": "Link",
+    "meta.title": "權威查找（擴充）",
+    "linkToMarcAuthorityRecord": "連結到 MARC 權威紀錄",
+    "modal.title": "選擇MARC 權威控制",
+    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {找到的結果} other {找到的結果}}",
+    "button.link": "連結",
     "search-results-list.link": "連結",
-    "button.link.tooltip": "Link \"{fieldValue}\""
+    "button.link.tooltip": "連結“ {fieldValue} ”"
 }
