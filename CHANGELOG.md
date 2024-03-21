@@ -1,6 +1,6 @@
 # Change history for ui-plugin-find-authority
 
-## [4.0.0] (IN PROGRESS)
+## [4.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v4.0.0) (2024-03-21)
 
 * [UIPFAUTH-85](https://issues.folio.org/browse/UIPFAUTH-85) *BREAKING* Import MarcView from stripes-marc-components.
 * [UIPFAUTH-86](https://issues.folio.org/browse/UIPFAUTH-86) Add new column called Authority source for the browse and search results.
