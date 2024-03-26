@@ -171,7 +171,7 @@ const AuthoritiesLookup = ({
     onSubmitSearch(e, ...rest);
   };
 
-  useAutoOpenDetailView(authorities, openDetailView);
+  useAutoOpenDetailView({ authorities, onOpenDetailView: openDetailView });
 
   const renderPaneSub = () => {
     if (navigationSegmentValue === navigationSegments.browse) {
