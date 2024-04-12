@@ -1,6 +1,6 @@
 {
-    "meta.title": "權威查找（擴充）",
-    "linkToMarcAuthorityRecord": "連結到 MARC 權威紀錄",
+    "meta.title": "權威查找器（外掛程式）",
+    "linkToMarcAuthorityRecord": "連結到 MARC 權威控制紀錄",
     "modal.title": "選擇MARC 權威控制",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {找到的結果} other {找到的結果}}",
     "button.link": "連結",
