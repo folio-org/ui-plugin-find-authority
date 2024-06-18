@@ -6,6 +6,7 @@
 * [UIPFAUTH-86](https://issues.folio.org/browse/UIPFAUTH-86) Add new column called Authority source for the browse and search results.
 * [UIPFAUTH-72](https://issues.folio.org/browse/UIPFAUTH-72) Remove eslint deps that are already listed in eslint-config-stripes.
 * [UIPFAUTH-92](https://issues.folio.org/browse/UIPFAUTH-92) Use `null` for empty value of tenantId instead of empty string.
+* [UIPFAUTH-96](https://issues.folio.org/browse/UIPFAUTH-96) Pass the record search error to the `SearchResultsList` component.
 
 ## [3.0.2] (https://github.com/folio-org/ui-plugin-find-authority/tree/v3.0.2) (2023-11-30)
 

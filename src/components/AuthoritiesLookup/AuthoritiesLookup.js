@@ -38,6 +38,7 @@ import css from './AuthoritiesLookup.css';
 
 const propTypes = {
   authorities: PropTypes.arrayOf(AuthorityShape).isRequired,
+  error: PropTypes.object,
   excludedFilters: PropTypes.object,
   hasFilters: PropTypes.bool.isRequired,
   hasNextPage: PropTypes.bool,
@@ -58,6 +59,7 @@ const propTypes = {
 const AuthoritiesLookup = ({
   authorities,
   excludedFilters,
+  error,
   totalRecords,
   searchQuery,
   query,
@@ -229,6 +231,7 @@ const AuthoritiesLookup = ({
         authorities={authorities}
         columnWidths={columnWidths}
         columnMapping={columnMapping}
+        error={error}
         formatter={formatter}
         totalResults={totalRecords}
         pageSize={PAGE_SIZE}
@@ -279,6 +282,7 @@ const AuthoritiesLookup = ({
 AuthoritiesLookup.propTypes = propTypes;
 
 AuthoritiesLookup.defaultProps = {
+  error: null,
   excludedFilters: {},
   query: '',
   hasNextPage: null,
