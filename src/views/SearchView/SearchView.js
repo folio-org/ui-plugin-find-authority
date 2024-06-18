@@ -50,6 +50,7 @@ const SearchView = ({
     isLoaded,
     totalRecords,
     query,
+    error,
   } = useAuthorities({
     searchQuery,
     searchIndex,
@@ -77,6 +78,7 @@ const SearchView = ({
     <AuthoritiesLookup
       authorities={authorities}
       excludedFilters={excludedFilters}
+      error={error}
       totalRecords={totalRecords}
       searchQuery={searchQuery}
       query={query}
