@@ -4,6 +4,6 @@
     "modal.title": "Select MARC authority",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
     "button.link": "リンク",
-    "search-results-list.link": "Link",
-    "button.link.tooltip": "Link \"{fieldValue}\""
+    "search-results-list.link": "リンク",
+    "button.link.tooltip": "リンク \" {fieldValue} \""
 }
