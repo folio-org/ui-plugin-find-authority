@@ -1,9 +1,9 @@
 {
-    "meta.title": "Authority finder (plugin)",
-    "linkToMarcAuthorityRecord": "Link to MARC authority record",
-    "modal.title": "Select MARC authority",
-    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
-    "button.link": "Link",
-    "search-results-list.link": "Link",
-    "button.link.tooltip": "Link \"{fieldValue}\""
+    "meta.title": "Buscador de autoridades (plugin)",
+    "linkToMarcAuthorityRecord": "Enlace al registro de autoridad MARC",
+    "modal.title": "Seleccione la autoridad MARC",
+    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {resultado encontrado} other {resultados encontrados}}",
+    "button.link": "Enlace",
+    "search-results-list.link": "Enlace",
+    "button.link.tooltip": "Enlace \" {fieldValue} \""
 }
