@@ -1,5 +1,9 @@
 # Change history for ui-plugin-find-authority
 
+## [4.1.0] (IN PROGRESS)
+
+* [UIPFAUTH-100](https://issues.folio.org/browse/UIPFAUTH-100) Migrate to shared CI workflows.
+
 ## [4.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v4.0.0) (2024-03-21)
 
 * [UIPFAUTH-85](https://issues.folio.org/browse/UIPFAUTH-85) *BREAKING* Import MarcView from stripes-marc-components.
