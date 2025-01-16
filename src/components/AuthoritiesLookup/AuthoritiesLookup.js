@@ -262,6 +262,7 @@ const AuthoritiesLookup = ({
         isLoading={isLoading}
         onSubmitSearch={handleSubmitSearch}
         query={query}
+        firstPageQuery={query}
         tenantId={tenantId}
         onShowDetailView={setShowDetailView}
       />
