@@ -4,6 +4,7 @@
 
 * [UIPFAUTH-96](https://issues.folio.org/browse/UIPFAUTH-96) Pass the record search error to the `SearchResultsList` component.
 * [UIPFAUTH-100](https://issues.folio.org/browse/UIPFAUTH-100) Migrate to shared CI workflows.
+* [UIPFAUTH-104](https://issues.folio.org/browse/UIPFAUTH-104) Pass `firstPageQuery` to `<AuthoritiesSearchPane>` to include query in facets request.
 
 ## [4.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v4.0.0) (2024-03-21)
 
