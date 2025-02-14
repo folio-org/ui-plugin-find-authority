@@ -1,5 +1,11 @@
 # Change history for ui-plugin-find-authority
 
+## [5.0.0] (IN PROGRESS)
+
+* [UIPFAUTH-106](https://issues.folio.org/browse/UIPFAUTH-106) *BREAKING* migrate stripes dependencies to their Sunflower versions
+* [UIPFAUTH-107](https://issues.folio.org/browse/UIPFAUTH-107) *BREAKING* migrate react-intl to v7
+
+
 ## [4.1.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v4.1.0) (2024-11-01)
 
 * [UIPFAUTH-96](https://issues.folio.org/browse/UIPFAUTH-96) Pass the record search error to the `SearchResultsList` component.
