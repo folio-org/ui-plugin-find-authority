@@ -58,19 +58,19 @@ const propTypes = {
 
 const AuthoritiesLookup = ({
   authorities,
-  excludedFilters,
-  error,
+  excludedFilters = {},
+  error = null,
   totalRecords,
   searchQuery,
-  query,
+  query = '',
   isLinkingLoading,
   isLoaded,
   isLoading,
   hasFilters,
-  hasNextPage,
-  hasPrevPage,
-  hidePageIndices,
-  tenantId,
+  hasNextPage = null,
+  hasPrevPage = null,
+  hidePageIndices = false,
+  tenantId = null,
   onNeedMoreData,
   onSubmitSearch,
   onLinkRecord,
@@ -281,15 +281,5 @@ const AuthoritiesLookup = ({
 };
 
 AuthoritiesLookup.propTypes = propTypes;
-
-AuthoritiesLookup.defaultProps = {
-  error: null,
-  excludedFilters: {},
-  query: '',
-  hasNextPage: null,
-  hasPrevPage: null,
-  hidePageIndices: false,
-  tenantId: null,
-};
 
 export default AuthoritiesLookup;

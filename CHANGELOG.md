@@ -4,7 +4,7 @@
 
 * [UIPFAUTH-106](https://issues.folio.org/browse/UIPFAUTH-106) *BREAKING* migrate stripes dependencies to their Sunflower versions
 * [UIPFAUTH-107](https://issues.folio.org/browse/UIPFAUTH-107) *BREAKING* migrate react-intl to v7
-
+* [UIPFAUTH-95](https://issues.folio.org/browse/UIPFAUTH-95) React v19: refactor away from default props for functional components.
 
 ## [4.1.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v4.1.0) (2024-11-01)
 
