@@ -26,21 +26,13 @@ const propTypes = {
   tenantId: PropTypes.string,
 };
 
-const defaultProps = {
-  calloutRef: null,
-  excludedFilters: {},
-  initialValues: {},
-  renderCustomTrigger: null,
-  tenantId: null,
-};
-
 const FindAuthority = ({
-  calloutRef,
-  excludedFilters,
+  calloutRef = null,
+  excludedFilters = {},
   isLinkingLoading,
-  tenantId,
-  initialValues,
-  renderCustomTrigger,
+  tenantId = null,
+  initialValues = {},
+  renderCustomTrigger = null,
   onLinkRecord,
 }) => {
   const intl = useIntl();
@@ -102,6 +94,5 @@ const FindAuthority = ({
 };
 
 FindAuthority.propTypes = propTypes;
-FindAuthority.defaultProps = defaultProps;
 
 export default FindAuthority;
