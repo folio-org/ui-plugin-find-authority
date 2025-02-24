@@ -25,15 +25,10 @@ const propTypes = {
   tenantId: PropTypes.string,
 };
 
-const defaultProps = {
-  excludedFilters: {},
-  tenantId: null,
-};
-
 const SearchModal = ({
-  excludedFilters,
+  excludedFilters = {},
   isLinkingLoading,
-  tenantId,
+  tenantId = null,
   open,
   onClose,
   onLinkRecord,
@@ -87,6 +82,5 @@ const SearchModal = ({
 };
 
 SearchModal.propTypes = propTypes;
-SearchModal.defaultProps = defaultProps;
 
 export default SearchModal;

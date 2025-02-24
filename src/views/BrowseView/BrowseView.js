@@ -22,15 +22,10 @@ const propTypes = {
   tenantId: PropTypes.string,
 };
 
-const defaultProps = {
-  excludedFilters: {},
-  tenantId: null,
-};
-
 const BrowseView = ({
-  excludedFilters,
+  excludedFilters = {},
   isLinkingLoading,
-  tenantId,
+  tenantId = null,
   onLinkRecord,
 }) => {
   const {
@@ -115,6 +110,5 @@ const BrowseView = ({
 };
 
 BrowseView.propTypes = propTypes;
-BrowseView.defaultProps = defaultProps;
 
 export default BrowseView;

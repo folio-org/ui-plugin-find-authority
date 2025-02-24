@@ -17,15 +17,10 @@ const propTypes = {
   tenantId: PropTypes.string,
 };
 
-const defaultProps = {
-  excludedFilters: {},
-  tenantId: null,
-};
-
 const SearchView = ({
-  excludedFilters,
+  excludedFilters = {},
   isLinkingLoading,
-  tenantId,
+  tenantId = null,
   onLinkRecord,
 }) => {
   const {
@@ -95,6 +90,5 @@ const SearchView = ({
 };
 
 SearchView.propTypes = propTypes;
-SearchView.defaultProps = defaultProps;
 
 export default SearchView;
