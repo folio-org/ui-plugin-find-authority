@@ -1,6 +1,6 @@
 # Change history for ui-plugin-find-authority
 
-## [5.0.0] (IN PROGRESS)
+## [5.0.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v5.0.0) (2025-03-13)
 
 * [UIPFAUTH-106](https://issues.folio.org/browse/UIPFAUTH-106) *BREAKING* migrate stripes dependencies to their Sunflower versions
 * [UIPFAUTH-107](https://issues.folio.org/browse/UIPFAUTH-107) *BREAKING* migrate react-intl to v7
