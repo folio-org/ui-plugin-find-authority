@@ -5,5 +5,5 @@
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
     "button.link": "رابط",
     "search-results-list.link": "رابط",
-    "button.link.tooltip": "Link \"{fieldValue}\""
+    "button.link.tooltip": "ربط \" {fieldValue} \""
 }
