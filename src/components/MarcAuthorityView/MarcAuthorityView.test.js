@@ -72,10 +72,6 @@ const marcSource = {
         }],
       },
     },
-    metadata: {
-      lastUpdatedDate: '2020-12-04T09:05:30.000+0000',
-      updatedDate: '',
-    },
   },
   isLoading: false,
 };
@@ -85,6 +81,9 @@ const authority = {
     id: 'authority-id',
     headingRef: 'heading-ref',
     authRefType: 'Authorized',
+    metadata: {
+      updatedDate: '2020-12-04T09:05:30.000+0000',
+    },
   },
   isLoading: false,
 };
