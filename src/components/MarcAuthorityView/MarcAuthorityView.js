@@ -134,7 +134,7 @@ const MarcAuthorityView = ({
 
   const paneSub = intl.formatMessage({ id: 'stripes-authority-components.authorityRecordSubtitle' }, {
     heading: authority.data.headingType,
-    lastUpdatedDate: intl.formatDate(marcSource.data.metadata.updatedDate),
+    lastUpdatedDate: intl.formatDate(authority.data.metadata.updatedDate),
   });
 
   return (
