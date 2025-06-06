@@ -1,7 +1,7 @@
 {
     "meta.title": "Authority finder (plugin)",
     "linkToMarcAuthorityRecord": "Link to MARC authority record",
-    "modal.title": "Select MARC authority",
+    "modal.title": "Вибрати MARC-авторитетні дані",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
     "button.link": "Link",
     "search-results-list.link": "Link",
