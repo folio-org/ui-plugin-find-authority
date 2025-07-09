@@ -1,5 +1,5 @@
 {
-    "meta.title": "Authority finder (plugin)",
+    "meta.title": "Wyszukiwarka KHW (wtyczka)",
     "linkToMarcAuthorityRecord": "Połącz z rekordem kartoteki haseł wzorcowych",
     "modal.title": "Wybierz hasło",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
