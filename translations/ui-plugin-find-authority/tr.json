@@ -1,9 +1,9 @@
 {
-    "meta.title": "Authority finder (plugin)",
-    "linkToMarcAuthorityRecord": "Link to MARC authority record",
-    "modal.title": "Select MARC authority",
-    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
-    "button.link": "Link",
-    "search-results-list.link": "Link",
-    "button.link.tooltip": "Link \"{fieldValue}\""
+    "meta.title": "Yetki bulucu (Eklenti)",
+    "linkToMarcAuthorityRecord": "MARC otorite kaydına bağlantı kur",
+    "modal.title": "MARC Otorite'yi seçin",
+    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {sonuç bulundu} other {sonuçlar bulundu}}",
+    "button.link": "Bağlantı kur",
+    "search-results-list.link": "Bağlantı kur",
+    "button.link.tooltip": "Bağlantı kur{fieldValue}\""
 }
