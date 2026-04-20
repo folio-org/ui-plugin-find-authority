@@ -1,5 +1,9 @@
 # Change history for ui-plugin-find-authority
 
+## [5.1.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v5.1.0) (2026-04-20)
+
+* Localization updates.
+
 ## [5.0.1] (https://github.com/folio-org/ui-plugin-find-authority/tree/v5.0.1) (2025-06-03)
 
 * [UIPFAUTH-110](https://issues.folio.org/browse/UIPFAUTH-110) Find Authority > Authority View - show Last updated by date from mod-search metadata.
