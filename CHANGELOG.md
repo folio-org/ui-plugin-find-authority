@@ -1,5 +1,11 @@
 # Change history for ui-plugin-find-authority
 
+## [6.0.0] (IN PROGRESS)
+
+* Upgrade `stripes` to `v10.1.0`.
+* Upgrade `stripes-authority-components` to `v7.1.0`.
+* Upgrade `stripes-marc-components` to `v2.1.0`.
+
 ## [5.1.0] (https://github.com/folio-org/ui-plugin-find-authority/tree/v5.1.0) (2026-04-20)
 
 * Localization updates.
