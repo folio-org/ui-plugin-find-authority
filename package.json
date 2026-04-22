@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-find-authority",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "description": "Stripes plugin to find authorities",
   "repository": "folio-org/ui-plugin-find-authority",
   "publishConfig": {
@@ -35,11 +35,11 @@
   "devDependencies": {
     "@folio/eslint-config-stripes": "^8.0.0",
     "@folio/jest-config-stripes": "^3.0.0",
-    "@folio/stripes": "^10.0.0",
-    "@folio/stripes-authority-components": "^6.0.0",
-    "@folio/stripes-marc-components": "^2.0.0",
+    "@folio/stripes": "^10.1.0",
+    "@folio/stripes-authority-components": "^7.0.0",
+    "@folio/stripes-marc-components": "^2.1.0",
     "@folio/stripes-cli": "^4.0.0",
-    "@folio/stripes-core": "^11.0.0",
+    "@folio/stripes-core": "^11.1.0",
     "@folio/stripes-testing": "^5.0.0",
     "core-js": "^3.6.4",
     "eslint-plugin-jest": "^26.6.0",
@@ -56,9 +56,9 @@
     "query-string": "^7.0.1"
   },
   "peerDependencies": {
-    "@folio/stripes": "^10.0.0",
-    "@folio/stripes-authority-components": "^6.0.0",
-    "@folio/stripes-marc-components": "^2.0.0",
+    "@folio/stripes": "^10.1.0",
+    "@folio/stripes-authority-components": "^7.0.0",
+    "@folio/stripes-marc-components": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intl": "^7.1.5",
