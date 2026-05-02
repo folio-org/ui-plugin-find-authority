@@ -1,9 +1,9 @@
 {
-    "meta.title": "Authority finder (plugin)",
-    "linkToMarcAuthorityRecord": "Link to MARC authority record",
-    "modal.title": "Select MARC authority",
-    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
-    "button.link": "Link",
-    "search-results-list.link": "Link",
-    "button.link.tooltip": "Link \"{fieldValue}\""
+    "meta.title": "Autoritatīvā ieraksta meklētājs (spraudnis)",
+    "linkToMarcAuthorityRecord": "Saite uz MARC autoritatīvo ierakstu",
+    "modal.title": "Izvēlieties MARC autoritatīvo ierakstu",
+    "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {atrasts rezultāts} other {atrasti rezultāti}}",
+    "button.link": "Saite",
+    "search-results-list.link": "Saite",
+    "button.link.tooltip": "Saite \"{fieldValue}\""
 }
