@@ -3,7 +3,7 @@
     "linkToMarcAuthorityRecord": "Link to MARC authority record",
     "modal.title": "Select MARC authority",
     "search-results-list.paneSub": "{totalRecords, number} {totalRecords, plural, one {result found} other {results found}}",
-    "button.link": "Lien",
-    "search-results-list.link": "Lien",
+    "button.link": "Link",
+    "search-results-list.link": "Link",
     "button.link.tooltip": "Link \"{fieldValue}\""
 }
